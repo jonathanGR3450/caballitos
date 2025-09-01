@@ -3,18 +3,19 @@
 
 @section('content')
 <style>
-    body, .container { background: #101820 !important; color: #FAF9F6; }
-    .main-content { background: #1a252f; padding: 20px; border-radius: 8px; border: 1px solid #DEB887; }
-    .section-card { background: #2a3441; border: 1px solid #DEB887; border-radius: 8px; margin-bottom: 25px; }
-    .section-header { background: #1a252f; padding: 15px; border-bottom: 1px solid rgba(0, 169, 224, 0.3); }
+    body, .container { background: #FAF9F6 !important; color: #101820; }
+    .main-content { background: #FAF9F6; padding: 20px; border-radius: 8px; }
+    .section-card { background: #FAF9F6; border: 1px solid #DEB887; border-radius: 8px; margin-bottom: 25px; }
+    .section-header { background: #FAF9F6; padding: 15px; border-bottom: 1px solid #DEB887; }
     .section-body { padding: 20px; }
-    .form-control, .form-select, .form-control:focus { background: #101820; border: 1px solid #DEB887; color: #FAF9F6; }
+    .form-control, .form-select, .form-control:focus { background: #FAF9F6; border: 1px solid #DEB887; color: #101820; }
     .form-control:focus { border-color: #f7a831; box-shadow: 0 0 0 0.2rem rgba(247, 168, 49, 0.25); }
     .btn-success { background-color: #DEB887; border-color: #DEB887; }
+    .btn-success:hover { background-color: #f7a831; border-color: #f7a831; color: #101820; }
     .btn-danger { background-color: #dc3545; border-color: #dc3545; }
     .btn-secondary { background-color: #6c757d; border-color: #6c757d; }
     h2, h4 { color: #DEB887 !important; }
-    .alert-success { background-color: rgba(0, 169, 224, 0.2); color: #FAF9F6; border: 1px solid #DEB887; }
+    .alert-success { background-color: #DEB887; color: #FAF9F6; border: 1px solid #DEB887; }
     .form-check-input:checked { background-color: #DEB887; border-color: #DEB887; }
     .badge-hero { background-color: #f7a831; }
     .badge-featured { background-color: #DEB887; }
@@ -101,7 +102,7 @@
                             <!-- SECCIÓN HERO: Video O Imágenes -->
                             <div class="row">
                                 <div class="col-12 mb-4">
-                                    <div class="alert" style="background-color: rgba(247, 168, 49, 0.1); border: 1px solid #f7a831; color: #FAF9F6;">
+                                    <div class="alert" style="background-color: rgba(108, 117, 125, 0.1); border: 1px solid #f7a831; color: #101820;">
                                         <i class="fas fa-exclamation-triangle me-2"></i>
                                         <strong>Importante:</strong> Puedes subir <strong>UN VIDEO</strong> o <strong>IMÁGENES</strong>, no ambos. 
                                         Si subes un video, las imágenes se ignorarán.
@@ -194,7 +195,7 @@
 
                         @else
                             <!-- OTRAS SECCIONES: Solo texto -->
-                            <div class="alert" style="background-color: rgba(108, 117, 125, 0.1); border: 1px solid #6c757d; color: #FAF9F6;">
+                            <div class="alert" style="background-color: rgba(108, 117, 125, 0.1); border: 1px solid #f7a831; color: #101820;">
                                 <i class="fas fa-info-circle me-2"></i>
                                 <strong>Sección de solo texto:</strong> Esta sección solo maneja contenido textual.
                             </div>
@@ -203,7 +204,7 @@
                         <!-- Información específica por sección -->
                         @switch($section->name)
                             @case('hero')
-                                <div class="alert" style="background-color: rgba(247, 168, 49, 0.1); border: 1px solid #f7a831; color: #FAF9F6;">
+                                <div class="alert" style="background-color: rgba(108, 117, 125, 0.1); border: 1px solid #f7a831; color: #101820;">
                                     <i class="fas fa-info-circle"></i>
                                     <strong>Sección Hero:</strong> Esta es la primera sección que ven los visitantes. 
                                     Recomendado: Video de fondo + título llamativo + descripción breve + botón de acción.
@@ -211,7 +212,7 @@
                                 @break
                             
                             @case('featured')
-                                <div class="alert" style="background-color: rgba(0, 169, 224, 0.1); border: 1px solid #DEB887; color: #FAF9F6;">
+                                <div class="alert" style="background-color: #DEB887; border: 1px solid #DEB887; color: #FAF9F6;">
                                     <i class="fas fa-info-circle"></i>
                                     <strong>Productos Destacados:</strong> Se muestran automáticamente desde la base de datos. 
                                     Solo edita el título y descripción de la sección.
@@ -219,7 +220,7 @@
                                 @break
                                 
                             @case('cta')
-                                <div class="alert" style="background-color: rgba(40, 167, 69, 0.1); border: 1px solid #28a745; color: #FAF9F6;">
+                                <div class="alert" style="background-color: rgba(108, 117, 125, 0.1); border: 1px solid #f7a831; color: #101820;">
                                     <i class="fas fa-info-circle"></i>
                                     <strong>Call to Action:</strong> Sección para motivar la compra. 
                                     Usa un título persuasivo y descripción que invite a la acción.
@@ -227,7 +228,7 @@
                                 @break
                                 
                             @case('categories')
-                                <div class="alert" style="background-color: rgba(111, 66, 193, 0.1); border: 1px solid #6f42c1; color: #FAF9F6;">
+                                <div class="alert" style="background-color: rgba(108, 117, 125, 0.1); border: 1px solid #f7a831; color: #101820;">
                                     <i class="fas fa-info-circle"></i>
                                     <strong>Categorías:</strong> Se muestran automáticamente desde la base de datos. 
                                     Solo edita el título y descripción de la sección.
@@ -236,7 +237,7 @@
                         @endswitch
 
                         <!-- Botón guardar -->
-                        <div class="text-end pt-3 border-top" style="border-color: rgba(0, 169, 224, 0.3) !important;">
+                        <div class="text-end pt-3 border-top" style="border-color: #DEB887 !important;">
                             <button type="submit" class="btn btn-success btn-lg">
                                 <i class="fas fa-save me-2"></i> Guardar Cambios de {{ $config['name'] }}
                             </button>
@@ -251,7 +252,7 @@
             <i class="fas fa-exclamation-triangle fa-3x text-warning mb-3"></i>
             <h4 class="text-warning">No hay secciones configuradas</h4>
             <p class="text-light">Ejecuta el comando Tinker para crear las secciones de la página de inicio.</p>
-            <div class="mt-3 p-3" style="background: rgba(247, 168, 49, 0.1); border-radius: 8px; border: 1px solid #f7a831;">
+            <div class="mt-3 p-3" style="background: rgba(108, 117, 125, 0.1); border-radius: 8px; border: 1px solid #f7a831;">
                 <code style="color: #f7a831;">php artisan tinker</code>
                 <p class="text-light mt-2 mb-0">Luego ejecuta el código para crear las 4 secciones.</p>
             </div>

@@ -3,15 +3,15 @@
 
 @section('content')
 <style>
-    body, .container { background: #101820 !important; color: #FAF9F6; }
-    .main-content { background: #1a252f; padding: 20px; border-radius: 8px; border: 1px solid #DEB887; }
-    .table { background-color: #101820; border-color: #DEB887; }
-    .table th, .table td { color: #FAF9F6 !important; border-color: rgba(0, 169, 224, 0.3) !important; }
-    .table-light th { background-color: #1a252f !important; color: #DEB887 !important; }
+    body, .container { background: #FAF9F6 !important; color: #101820; }
+    .main-content { background: #FAF9F6; padding: 20px; border-radius: 8px; }
+    .table { background-color: #FAF9F6; border-color: #DEB887; }
+    .table th, .table td { color: #101820 !important; border-color: #DEB887 !important; }
+    .table-light th { background-color: #FAF9F6 !important; color: #DEB887 !important; }
     .btn-warning { background-color: #f7a831; border-color: #f7a831; color: #101820; }
     .btn-info { background-color: #DEB887; border-color: #DEB887; color: #101820; }
     h2 { color: #DEB887 !important; }
-    .alert-success { background-color: rgba(0, 169, 224, 0.2); color: #FAF9F6; border: 1px solid #DEB887; }
+    .alert-success { background-color: #DEB887; color: #FAF9F6; border: 1px solid #DEB887; }
 </style>
 
 <div class="main-content">
@@ -95,7 +95,7 @@
             </tbody>
         </table>
 
-        <div class="mt-4 p-3" style="background: rgba(0, 169, 224, 0.1); border-radius: 8px; border: 1px solid rgba(0, 169, 224, 0.3);">
+        <div class="mt-4 p-3" style="background: #DEB887; border-radius: 8px; border: 1px solid #DEB887;">
             <h5 style="color: #DEB887; margin-bottom: 10px;">💡 Información</h5>
             <ul class="mb-0" style="font-size: 0.9rem;">
                 <li><strong>Página:</strong> Identificador único (slug)</li>

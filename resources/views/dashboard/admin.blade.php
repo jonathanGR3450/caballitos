@@ -4,16 +4,15 @@
 <style>
     /* Fondo principal */
     body, .container, .container-fluid {
-        background: #101820 !important;
+        background: #FAF9F6 !important;
         color: #FAF9F6;
     }
 
     /* Contenedor principal */
     .main-content {
-        background: #1a252f;
+        background: #FAF9F6;
         padding: 30px;
         border-radius: 8px;
-        border: 1px solid #DEB887;
         min-height: 80vh;
     }
 
@@ -33,8 +32,8 @@
 
     /* Tarjetas de opciones */
     .admin-card {
-        background: rgba(16, 24, 32, 0.8);
-        border: 2px solid rgba(0, 169, 224, 0.3);
+        background: #CD853F;
+        border: 2px solid #DEB887;
         border-radius: 12px;
         padding: 25px;
         text-align: center;
@@ -46,7 +45,7 @@
     .admin-card:hover {
         border-color: #DEB887;
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 169, 224, 0.3);
+        box-shadow: 0 10px 25px #DEB887;
         color: #FAF9F6;
         text-decoration: none;
     }
@@ -59,7 +58,7 @@
     }
 
     .admin-card h4 {
-        color: #00CFB4;
+        color: #FAF9F6;
         margin-bottom: 10px;
         font-weight: 600;
     }

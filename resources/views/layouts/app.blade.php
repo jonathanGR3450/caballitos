@@ -127,7 +127,7 @@ nav {
 }
 
 .nav-icons a:hover {
-    color: #DEB887;
+    color: #8B4513;
     transform: translateY(-1px);
 }
 
@@ -283,12 +283,12 @@ nav {
 
 .dropdown-divider {
     margin: 10px 0;
-    border-color: rgba(0, 169, 224, 0.2);
+    border-color: #DEB887;
 }
 
 /* Footer Styles */
 footer {
-    background: linear-gradient(135deg, #101820 0%, #1a252f 100%) !important;
+    background: #8B4513 !important;
     border-top: 3px solid #DEB887;
     position: relative;
 }
@@ -326,7 +326,7 @@ footer::before {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(0, 169, 224, 0.2);
+    background: #DEB887;
     margin: 0 5px;
     border: 2px solid transparent;
 }
@@ -336,7 +336,7 @@ footer::before {
     background: #DEB887;
     border-color: #FAF9F6;
     transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 169, 224, 0.3);
+    box-shadow: 0 5px 15px #DEB887;
 }
 
 .footer-links {
@@ -385,7 +385,7 @@ footer::before {
 
 .newsletter-input {
     background: rgba(252, 250, 241, 0.1);
-    border: 2px solid rgba(0, 169, 224, 0.3);
+    border: 2px solid #DEB887;
     border-radius: 25px 0 0 25px;
     color: #FAF9F6;
     padding: 14px 22px;
@@ -400,7 +400,7 @@ footer::before {
 .newsletter-input:focus {
     background: rgba(252, 250, 241, 0.15);
     border-color: #DEB887;
-    box-shadow: 0 0 0 3px rgba(0, 169, 224, 0.2);
+    box-shadow: 0 0 0 3px #DEB887;
     color: #FAF9F6;
 }
 
@@ -418,7 +418,7 @@ footer::before {
     background: linear-gradient(135deg, #DEB887, #DEB887);
     border-color: #DEB887;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 169, 224, 0.3);
+    box-shadow: 0 5px 15px #DEB887;
 }
 
 .contact-info .footer-link {
@@ -432,8 +432,8 @@ footer::before {
 }
 
 .certification-badge {
-    background: rgba(0, 169, 224, 0.2);
-    border: 1px solid rgba(0, 169, 224, 0.3);
+    background: #DEB887;
+    border: 1px solid #DEB887;
     border-radius: 15px;
     padding: 8px 16px;
     font-size: 0.8rem;
@@ -447,7 +447,7 @@ footer::before {
     background: linear-gradient(135deg, #DEB887, #DEB887);
     border-color: #FAF9F6;
     transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0, 169, 224, 0.3);
+    box-shadow: 0 3px 10px #DEB887;
 }
 
 /* Responsive Media Queries */
@@ -624,7 +624,7 @@ footer::before {
 }
 
 .category-item:hover > a {
-    background: linear-gradient(90deg, rgba(0, 169, 224, 0.1), rgba(0, 207, 180, 0.1));
+    background: linear-gradient(90deg, #DEB887, #CD853F);
     color: #101820;
     border-left-color: #DEB887;
     padding-left: 30px;
@@ -694,7 +694,7 @@ footer::before {
 .mobile-submenu {
     display: none;
     background: rgba(252, 250, 241, 0.1);
-    border: 1px solid rgba(0, 169, 224, 0.3);
+    border: 1px solid #DEB887;
     padding: 20px 25px;
     margin-top: 15px;
     border-radius: 8px;
@@ -710,7 +710,7 @@ footer::before {
     margin-left: 25px;
     margin-top: 15px;
     background: rgba(252, 250, 241, 0.1);
-    border: 1px solid rgba(0, 169, 224, 0.2);
+    border: 1px solid #DEB887;
     border-radius: 8px;
     padding: 15px;
 }
@@ -756,7 +756,7 @@ footer::before {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 169, 224, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, #DEB887, transparent);
     transition: left 0.5s ease;
 }
 

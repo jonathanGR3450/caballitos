@@ -3,17 +3,17 @@
 
 @section('content')
 <style>
-    body, .container { background: #101820 !important; color: #FAF9F6; }
-    .form-container { background: #1a252f; padding: 20px; border-radius: 8px; border: 1px solid #DEB887; }
+    body, .container { background: #FAF9F6 !important; color: #101820; }
+    .form-container { background: #FAF9F6; padding: 20px; border-radius: 8px;  }
     .form-label { color: #FAF9F6 !important; font-weight: 500; }
-    .form-control, .form-select { background: #101820 !important; border: 1px solid #DEB887; color: #FAF9F6 !important; }
-    .form-control:focus { background: #101820 !important; border-color: #00CFB4 !important; box-shadow: 0 0 0 2px rgba(0, 207, 180, 0.2) !important; color: #FAF9F6 !important; }
+    .form-control, .form-select { background: #FAF9F6 !important; border: 1px solid #DEB887; color: #FAF9F6 !important; }
+    .form-control:focus { background: #FAF9F6 !important; border-color: #00CFB4 !important; box-shadow: 0 0 0 2px rgba(0, 207, 180, 0.2) !important; color: #FAF9F6 !important; }
     .form-control::placeholder { color: rgba(252, 250, 241, 0.5); }
     .btn-success { background: #DEB887; border-color: #DEB887; }
-    .btn-success:hover { background: #00CFB4; border-color: #00CFB4; }
+    .btn-success:hover { background-color: #f7a831; border-color: #f7a831; color: #101820; }
     .btn-secondary { background: #6c757d; border-color: #6c757d; }
     .btn-danger { background: #dc3545; border-color: #dc3545; }
-    .image-item { background: #101820; border: 1px solid rgba(0, 169, 224, 0.3); border-radius: 8px; padding: 10px; }
+    .image-item { background: #101820; border: 1px solid #DEB887; border-radius: 8px; padding: 10px; }
     h1 { color: #DEB887 !important; }
     .text-muted { color: rgba(252, 250, 241, 0.6) !important; }
 </style>

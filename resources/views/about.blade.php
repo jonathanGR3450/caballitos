@@ -332,7 +332,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 169, 224, 0.1) 0%, rgba(0, 207, 180, 0.1) 100%);
+    background: #8B4513;
 }
 
 .hero-title {
@@ -367,14 +367,14 @@
 
 .bg-light-blue {
     background: linear-gradient(135deg, rgba(0, 169, 224, 0.05) 0%, rgba(0, 207, 180, 0.05) 100%);
-    border: 2px solid rgba(0, 169, 224, 0.2);
+    border: 2px solid #DEB887;
     border-radius: 20px;
     margin: 0 20px;
     padding: 50px 40px;
 }
 
 .bg-dark-blue {
-    background: linear-gradient(135deg, #101820 0%, #1a252f 100%);
+    background: linear-gradient(135deg, #8B4513 0%, #8B4513 100%);
     border-radius: 20px;
     margin: 0 20px;
     color: white;
@@ -390,7 +390,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(0, 169, 224, 0.1), rgba(0, 207, 180, 0.1));
+    background: linear-gradient(45deg, #DEB887, #CD853F);
     z-index: 1;
 }
 
@@ -427,9 +427,9 @@
     justify-content: center;
     align-items: center;
     padding: 40px;
-    background: linear-gradient(135deg, rgba(0, 169, 224, 0.1), rgba(0, 207, 180, 0.1));
+    background: linear-gradient(135deg, #DEB887, #CD853F);
     border-radius: 15px;
-    border: 2px solid rgba(0, 169, 224, 0.2);
+    border: 2px solid #DEB887;
 }
 
 .section-img {
@@ -442,7 +442,7 @@
 
 .logo-placeholder {
     opacity: 0.8;
-    filter: drop-shadow(0 10px 20px rgba(0, 169, 224, 0.3));
+    filter: drop-shadow(0 10px 20px #DEB887);
 }
 
 .section-img:hover {
@@ -450,7 +450,7 @@
 }
 
 .company-quote {
-    background: linear-gradient(135deg, rgba(0, 169, 224, 0.1), rgba(0, 207, 180, 0.1));
+    background: linear-gradient(135deg, #DEB887, #CD853F);
     border-left: 4px solid #DEB887;
     padding: 25px 30px;
     margin: 30px 0;
@@ -476,7 +476,7 @@
     font-size: 0.9rem;
     font-weight: 600;
     white-space: nowrap;
-    box-shadow: 0 3px 10px rgba(0, 169, 224, 0.3);
+    box-shadow: 0 3px 10px #DEB887;
 }
 
 .team-quote {
@@ -484,7 +484,7 @@
     border: 2px solid #DEB887;
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 169, 224, 0.2);
+    box-shadow: 0 10px 30px #DEB887;
     margin-top: 30px;
 }
 
@@ -513,7 +513,7 @@
 .benefit-item {
     text-align: center;
     padding: 30px 20px;
-    background: rgba(0, 169, 224, 0.1);
+    background: #DEB887;
     border-radius: 15px;
     border: 2px solid rgba(0, 207, 180, 0.3);
     transition: transform 0.3s ease;
@@ -554,7 +554,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 169, 224, 0.4);
+    box-shadow: 0 8px 25px #DEB887;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -562,7 +562,7 @@
 .cta-button:hover {
     background: linear-gradient(135deg, #DEB887, #DEB887);
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(0, 207, 180, 0.5);
+    box-shadow: 0 12px 35px #DEB887;
     color: white;
     text-decoration: none;
 }

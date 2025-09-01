@@ -4,16 +4,15 @@
 <style>
     /* Fondo principal para evitar el blanco */
     body, .container, .container-fluid {
-        background: #101820 !important;
+        background: #FAF9F6 !important;
         color: #FAF9F6;
     }
 
     /* Contenedor principal */
     .main-content {
-        background: #1a252f;
+        background: #FAF9F6;
         padding: 20px;
         border-radius: 8px;
-        border: 1px solid #DEB887;
         min-height: 80vh;
     }
 
@@ -24,16 +23,16 @@
 
     /* Inputs y selects oscuros */
     .form-control, .form-select {
-        background-color: #101820 !important;
+        background-color: #FAF9F6 !important;
         border: 1px solid #DEB887;
-        color: #FAF9F6 !important;
+        color: #101820 !important;
     }
 
     .form-control:focus, .form-select:focus {
-        background-color: #101820 !important;
-        border-color: #00CFB4 !important;
-        box-shadow: 0 0 0 2px rgba(0, 207, 180, 0.2) !important;
-        color: #FAF9F6 !important;
+        background-color: #FAF9F6 !important;
+        border-color: #DEB887 !important;
+        box-shadow: 0 0 0 2px #DEB887 !important;
+        color: #101820 !important;
     }
 
     /* Placeholder blanco */
@@ -50,24 +49,24 @@
 
     /* Tabla fondo oscuro */
     .table {
-        background-color: #101820;
+        background-color: #FAF9F6;
         border-color: #DEB887;
     }
 
     .table th, .table td {
-        color: #FAF9F6 !important;
-        border-color: rgba(0, 169, 224, 0.3) !important;
+        color: #101820 !important;
+        border-color: #DEB887 !important;
     }
 
     .table-light th {
-        background-color: #1a252f !important;
+        background-color: #FAF9F6 !important;
         color: #DEB887 !important;
         border-color: #DEB887 !important;
     }
 
     /* Alertas */
     .alert-success {
-        background-color: rgba(0, 169, 224, 0.2);
+        background-color: #DEB887;
         color: #FAF9F6;
         border: 1px solid #DEB887;
     }
@@ -80,8 +79,8 @@
     }
 
     .btn-primary:hover {
-        background-color: #00CFB4;
-        border-color: #00CFB4;
+        background-color: #DEB887;
+        border-color: #DEB887;
         color: #FAF9F6;
     }
 

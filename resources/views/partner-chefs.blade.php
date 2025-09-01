@@ -510,7 +510,7 @@
     font-weight: 900;
     color: white;
     margin-bottom: 20px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 4px 20px #DEB887;
     position: relative;
     z-index: 2;
 }
@@ -637,11 +637,11 @@
 }
 
 .info-details a:hover {
-    color: #DEB887;
+    color: #8B4513;
 }
 
 .contact-form-container {
-    background: linear-gradient(135deg, #101820 0%, #1a252f 100%);
+    background: linear-gradient(135deg, #8B4513 0%, #8B4513 100%);
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
@@ -718,8 +718,8 @@
 }
 
 .whatsapp-option {
-    background: rgba(0, 169, 224, 0.1);
-    border: 1px solid rgba(0, 169, 224, 0.3);
+    background: #DEB887;
+    border: 1px solid #DEB887;
     border-radius: 10px;
     padding: 15px;
 }
@@ -746,13 +746,13 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 169, 224, 0.3);
+    box-shadow: 0 8px 25px #DEB887;
 }
 
 .submit-btn:hover {
     background: linear-gradient(135deg, #DEB887, #DEB887);
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(0, 169, 224, 0.4);
+    box-shadow: 0 12px 35px #DEB887;
 }
 
 .whatsapp-btn {
@@ -776,7 +776,7 @@
 
 .alert-success {
     background: rgba(0, 207, 180, 0.2);
-    border: 2px solid rgba(0, 207, 180, 0.5);
+    border: 2px solid #DEB887;
     color: #DEB887;
     border-radius: 10px;
     padding: 15px;

@@ -81,7 +81,7 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px #DEB887;
         }
         
         .btn-primary:hover {
@@ -89,7 +89,7 @@
             color: #FAF9F6;
             border-color: #FAF9F6;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 169, 224, 0.4);
+            box-shadow: 0 8px 25px #DEB887;
             text-decoration: none;
         }
         
@@ -122,7 +122,7 @@
             border-color: #FAF9F6;
             color: #101820;
             transform: scale(1.15);
-            box-shadow: 0 5px 20px rgba(0, 169, 224, 0.4);
+            box-shadow: 0 5px 20px #DEB887;
         }
         
         .position-relative {
@@ -143,12 +143,12 @@
         /* Efectos adicionales para las tarjetas */
         .card {
             transition: all 0.3s ease;
-            border: 1px solid rgba(0, 207, 180, 0.1);
+            border: 1px solid #CD853F;
         }
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 169, 224, 0.2);
+            box-shadow: 0 15px 40px #DEB887;
             border-color: rgba(0, 207, 180, 0.3);
         }
 
@@ -179,7 +179,7 @@
         .btn-buy:hover {
             background: linear-gradient(135deg, #DEB887, #DEB887);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 207, 180, 0.4);
+            box-shadow: 0 5px 15px #DEB887;
         }
 
         .btn-buy:disabled {
@@ -226,7 +226,7 @@
             font-weight: 600;
             padding: 8px 16px !important;
             border-radius: 20px !important;
-            box-shadow: 0 3px 10px rgba(0, 169, 224, 0.2);
+            box-shadow: 0 3px 10px #DEB887;
         }
 
         /* Secciones con backgrounds balanceados */
@@ -244,7 +244,7 @@
         }
 
         .cta-section {
-            background: linear-gradient(135deg, #101820 0%, #1a252f 100%);
+            background: linear-gradient(135deg, #DEB887 0%, #DEB887 100%);
             position: relative;
             overflow: hidden;
         }
@@ -256,7 +256,7 @@
             right: 0;
             width: 20%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(0, 169, 224, 0.1), transparent);
+            background: linear-gradient(45deg, #DEB887, transparent);
             z-index: 1;
         }
 
@@ -296,7 +296,7 @@
             border-color: #DEB887;
             color: #FAF9F6;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 169, 224, 0.3);
+            box-shadow: 0 8px 25px #DEB887;
         }
 
         /* Divisores más sutiles */

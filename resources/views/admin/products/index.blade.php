@@ -4,24 +4,45 @@
 <style>
     /* Asegurar fondo oscuro para el contenedor */
     .container, .container-fluid {
-        background: #101820 !important;
-        color: #FAF9F6;
+        background: #FAF9F6 !important;
+        color: #101820;
+    }
+
+    .table, tr, td {
+        border-radius: 0 !important;
     }
     
     .table-custom th {
-        background-color: #222;
-        color: #f7a831;
+        background-color: #FAF9F6 !important;
+        color: #DEB887 !important;
+        border-color: #DEB887 !important;
     }
     
     .table-custom td {
-        background-color: #111;
-        color: #FAF9F6; /* Cambiado de #090000ff a texto claro */
+        color: #101820 !important;
+        border-color: #DEB887 !important;
+    }
+
+    /* Quitar colores por defecto de Bootstrap en las filas */
+    .table-custom tbody tr {
+        background-color: #FAF9F6 !important;
+        color: #101820 !important;
+    }
+
+    /* Si quieres efecto hover, lo ajustas a tu paleta */
+    .table-custom tbody tr:hover {
+        background-color: rgba(222, 184, 135, 0.1) !important;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f2f2f2 !important; /* color gris claro */
+        color: #000 !important; /* color del texto */
     }
     
     /* Mejorar el contenedor principal */
     .main-container {
-        background: #1a252f;
-        border-radius: 8px;
+        background: #FAF9F6;
+        border-radius: 0px !important;
         border: 1px solid #DEB887;
         padding: 20px;
     }

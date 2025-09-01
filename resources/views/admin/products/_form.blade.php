@@ -3,13 +3,13 @@
 <style>
 /* Fondo principal para evitar el blanco */
 body, .container, .container-fluid {
-    background: #101820 !important;
-    color: #FAF9F6;
+    background: #FAF9F6 !important;
+    color: #101820;
 }
 
 /* Asegurar que el contenedor del formulario tenga fondo */
 .form-container, .main-content {
-    background: #1a252f;
+    background: #FAF9F6;
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #DEB887;
@@ -17,32 +17,34 @@ body, .container, .container-fluid {
 
 /* Dark mode amigable dentro del editor */
 .ck-content {
-  background: #111 !important;
-  color: #e6e6e6 !important;
+  background: #FAF9F6 !important;
+  color: #101820 !important;
 }
 .ck.ck-editor__main>.ck-editor__editable {
-  border-color: #444 !important;
+  border-color: #DEB887 !important;
 }
 .ck.ck-toolbar {
-  background: #121212 !important;
-  border-color: #444 !important;
+  background: #FAF9F6 !important;
+  border-color: #DEB887 !important;
 }
 .ck.ck-button, .ck.ck-toolbar__separator {
   filter: brightness(0.9);
 }
+.btn-success { background-color: #DEB887; border-color: #DEB887; }
+.btn-success:hover { background-color: #f7a831; border-color: #f7a831; color: #101820; }
 </style>
 
 <div class="form-container">
 
 <div class="mb-4">
-    <label class="form-label fw-bold text-light">Product Name *</label>
-    <input type="text" name="name" class="form-control bg-dark text-light border-secondary"
+    <label class="form-label fw-bold ">Product Name *</label>
+    <input type="text" name="name" class="form-control   border-secondary"
            value="{{ old('name', $product->name ?? '') }}" required>
 </div>
 
 <div class="mb-4">
-  <label class="form-label fw-bold text-light">Description</label>
-  <textarea id="description" name="description" rows="6" class="form-control bg-dark text-light border-secondary">{{ old('description', $product->description ?? '') }}</textarea>
+  <label class="form-label fw-bold ">Description</label>
+  <textarea id="description" name="description" rows="6" class="form-control   border-secondary">{{ old('description', $product->description ?? '') }}</textarea>
 </div>
 
 
@@ -50,21 +52,21 @@ body, .container, .container-fluid {
     
 
     <div class="col-md-4 mb-4">
-        <label class="form-label fw-bold text-light">Stock *</label>
-        <input type="number" name="stock" class="form-control bg-dark text-light border-secondary"
+        <label class="form-label fw-bold ">Stock *</label>
+        <input type="number" name="stock" class="form-control   border-secondary"
                value="{{ old('stock', $product->stock ?? 0) }}" required>
     </div>
 
     <div class="col-md-4 mb-4">
-        <label class="form-label fw-bold text-light">Info adicional tarjeta</label>
-        <input type="text" name="avg_weight" class="form-control bg-dark text-light border-secondary"
+        <label class="form-label fw-bold ">Info adicional tarjeta</label>
+        <input type="text" name="avg_weight" class="form-control   border-secondary"
                value="{{ old('avg_weight', $product->avg_weight ?? '') }}" placeholder="e.g. 7 Lbs or 3.2 Kg">
     </div>
 </div>
 
 <div class="mb-4">
-    <label class="form-label fw-bold text-light">Product Images</label>
-    <input type="file" name="images[]" class="form-control bg-dark text-light border-secondary" multiple>
+    <label class="form-label fw-bold ">Product Images</label>
+    <input type="file" name="images[]" class="form-control   border-secondary" multiple>
     
     @if(isset($product) && $product->images && $product->images->count() > 0)
         <small class="text-muted d-block mt-2 mb-3">
@@ -75,7 +77,7 @@ body, .container, .container-fluid {
         <div class="row mt-3" id="images-container">
             @foreach($product->images as $image)
                 <div class="col-md-3 col-sm-4 col-6 mb-3" id="image-{{ $image->id }}">
-                    <div class="position-relative border border-secondary rounded p-2" style="background-color: #1a1a1a;">
+                    <div class="position-relative border border-secondary rounded p-2" >
                         <!-- Imagen -->
                         <img src="{{ Storage::url($image->image) }}" 
                              class="img-fluid rounded mb-2" 
@@ -95,8 +97,8 @@ body, .container, .container-fluid {
     @endif
 </div>
 <div class="mb-4">
-    <label class="form-label fw-bold text-light">Category *</label>
-  <select name="category_id" class="form-select bg-dark text-light border-secondary" required>
+    <label class="form-label fw-bold ">Category *</label>
+  <select name="category_id" class="form-select   border-secondary" required>
     <option value="">-- Select a category --</option>
     @foreach($categories as $cat)
         <option value="{{ $cat->id }}"
@@ -107,16 +109,16 @@ body, .container, .container-fluid {
 </select>
 </div>
 <div class="mb-4">
-    <label class="form-label fw-bold text-light">Impuestos y Envío por País/Ciudad</label>
+    <label class="form-label fw-bold ">Impuestos y Envío por País/Ciudad</label>
 
     <div id="price-location-container">
         @if(isset($product) && $product->prices->count() > 0)
             {{-- Si hay configuraciones existentes, mostrarlas --}}
             @foreach($product->prices as $i => $price)
-                <div class="row border rounded p-3 mb-3 bg-dark">
+                <div class="row border rounded p-3 mb-3 ">
                     <div class="col-md-3 mb-2">
-                        <label class="form-label text-light">Countrys</label>
-                        <select name="prices[{{ $i }}][country_id]" class="form-select bg-dark text-light" onchange="loadCities(this)">
+                        <label class="form-label ">Countrys</label>
+                        <select name="prices[{{ $i }}][country_id]" class="form-select  " onchange="loadCities(this)">
                             @foreach($countries as $country)
                                 <option value="{{ $country->id }}" {{ $price->country_id == $country->id ? 'selected' : '' }}>
                                     {{ $country->name }}
@@ -126,8 +128,8 @@ body, .container, .container-fluid {
                     </div>
 
                     <div class="col-md-3 mb-2">
-                        <label class="form-label text-light">Cities</label>
-                        <select name="prices[{{ $i }}][city_id]" class="form-select bg-dark text-light">
+                        <label class="form-label ">Cities</label>
+                        <select name="prices[{{ $i }}][city_id]" class="form-select  ">
                             @php
                                 $countryWithCities = $countries->firstWhere('id', $price->country_id);
                             @endphp
@@ -143,20 +145,20 @@ body, .container, .container-fluid {
                     </div>
 
                     <div class="col-md-2 mb-2">
-                        <label class="form-label text-light">Impuesto</label>
+                        <label class="form-label ">Impuesto</label>
                         <input type="number" 
                                name="prices[{{ $i }}][interest]" 
-                               class="form-control bg-dark text-light" 
+                               class="form-control  " 
                                value="{{ $price->interest }}"
                                step="0.01"
                                placeholder="15.5">
                     </div>
 
                     <div class="col-md-2 mb-2">
-                        <label class="form-label text-light">Costo Envío</label>
+                        <label class="form-label ">Costo Envío</label>
                         <input type="number" 
                                name="prices[{{ $i }}][shipping]" 
-                               class="form-control bg-dark text-light" 
+                               class="form-control  " 
                                value="{{ $price->shipping }}"
                                step="0.01">
                     </div>
@@ -170,10 +172,10 @@ body, .container, .container-fluid {
             @endforeach
         @else
             {{-- Si no hay configuraciones, mostrar un bloque vacío --}}
-            <div class="row border rounded p-3 mb-3 bg-dark">
+            <div class="row border rounded p-3 mb-3 ">
                 <div class="col-md-3 mb-2">
-                    <label class="form-label text-light">País</label>
-                    <select name="prices[0][country_id]" class="form-select bg-dark text-light" onchange="loadCities(this)">
+                    <label class="form-label ">País</label>
+                    <select name="prices[0][country_id]" class="form-select  " onchange="loadCities(this)">
                         <option value="">-- Selecciona país --</option>
                         @foreach($countries as $country)
                             <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -182,27 +184,27 @@ body, .container, .container-fluid {
                 </div>
 
                 <div class="col-md-3 mb-2">
-                    <label class="form-label text-light">Ciudad</label>
-                    <select name="prices[0][city_id]" class="form-select bg-dark text-light">
+                    <label class="form-label ">Ciudad</label>
+                    <select name="prices[0][city_id]" class="form-select  ">
                         <option value="">-- Selecciona país primero --</option>
                     </select>
                 </div>
 
                 <div class="col-md-2 mb-2">
-                    <label class="form-label text-light">Impuesto (%)</label>
+                    <label class="form-label ">Impuesto (%)</label>
                     <input type="number" 
                            name="prices[0][interest]" 
-                           class="form-control bg-dark text-light" 
+                           class="form-control  " 
                            value="0"
                            step="0.01"
                            placeholder="15.5">
                 </div>
 
                 <div class="col-md-2 mb-2">
-                    <label class="form-label text-light">Costo Envío</label>
+                    <label class="form-label ">Costo Envío</label>
                     <input type="number" 
                            name="prices[0][shipping]" 
-                           class="form-control bg-dark text-light" 
+                           class="form-control  " 
                            value="0"
                            step="0.01">
                 </div>
@@ -223,8 +225,8 @@ body, .container, .container-fluid {
 
 {{-- El precio base del producto se mantiene separado --}}
 <div class="col-md-4 mb-4">
-    <label class="form-label fw-bold text-light">Precio Base *</label>
-    <input type="number" name="price" step="0.01" class="form-control bg-dark text-light border-secondary"
+    <label class="form-label fw-bold ">Precio Base *</label>
+    <input type="number" name="price" step="0.01" class="form-control   border-secondary"
            value="{{ old('price', $product->price ?? 0) }}" required>
     <small class="text-muted">Este es el precio base del producto</small>
 </div>
@@ -267,37 +269,37 @@ const countries = @json($countries);
 
 function addPriceBlock() {
     let block = `
-        <div class="row border rounded p-3 mb-3 bg-dark">
+        <div class="row border rounded p-3 mb-3 ">
             <div class="col-md-3 mb-2">
-                <label class="form-label text-light">País</label>
-                <select name="prices[\${priceIndex}][country_id]" class="form-select bg-dark text-light" onchange="loadCities(this)">
+                <label class="form-label ">País</label>
+                <select name="prices[\${priceIndex}][country_id]" class="form-select  " onchange="loadCities(this)">
                     <option value="">-- Selecciona país --</option>
                     ${countries.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
                 </select>
             </div>
 
             <div class="col-md-3 mb-2">
-                <label class="form-label text-light">Ciudad</label>
-                <select name="prices[\${priceIndex}][city_id]" class="form-select bg-dark text-light">
+                <label class="form-label ">Ciudad</label>
+                <select name="prices[\${priceIndex}][city_id]" class="form-select  ">
                     <option value="">-- Selecciona país primero --</option>
                 </select>
             </div>
 
             <div class="col-md-2 mb-2">
-                <label class="form-label text-light">Impuesto (%)</label>
+                <label class="form-label ">Impuesto (%)</label>
                 <input type="number" 
                        name="prices[\${priceIndex}][interest]" 
-                       class="form-control bg-dark text-light" 
+                       class="form-control  " 
                        value="0"
                        step="0.01"
                        placeholder="15.5">
             </div>
 
             <div class="col-md-2 mb-2">
-                <label class="form-label text-light">Costo Envío</label>
+                <label class="form-label ">Costo Envío</label>
                 <input type="number" 
                        name="prices[\${priceIndex}][shipping]" 
-                       class="form-control bg-dark text-light" 
+                       class="form-control  " 
                        value="0"
                        step="0.01">
             </div>

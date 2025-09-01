@@ -6,7 +6,7 @@
     body, .container { background: #101820 !important; color: #FAF9F6; }
     .main-content { background: #1a252f; padding: 20px; border-radius: 8px; border: 1px solid #DEB887; }
     .section-card { background: #2a3441; border: 1px solid #DEB887; border-radius: 8px; margin-bottom: 20px; }
-    .section-header { background: #1a252f; padding: 15px; border-bottom: 1px solid rgba(0, 169, 224, 0.3); }
+    .section-header { background: #1a252f; padding: 15px; border-bottom: 1px solid #DEB887; }
     .section-body { padding: 20px; }
     .form-control, .form-select { background: #101820; border: 1px solid #DEB887; color: #FAF9F6; }
     .form-control:focus, .form-select:focus { background: #101820; border-color: #f7a831; color: #FAF9F6; box-shadow: 0 0 0 0.2rem rgba(247, 168, 49, 0.25); }
@@ -14,7 +14,7 @@
     .btn-danger { background-color: #dc3545; border-color: #dc3545; }
     .btn-secondary { background-color: #6c757d; border-color: #6c757d; }
     h2, h4 { color: #DEB887 !important; }
-    .alert-success { background-color: rgba(0, 169, 224, 0.2); color: #FAF9F6; border: 1px solid #DEB887; }
+    .alert-success { background-color: #DEB887; color: #FAF9F6; border: 1px solid #DEB887; }
     .form-check-input:checked { background-color: #DEB887; border-color: #DEB887; }
     .badge-active { background-color: #DEB887; }
     .badge-inactive { background-color: #6c757d; }

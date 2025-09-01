@@ -21,7 +21,7 @@
 }
 
 .register-image-section {
-    background: linear-gradient(135deg, #011904 0%, #022a07 100%);
+    background: #8B4513;
     color: white;
     display: flex;
     align-items: center;
@@ -59,7 +59,7 @@
     font-size: 2.5rem;
     font-weight: 900;
     margin-bottom: 20px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 10px #DEB887;
 }
 
 .brand-subtitle {
@@ -169,7 +169,7 @@
 
 .register-btn {
     width: 100%;
-    background: linear-gradient(135deg, #011904 0%, #022a07 100%);
+    background: #8B4513;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -208,7 +208,7 @@
 }
 
 .login-link a:hover {
-    color: #e74c3c;
+    color: #8B4513;
     text-decoration: underline;
 }
 

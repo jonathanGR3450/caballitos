@@ -192,7 +192,7 @@
     font-size: 2.5rem;
     font-weight: 900;
     margin-bottom: 20px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 10px #DEB887;
 }
 
 .brand-subtitle {
@@ -355,14 +355,14 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 169, 224, 0.3);
+    box-shadow: 0 8px 25px #DEB887;
     margin-bottom: 25px;
 }
 
 .login-btn:hover {
     background: linear-gradient(135deg, #DEB887 0%, #DEB887 100%);
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(0, 169, 224, 0.4);
+    box-shadow: 0 12px 35px #DEB887;
 }
 
 .register-link {
@@ -383,12 +383,12 @@
 }
 
 .register-link a:hover {
-    color: #DEB887;
+    color: #8B4513;
     text-decoration: underline;
 }
 
 .alert-success {
-    background: rgba(0, 207, 180, 0.1);
+    background: #CD853F;
     border: 2px solid rgba(0, 207, 180, 0.3);
     color: #DEB887;
     border-radius: 10px;

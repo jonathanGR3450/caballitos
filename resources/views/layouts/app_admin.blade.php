@@ -22,7 +22,7 @@
     <style>
         /* Navigation Responsive Styles - VERSIÓN PROFESIONAL */
         nav {
-            background: linear-gradient(135deg, #101820 0%, #1a252f 100%);
+            background: linear-gradient(135deg, #8B4513 0%, #8B4513 100%);
             padding: 12px 20px;
             border-bottom: 3px solid #DEB887;
             position: relative;
@@ -70,7 +70,7 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: #DEB887;
+            color: #8B4513;
             transform: translateY(-1px);
         }
 
@@ -118,7 +118,7 @@
         }
 
         .nav-icons a:hover {
-            color: #DEB887;
+            color: #8B4513;
             transform: translateY(-1px);
         }
 
@@ -179,7 +179,7 @@
 
         .dropdown-divider {
             margin: 10px 0;
-            border-color: rgba(0, 169, 224, 0.2);
+            border-color: #DEB887;
         }
 
         /* Badge del carrito */
@@ -205,8 +205,8 @@
     transition: all 0.3s ease;
     padding: 8px 12px;
     border-radius: 6px;
-    border: 1px solid rgba(0, 169, 224, 0.3);
-    background: rgba(0, 169, 224, 0.1);
+    border: 1px solid #DEB887;
+    background: #DEB887;
 }
 
 .nav-links .dropdown .dropdown-toggle:hover {
@@ -223,7 +223,7 @@
 
 /* Efectos adicionales para el dropdown del admin */
 .nav-links .dropdown:hover .dropdown-toggle {
-    background: rgba(0, 169, 224, 0.2);
+    background: #DEB887;
     border-color: rgba(0, 169, 224, 0.5);
 }
 

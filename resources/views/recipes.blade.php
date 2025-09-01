@@ -650,7 +650,7 @@
     font-weight: 900;
     color: white;
     margin-bottom: 20px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 4px 20px #DEB887;
     position: relative;
     z-index: 2;
 }
@@ -697,7 +697,7 @@
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 169, 224, 0.2);
+    box-shadow: 0 20px 60px #DEB887;
     border-color: #DEB887;
 }
 
@@ -845,7 +845,7 @@
 }
 
 .step-icon {
-    background: rgba(0, 169, 224, 0.1);
+    background: #DEB887;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -971,7 +971,7 @@
 /* CTA Section */
 .cta-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #101820 0%, #1a252f 100%);
+    background: linear-gradient(135deg, #8B4513 0%, #8B4513 100%);
     color: white;
 }
 

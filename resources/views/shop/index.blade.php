@@ -5,7 +5,7 @@
 <style>
     body {
         background-color: #FAF9F6;
-        color: #101820;
+        color: #8B4513;
         font-family: 'Inter', Arial, sans-serif;
     }
 
@@ -15,7 +15,7 @@
     }
 
     .catalog-title {
-        color: #101820;
+        color: #8B4513;
         font-size: 2.2rem;
         font-weight: 700;
         text-align: center;
@@ -34,7 +34,7 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        box-shadow: 0 5px 20px rgba(0, 169, 224, 0.1);
+        box-shadow: 0 5px 20px #DEB887;
     }
 
     .filter-group {
@@ -44,7 +44,7 @@
     }
 
     .filter-label {
-        color: #101820;
+        color: #8B4513;
         font-size: 0.9rem;
         font-weight: 600;
     }
@@ -53,7 +53,7 @@
         background: #FAF9F6;
         border: 2px solid #DEB887;
         border-radius: 8px;
-        color: #101820;
+        color: #8B4513;
         padding: 10px 16px;
         font-size: 0.9rem;
         font-weight: 500;
@@ -64,7 +64,7 @@
 
     .filter-select:focus {
         outline: none;
-        border-color: #00CFB4;
+        border-color: #CD853F;
         box-shadow: 0 0 0 3px rgba(0, 207, 180, 0.2);
     }
 
@@ -79,7 +79,7 @@
         display: flex;
         flex-direction: column;
         background: linear-gradient(145deg, #FAF9F6 0%, #F8F6ED 100%);
-        border: 2px solid rgba(0, 169, 224, 0.2);
+        border: 2px solid #DEB887;
         border-radius: 15px;
         overflow: hidden;
         min-height: 100%;
@@ -89,8 +89,8 @@
 
     .product-card:hover {
         transform: translateY(-5px);
-        border-color: #00CFB4;
-        box-shadow: 0 10px 30px rgba(0, 169, 224, 0.2);
+        border-color: #CD853F;
+        box-shadow: 0 10px 30px #DEB887;
     }
 
     .pc-media {
@@ -118,7 +118,7 @@
     /* BODY */
     .pc-body {
         padding: 20px;
-        color: #101820;
+        color: #8B4513;
         flex: 1 1 auto;
     }
 
@@ -143,13 +143,13 @@
     }
 
     .pc-title a {
-        color: #101820;
+        color: #8B4513;
         text-decoration: none;
         transition: color 0.3s ease;
     }
 
     .pc-title a:hover {
-        color: #00CFB4;
+        color: #8B4513;
     }
 
     .pc-price-row {
@@ -160,7 +160,7 @@
     }
 
     .pc-price {
-        color: #00CFB4;
+        color: #CD853F;
         font-weight: 800;
         font-size: 1.2rem;
     }
@@ -177,7 +177,7 @@
         align-items: center;
         gap: 12px;
         padding: 15px 20px 20px;
-        border-top: 2px solid rgba(0, 169, 224, 0.1);
+        border-top: 2px solid #DEB887;
         flex-wrap: wrap;
     }
 
@@ -209,20 +209,20 @@
         background: #DEB887;
         border-color: #DEB887;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 169, 224, 0.3);
+        box-shadow: 0 5px 15px #DEB887;
     }
 
     /* Solid */
     .btn-solid {
         color: #FAF9F6;
-        background: linear-gradient(135deg, #00CFB4, #DEB887);
-        border-color: #00CFB4;
+        background: linear-gradient(135deg, #CD853F, #DEB887);
+        border-color: #CD853F;
     }
 
     .btn-solid:hover {
-        background: linear-gradient(135deg, #DEB887, #00CFB4);
+        background: linear-gradient(135deg, #DEB887, #CD853F);
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 207, 180, 0.4);
+        box-shadow: 0 5px 15px #DEB887;
     }
 
     @media (max-width: 576px) {
@@ -243,7 +243,7 @@
         padding: 40px;
         background: #F8F6ED;
         border-radius: 15px;
-        border: 2px solid rgba(0, 169, 224, 0.2);
+        border: 2px solid #DEB887;
     }
 
     /* Pagination */
@@ -255,7 +255,7 @@
 
     /* Carrusel Styles */
     .electrahome-carousel-section {
-        background: linear-gradient(135deg, #101820 0%, #1a252f 100%);
+        background: linear-gradient(135deg, #8B4513 0%, #1a252f 100%);
         margin: 0;
         padding: 0;
         width: 100vw;
@@ -296,10 +296,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, 
-            rgba(16, 24, 32, 0.9) 0%, 
-            rgba(16, 24, 32, 0.7) 50%, 
-            rgba(16, 24, 32, 0.3) 100%);
+        background: #8B4513;
     }
 
     .slide-content {
@@ -317,8 +314,8 @@
     }
 
     .category-label {
-        background: linear-gradient(135deg, rgba(0, 169, 224, 0.2), rgba(0, 207, 180, 0.2));
-        border: 2px solid rgba(0, 207, 180, 0.4);
+        background: #DEB887;
+        border: 2px solid #DEB887;
         border-radius: 25px;
         padding: 10px 22px;
         margin-bottom: 25px;
@@ -352,7 +349,7 @@
 
     .shop-category-btn {
         display: inline-block;
-        background: linear-gradient(135deg, #DEB887, #00CFB4);
+        background: linear-gradient(135deg, #DEB887, #CD853F);
         color: white;
         padding: 16px 40px;
         border-radius: 50px;
@@ -362,13 +359,13 @@
         text-transform: uppercase;
         letter-spacing: 1.5px;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(0, 169, 224, 0.4);
+        box-shadow: 0 8px 25px #DEB887;
     }
 
     .shop-category-btn:hover {
-        background: linear-gradient(135deg, #00CFB4, #DEB887);
+        background: linear-gradient(135deg, #CD853F, #DEB887);
         transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(0, 207, 180, 0.5);
+        box-shadow: 0 12px 35px #DEB887;
         color: white;
         text-decoration: none;
     }
@@ -385,7 +382,7 @@
         max-height: 320px;
         object-fit: contain;
         border-radius: 15px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 15px 40px #DEB887;
         transition: transform 0.3s ease;
     }
 
@@ -398,9 +395,9 @@
     .carousel-control-next {
         width: 55px;
         height: 55px;
-        background: rgba(0, 169, 224, 0.2);
+        background: #DEB887;
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(0, 207, 180, 0.4);
+        border: 2px solid #DEB887;
         border-radius: 50%;
         top: 50%;
         transform: translateY(-50%);
@@ -419,7 +416,7 @@
     .carousel-control-prev:hover,
     .carousel-control-next:hover {
         opacity: 1;
-        background: rgba(0, 169, 224, 0.4);
+        background: #DEB887;
         transform: translateY(-50%) scale(1.1);
     }
 
@@ -439,8 +436,8 @@
         width: 14px;
         height: 14px;
         border-radius: 50%;
-        background: rgba(0, 169, 224, 0.4);
-        border: 2px solid rgba(0, 207, 180, 0.6);
+        background: #DEB887;
+        border: 2px solid #DEB887;
         transition: all 0.3s ease;
         margin: 0 6px;
     }
