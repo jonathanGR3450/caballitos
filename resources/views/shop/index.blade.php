@@ -597,88 +597,203 @@
     <div class="container">
         <h1 class="catalog-title">Nuestros Productos</h1>
 
-    <!-- Filtros Arreglados -->
-<div class="filter-bar">
-    <form method="GET" action="{{ route('shop.index') }}" class="d-flex gap-3 align-items-center flex-wrap justify-content-center">
-        <div class="filter-group">
-            <label class="filter-label">Categoría:</label>
-            <select name="category" class="filter-select" onchange="this.form.submit()">
-                <option value="">Todas</option>
-                @foreach($categories as $cat)
-                    <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }}>
-                        {{ $cat->name }} ({{ $cat->products_count }})
-                    </option>
-                @endforeach
-            </select>
-        </div>
-        
-        @if($countries && $countries->count() > 0)
-        <div class="filter-group">
-            <label class="filter-label">País:</label>
-            <select name="country" class="filter-select" onchange="this.form.submit()">
-                <option value="">Todos</option>
-                @foreach($countries as $country)
-                    <option value="{{ $country }}" {{ request('country') == $country ? 'selected' : '' }}>
-                        {{ $country }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-        @endif
+        <!-- Filtros Arreglados -->
+        <div class="filter-bar">
+            <form method="GET" action="{{ route('shop.index') }}" class="d-flex gap-3 align-items-center flex-wrap justify-content-center">
 
-        <!-- Búsqueda opcional -->
-        <div class="filter-group">
-            <label class="filter-label">Buscar:</label>
-            <input type="text" 
-                   name="search" 
-                   class="filter-select" 
-                   placeholder="Buscar productos..."
-                   value="{{ request('search') }}"
-                   style="min-width: 200px;">
-        </div>
+                {{-- Categoría --}}
+                <div class="filter-group">
+                    <label class="filter-label">Categoría:</label>
+                    <select name="category" class="filter-select" onchange="this.form.submit()">
+                        <option value="">Todas</option>
+                        @foreach($categories as $cat)
+                            <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }}>
+                                {{ $cat->name }} ({{ $cat->products_count }})
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
 
-        <div class="filter-group">
-            <label class="filter-label">Ordenar por:</label>
-            <select name="sort" class="filter-select" onchange="this.form.submit()">
-                <option value="">Destacados</option>
-                <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Precio: Menor a Mayor</option>
-                <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Precio: Mayor a Menor</option>
-                <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Nombre A-Z</option>
-                <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Más Nuevos</option>
-            </select>
-        </div>
-
-        <!-- Botón de búsqueda -->
-        <div class="filter-group">
-            <button type="submit" class="btn-solid" style="min-width: auto; padding: 10px 20px;">
-                <i class="fas fa-search"></i> Buscar
-            </button>
-        </div>
-
-        <!-- Limpiar filtros -->
-        @if(request()->hasAny(['category', 'country', 'search', 'sort']))
-        <div class="filter-group">
-            <a href="{{ route('shop.index') }}" class="btn-ghost" style="min-width: auto; padding: 10px 20px;">
-                <i class="fas fa-times"></i> Limpiar
-            </a>
-        </div>
-        @endif
-
-        <div class="filter-group">
-            <span class="filter-label">
-                <strong>{{ isset($totalProducts) ? $totalProducts : $products->total() }}</strong> productos
-                @if(isset($hasFilters) && $hasFilters)
-                    <small style="color: #DEB887;">(filtrados)</small>
+                {{-- País --}}
+                @if($countries && $countries->count() > 0)
+                <div class="filter-group">
+                    <label class="filter-label">País:</label>
+                    <select name="country" class="filter-select" onchange="this.form.submit()">
+                        <option value="">Todos</option>
+                        @foreach($countries as $country)
+                            <option value="{{ $country }}" {{ request('country') == $country ? 'selected' : '' }}>
+                                {{ $country }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
                 @endif
-            </span>
+
+                {{-- 🔎 Búsqueda --}}
+                <div class="filter-group">
+                    <label class="filter-label">Buscar:</label>
+                    <input type="text" 
+                        name="search" 
+                        class="filter-select" 
+                        placeholder="Buscar productos..."
+                        value="{{ request('search') }}"
+                        style="min-width: 200px;">
+                </div>
+
+                {{-- filtro por tipo listado --}}
+                <div class="filter-group">
+                    <label class="filter-label">Tipo de Listado:</label>
+                    <select name="tipo_listado" class="filter-select">
+                        <option value="">Todos</option>
+                        @foreach(\App\Models\Product::getTiposListado() as $tipo)
+                            <option value="{{ $tipo }}" {{ request('tipo_listado') == $tipo ? 'selected' : '' }}>
+                                {{ $tipo }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                {{-- filtro por estado --}}
+                <div class="filter-group">
+                    <label class="filter-label">Estado:</label>
+                    <select name="estado" class="filter-select">
+                        <option value="">Todos</option>
+                        @foreach(\App\Models\Product::getEstados() as $estado)
+                            <option value="{{ $estado }}" {{ request('estado') == $estado ? 'selected' : '' }}>
+                                {{ $estado }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                {{-- 📊 Rango de Precios --}}
+                <div class="filter-group">
+                    <label class="filter-label">Precio:</label>
+                    <input type="number" name="price_min" class="filter-select" style="width: 90px;"
+                        placeholder="Mín"
+                        value="{{ request('price_min') }}">
+                    -
+                    <input type="number" name="price_max" class="filter-select" style="width: 90px;"
+                        placeholder="Máx"
+                        value="{{ request('price_max') }}">
+                </div>
+
+                {{-- 🐶 Campos Extras --}}
+                <div class="filter-group">
+                    <label class="filter-label">Ubicación:</label>
+                    <input type="text" name="ubicacion" class="filter-select"
+                        value="{{ request('ubicacion') }}" placeholder="Ej: Madrid">
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Raza:</label>
+                    <input type="text" name="raza" class="filter-select"
+                        value="{{ request('raza') }}" placeholder="Ej: Labrador">
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Edad:</label>
+                    <input type="text" name="edad" class="filter-select"
+                        value="{{ request('edad') }}" placeholder="Ej: 2 años">
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Género:</label>
+                    <select name="genero" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="Macho" {{ request('genero') == 'Macho' ? 'selected' : '' }}>Macho</option>
+                        <option value="Hembra" {{ request('genero') == 'Hembra' ? 'selected' : '' }}>Hembra</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Pedigrí:</label>
+                    <select name="pedigri" class="filter-select">
+                        <option value="">Todos</option>
+                        <option value="Sí" {{ request('pedigri') == 'Sí' ? 'selected' : '' }}>Sí</option>
+                        <option value="No" {{ request('pedigri') == 'No' ? 'selected' : '' }}>No</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Entrenamiento:</label>
+                    <input type="text" name="entrenamiento" class="filter-select"
+                        value="{{ request('entrenamiento') }}" placeholder="Ej: Básico">
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Historial Salud:</label>
+                    <input type="text" name="historial_salud" class="filter-select"
+                        value="{{ request('historial_salud') }}" placeholder="Ej: Vacunado">
+                </div>
+
+                {{-- Ordenar --}}
+                <div class="filter-group">
+                    <label class="filter-label">Ordenar por:</label>
+                    <select name="sort" class="filter-select" onchange="this.form.submit()">
+                        <option value="">Destacados</option>
+                        <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Precio: Menor a Mayor</option>
+                        <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Precio: Mayor a Menor</option>
+                        <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Nombre A-Z</option>
+                        <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Más Nuevos</option>
+                    </select>
+                </div>
+
+                {{-- Botón Buscar --}}
+                <div class="filter-group">
+                    <button type="submit" class="btn-solid" style="min-width: auto; padding: 10px 20px;">
+                        <i class="fas fa-search"></i> Buscar
+                    </button>
+                </div>
+
+                {{-- Limpiar --}}
+                @if(request()->hasAny(['category','country','search','sort','price_min','price_max','ubicacion','raza','edad','genero','pedigri','entrenamiento','historial_salud']))
+                <div class="filter-group">
+                    <a href="{{ route('shop.index') }}" class="btn-ghost" style="min-width: auto; padding: 10px 20px;">
+                        <i class="fas fa-times"></i> Limpiar
+                    </a>
+                </div>
+                @endif
+
+                <div class="filter-group">
+                    <span class="filter-label">
+                        <strong>{{ isset($totalProducts) ? $totalProducts : $products->total() }}</strong> productos
+                        @if(isset($hasFilters) && $hasFilters)
+                            <small style="color: #DEB887;">(filtrados)</small>
+                        @endif
+                    </span>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
 
         <!-- Grid de Productos -->
         <div class="products-grid">
-            @forelse ($products as $product)
-                <div class="product-card">
+           @forelse ($products as $product)
+                @php
+                    // Estilos visuales según tipo_listado
+                    $cardStyle = match($product->tipo_listado) {
+                        'premium' => 'background: #fff8e1; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.6); border: 2px solid #ffc107;',
+                        'destacado' => 'background: #e3f2fd; box-shadow: 0 4px 15px rgba(13, 110, 253, 0.6); border: 2px solid #0d6efd;',
+                        default => 'background: #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid #ddd;',
+                    };
+
+                    $badgeClass = match($product->tipo_listado) {
+                        'premium' => 'badge bg-warning text-dark',
+                        'destacado' => 'badge bg-primary',
+                        default => 'badge bg-secondary',
+                    };
+
+                    $totalPrice = (float)($product->price ?? 0) + (float)($product->interest ?? 0);
+
+                    $estadoColor = match(strtolower($product->estado)) {
+                        'disponible' => 'color: green; font-weight: bold;',
+                        'vendido' => 'color: red; font-weight: bold;',
+                        'pendiente' => 'color: orange; font-weight: bold;',
+                        default => 'color: gray; font-weight: bold;',
+                    };
+                @endphp
+
+                <div class="product-card" style="{{ $cardStyle }}">
                     {{-- MEDIA --}}
                     <div class="pc-media">
                         @php $imgs = $product->images; @endphp
@@ -688,10 +803,10 @@
                                     @foreach($imgs as $k => $img)
                                         <div class="carousel-item {{ $k === 0 ? 'active' : '' }}">
                                             <img src="{{ Storage::url($img->image) }}"
-                                                 class="pc-img"
-                                                 alt="{{ $product->name }}"
-                                                 loading="lazy"
-                                                 onerror="this.src='{{ asset('images/placeholder.png') }}'">
+                                                class="pc-img"
+                                                alt="{{ $product->name }}"
+                                                loading="lazy"
+                                                onerror="this.src='{{ asset('images/placeholder.png') }}'">
                                         </div>
                                     @endforeach
                                 </div>
@@ -699,24 +814,31 @@
                         @else
                             <a href="{{ route('product.show', $product) }}" class="pc-media-link">
                                 <img src="{{ $imgs->first()?->image ? Storage::url($imgs->first()->image) : asset('images/placeholder.png') }}"
-                                     class="pc-img"
-                                     alt="{{ $product->name }}"
-                                     loading="lazy">
+                                    class="pc-img"
+                                    alt="{{ $product->name }}"
+                                    loading="lazy">
                             </a>
                         @endif
                     </div>
 
                     {{-- BODY --}}
                     <div class="pc-body">
+                        {{-- Badge tipo listado --}}
+                        <span class="{{ $badgeClass }}">
+                            {{ ucfirst($product->tipo_listado) }}
+                        </span>
+
                         <div class="pc-category">{{ $product->category->name ?? 'Sin categoría' }}</div>
 
                         <h3 class="pc-title">
                             <a href="{{ route('product.show', $product) }}">{{ $product->name }}</a>
                         </h3>
 
-                        @php
-                            $totalPrice = (float)($product->price ?? 0) + (float)($product->interest ?? 0);
-                        @endphp
+                        <div class="mb-2">
+                            <strong>Estado:</strong>
+                            <span style="{{ $estadoColor }}">{{ ucfirst($product->estado) }}</span>
+                        </div>
+
                         <div class="pc-price-row">
                             <div class="pc-price">${{ number_format($totalPrice, 0, ',', '.') }}</div>
                             <div class="pc-weight">c/u</div>
@@ -750,6 +872,8 @@
                     </div>
                 </div>
             @endforelse
+
+
         </div>
 
         @if(isset($products) && $products->hasPages())

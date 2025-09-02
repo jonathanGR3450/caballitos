@@ -49,8 +49,6 @@ body, .container, .container-fluid {
 
 
 <div class="row">
-    
-
     <div class="col-md-4 mb-4">
         <label class="form-label fw-bold ">Stock *</label>
         <input type="number" name="stock" class="form-control   border-secondary"
@@ -62,7 +60,116 @@ body, .container, .container-fluid {
         <input type="text" name="avg_weight" class="form-control   border-secondary"
                value="{{ old('avg_weight', $product->avg_weight ?? '') }}" placeholder="e.g. 7 Lbs or 3.2 Kg">
     </div>
+
+    {{-- input estado, default disponible --}}
+    <div class="col-md-4 mb-4">
+        <label class="form-label fw-bold">Estado</label>
+        <select name="estado" class="form-control border-secondary">
+            @foreach(\App\Models\Product::getEstados() as $estado)
+                <option value="{{ $estado }}"
+                    {{ old('estado', $product->estado ?? 'Disponible') == $estado ? 'selected' : '' }}>
+                    {{ $estado }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label class="form-label fw-bold">Tipo de listado</label>
+        <select name="tipo_listado" class="form-control border-secondary">
+            <option value="normal" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'normal' ? 'selected' : '' }}>Normal</option>
+            <option value="destacado" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'destacado' ? 'selected' : '' }}>Destacado</option>
+            <option value="premium" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'premium' ? 'selected' : '' }}>Premium</option>
+        </select>
+    </div>
+
 </div>
+<div class="form-check mb-3">
+    <input type="hidden" name="vence" value="0">
+    <input type="checkbox" class="form-check-input" id="vence" name="vence" 
+           value="1" {{ old('vence', $product->vence ?? false) ? 'checked' : '' }}>
+    <label for="vence" class="form-check-label">¿Tiene vencimiento?</label>
+</div>
+
+<div id="fecha-vencimiento-container" 
+     style="display: {{ old('vence', $product->vence ?? false) ? 'block' : 'none' }}">
+    <label for="fecha_vencimiento">Fecha de vencimiento</label>
+    <input type="date" id="fecha_vencimiento" name="fecha_vencimiento"
+           class="form-control @error('fecha_vencimiento') is-invalid @enderror"
+           value="{{ old('fecha_vencimiento', $product->fecha_vencimiento ?? '') }}">
+    @error('fecha_vencimiento')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+<div class="row mb-4 mt-4">
+    <div class="col-md-12">
+        <div class="form-check">
+            <input type="checkbox"
+                   class="form-check-input"
+                   id="hasExtras"
+                   name="has_extras"
+                   value="1"
+                   {{ old('has_extras', isset($product) && $product->extra ? 1 : 0) ? 'checked' : '' }}>
+            <label class="form-check-label fw-bold" for="hasExtras">
+                ¿Tiene campos extras?
+            </label>
+        </div>
+    </div>
+</div>
+<div id="extrasFields" style="display: none;">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <label class="form-label fw-bold">Ubicación</label>
+            <input type="text" name="ubicacion" class="form-control border-secondary"
+                   value="{{ old('ubicacion', $product->extra->ubicacion ?? '') }}">
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <label class="form-label fw-bold">Raza</label>
+            <input type="text" name="raza" class="form-control border-secondary"
+                   value="{{ old('raza', $product->extra->raza ?? '') }}">
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <label class="form-label fw-bold">Edad</label>
+            <input type="number" name="edad" class="form-control border-secondary"
+                   value="{{ old('edad', $product->extra->edad ?? '') }}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <label class="form-label fw-bold">Género</label>
+            <select name="genero" class="form-control border-secondary">
+                <option value="">-- Seleccionar --</option>
+                <option value="Macho" {{ old('genero', $product->extra->genero ?? '') == 'Macho' ? 'selected' : '' }}>Macho</option>
+                <option value="Hembra" {{ old('genero', $product->extra->genero ?? '') == 'Hembra' ? 'selected' : '' }}>Hembra</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <label class="form-label fw-bold">Pedigrí</label>
+            <select name="pedigri" class="form-control border-secondary">
+                <option value="">-- Seleccionar --</option>
+                <option value="1" {{ old('pedigri', $product->extra->pedigri ?? '') == '1' ? 'selected' : '' }}>Sí</option>
+                <option value="0" {{ old('pedigri', $product->extra->pedigri ?? '') == '0' ? 'selected' : '' }}>No</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <label class="form-label fw-bold">Entrenamiento</label>
+            <input type="text" name="entrenamiento" class="form-control border-secondary"
+                   value="{{ old('entrenamiento', $product->extra->entrenamiento ?? '') }}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <label class="form-label fw-bold">Historial de Salud</label>
+            <textarea name="historial_salud" class="form-control border-secondary" rows="3">{{ old('historial_salud', $product->extra->historial_salud ?? '') }}</textarea>
+        </div>
+    </div>
+</div>
+
 
 <div class="mb-4">
     <label class="form-label fw-bold ">Product Images</label>
@@ -242,6 +349,21 @@ body, .container, .container-fluid {
 
 
 <script>
+    document.getElementById('vence').addEventListener('change', function() {
+        document.getElementById('fecha-vencimiento-container').style.display = this.checked ? 'block' : 'none';
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const check = document.getElementById("hasExtras");
+        const extras = document.getElementById("extrasFields");
+
+        function toggleExtras() {
+            extras.style.display = check.checked ? "block" : "none";
+        }
+
+        toggleExtras(); // Inicializa al cargar
+        check.addEventListener("change", toggleExtras);
+    });
 
     ClassicEditor
   .create(document.querySelector('#description'), {

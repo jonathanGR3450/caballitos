@@ -121,9 +121,25 @@
                     <ul class="list-unstyled">
                         <li><strong>SKU:</strong> #{{ $product->id }}</li>
                         <li><strong>Category:</strong> {{ $product->category->name ?? 'N/A' }}</li>
-                        <li><strong>Weight:</strong> Sold per lb</li>
+                        {{-- <li><strong>Weight:</strong> Sold per lb</li> --}}
+                        <li><strong>Estado:</strong> {{ $product->estado ?? 'N/A' }}</li>
                     </ul>
                 </div>
+
+                @if($product->extra)
+                    <div class="product-extra mt-3">
+                        <h6>Extra Details</h6>
+                        <ul class="list-unstyled">
+                            <li><strong>Ubicación:</strong> {{ $product->extra->ubicacion ?? 'N/A' }}</li>
+                            <li><strong>Raza:</strong> {{ $product->extra->raza ?? 'N/A' }}</li>
+                            <li><strong>Edad:</strong> {{ $product->extra->edad . " años" ?? 'N/A' }}</li>
+                            <li><strong>Género:</strong> {{ $product->extra->genero ?? 'N/A' }}</li>
+                            <li><strong>Pedigrí:</strong> {{ $product->extra->pedigri ?? 'N/A' }}</li>
+                            <li><strong>Entrenamiento:</strong> {{ $product->extra->entrenamiento ?? 'N/A' }}</li>
+                            <li><strong>Historial de salud:</strong> {{ $product->extra->historial_salud ?? 'N/A' }}</li>
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

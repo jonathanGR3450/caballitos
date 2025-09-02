@@ -38,6 +38,12 @@ public function store(Request $request)
         
         $product = Product::create($data);
 
+        if ($request->has('has_extras')) {
+            $product->extra()->create($request->only([
+                'ubicacion','raza','edad','genero','pedigri','entrenamiento','historial_salud'
+            ]));
+        }
+
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
                 $path = $file->store('products', 'public');
@@ -80,6 +86,10 @@ public function update(Request $request, Product $product)
         'price' => 'required|numeric|min:0',
         'stock' => 'required|integer|min:0',
         'avg_weight' => 'nullable|string|max:50',
+        'estado' => 'required|in:' . implode(',', Product::getEstados()),
+        'vence'      => ['required', 'boolean'],
+        'fecha_vencimiento' => $request->boolean('vence') ? 'required|date|after_or_equal:today' : 'nullable',
+        'tipo_listado' => ['required', 'in:' . implode(',', Product::getTiposListado())],
         'category_id' => 'required|exists:categories,id',
         'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         
@@ -89,11 +99,31 @@ public function update(Request $request, Product $product)
         'prices.*.city_id' => 'nullable|exists:cities,id',
         'prices.*.interest' => 'nullable|numeric|min:0|max:100', // Asumiendo que es porcentaje
         'prices.*.shipping' => 'nullable|numeric|min:0',
+
+        // extras
+        'ubicacion'  => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
+        'raza'       => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
+        'edad'       => $request->has_extras ? ['required', 'integer', 'min:0'] : ['nullable', 'integer', 'min:0'],
+        'genero'     => $request->has_extras ? ['required', 'string', 'in:Macho,Hembra'] : ['nullable', 'string', 'in:Macho,Hembra'],
+        'pedigri'    => $request->has_extras ? ['required', 'boolean'] : ['nullable', 'boolean'],
+        'entrenamiento' => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
+        'historial_salud' => $request->has_extras ? ['required', 'string'] : ['nullable', 'string'],
     ]);
 
     // Actualizar el producto base (excluyendo images y prices)
     $productData = collect($validatedData)->except(['images', 'prices'])->toArray();
     $product->update($productData);
+
+    if ($request->has('has_extras')) {
+        $product->extra()->updateOrCreate(
+            ['product_id' => $product->id],
+            $request->only([
+                'ubicacion','raza','edad','genero','pedigri','entrenamiento','historial_salud'
+            ])
+        );
+    } else {
+        $product->extra()?->delete();
+    }
 
     // 🔴 Manejar configuraciones de precios por ubicación
     if ($request->has('prices') && is_array($request->prices)) {
@@ -158,6 +188,17 @@ public function destroy(Product $product)
         'category_id' => ['required', 'exists:categories,id'],
         'images.*'    => ['nullable', 'image', 'max:2048'],
         'avg_weight'  => ['nullable', 'string', 'max:250'],
+        'estado'      => ['required', 'in:' . implode(',', Product::getEstados())],
+        'vence'      => ['required', 'boolean'],
+        'fecha_vencimiento' => 'required_if:vence,1|date|after_or_equal:today',
+        'tipo_listado' => ['required', 'in:' . implode(',', Product::getTiposListado())],
+        'ubicacion'  => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
+        'raza'       => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
+        'edad'       => $request->has_extras ? ['required', 'integer', 'min:0'] : ['nullable', 'integer', 'min:0'],
+        'genero'     => $request->has_extras ? ['required', 'string', 'in:Macho,Hembra'] : ['nullable', 'string', 'in:Macho,Hembra'],
+        'pedigri'    => $request->has_extras ? ['required', 'boolean'] : ['nullable', 'boolean'],
+        'entrenamiento' => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
+        'historial_salud' => $request->has_extras ? ['required', 'string'] : ['nullable', 'string'],
     ]);
 }
  public function show(Product $product)
