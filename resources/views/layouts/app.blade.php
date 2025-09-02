@@ -881,7 +881,7 @@ footer::before {
                 </div>
                 <h4 class="fw-bold mb-3">{{ env('APP_NAME', 'CaballosApp') }}</h4>
                 <p class="text-white small mb-3">
-                    Tu tienda especializada en electrodomésticos de calidad. Ofrecemos las mejores marcas con garantía, servicio técnico especializado y atención personalizada.
+                    Tu tienda especializada en caballos de alta calidad. Ofrecemos las mejores razas con garantía, asesoría en cuidado y atención personalizada.
                 </p>
                 <div class="social-links">
                     <a href="#" class="social-link me-3" title="Facebook">
