@@ -64,7 +64,7 @@
                             <div class="service-icon">
                                 <i class="fas fa-wrench"></i>
                             </div>
-                            <h3 class="service-title">Reparación Especializada</h3>
+                            <h3 class="service-title">Venta de Caballos</h3>
                             <p class="service-description">
                                 Diagnóstico y reparación de fallas en todos los tipos de electrodomésticos con repuestos originales y garantía.
                             </p>
@@ -134,7 +134,7 @@
                             <div class="service-icon">
                                 <i class="fas fa-wrench"></i>
                             </div>
-                            <h3 class="service-title">Reparación Especializada</h3>
+                            <h3 class="service-title">Venta de Caballos</h3>
                             <p class="service-description">
                                 Diagnóstico y reparación de fallas en todos los tipos de electrodomésticos con repuestos originales y garantía.
                             </p>
@@ -210,7 +210,7 @@
                             <div class="appliance-item">
                                 <div class="appliance-icon">{{ $servicesSection->getCustomData('service_2_icon', '⚡') }}</div>
                                 <div class="appliance-info">
-                                    <h4>{{ $servicesSection->getCustomData('service_2_title', 'Electrodomésticos Oster') }}</h4>
+                                    <h4>{{ $servicesSection->getCustomData('service_2_title', 'Accesorios y Equipamiento') }}</h4>
                                     <p>{{ $servicesSection->getCustomData('service_2_desc', 'Licuadoras, freidoras de aire, extractores, sanducheras, procesadores de alimentos') }}</p>
                                 </div>
                             </div>
@@ -260,7 +260,7 @@
                             <div class="appliance-item">
                                 <div class="appliance-icon">⚡</div>
                                 <div class="appliance-info">
-                                    <h4>Electrodomésticos Oster</h4>
+                                    <h4>Accesorios y Equipamiento</h4>
                                     <p>Licuadoras, freidoras de aire, extractores, sanducheras, procesadores de alimentos</p>
                                 </div>
                             </div>
@@ -453,7 +453,7 @@
                         <div class="oster-service">
                             <i class="fas fa-wrench"></i>
                             <div>
-                                <h4>Reparación Especializada Oster</h4>
+                                <h4>Venta de Caballos Oster</h4>
                                 <p>Servicio técnico autorizado con repuestos originales</p>
                             </div>
                         </div>

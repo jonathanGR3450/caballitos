@@ -563,8 +563,8 @@ public function editContacto()
             ],
             [
                 'name' => 'info', 
-                'title' => '¿Necesitas ayuda con tus electrodomésticos?', 
-                'content' => 'En ElectraHome somos especialistas en reparación, mantenimiento e instalación de línea blanca...', 
+                'title' => '¿Buscas el caballo ideal para ti?', 
+                'content' => 'En EquiMarket somos especialistas en la venta, cría y cuidado de caballos de distintas razas.', 
                 'order' => 2
             ],
             [
@@ -767,10 +767,10 @@ private function createDefaultServicesSection($page)
                 'service_4_title' => 'Reparación de Secadoras',
                 'service_4_desc' => 'Servicio completo para secadoras de ropa',
                 'service_5_icon' => '⚡',
-                'service_5_title' => 'Electrodomésticos Oster',
+                'service_5_title' => 'Accesorios y Equipamiento',
                 'service_5_desc' => 'Reparación especializada en productos Oster',
                 'service_6_icon' => '🏠',
-                'service_6_title' => 'Servicio a Domicilio',
+                'service_6_title' => 'Asesoría Personalizada',
                 'service_6_desc' => 'Atendemos en tu hogar u oficina'
             ]),
             'order' => 3,

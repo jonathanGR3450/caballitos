@@ -117,7 +117,7 @@
                         <div class="field-group">
                             <h6><i class="fas fa-heading"></i> Título Principal</h6>
                             <input type="text" name="title" class="form-control mb-3" 
-                                   value="{{ $section->title ?: '¿Necesitas ayuda con tus electrodomésticos?' }}" required>
+                                   value="{{ $section->title ?: '¿Buscas el caballo ideal para ti?' }}" required>
                         </div>
 
                         <div class="field-group">
@@ -160,12 +160,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Título Servicio 1</label>
                                         <input type="text" name="service_1_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_1_title', 'Reparación Especializada') }}">
+                                               value="{{ $section->getCustomData('service_1_title', 'Venta de Caballos') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 1</label>
                                         <input type="text" name="service_1_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_1_desc', 'Lavadoras, secadoras, refrigeradoras, cocinas, microondas y más') }}">
+                                               value="{{ $section->getCustomData('service_1_desc', 'Caballos de salto, paso fino, pura sangre y más') }}">
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Título Servicio 2</label>
                                         <input type="text" name="service_2_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_2_title', 'Servicio a Domicilio') }}">
+                                               value="{{ $section->getCustomData('service_2_title', 'Asesoría Personalizada') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 2</label>
@@ -202,7 +202,7 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Título Servicio 3</label>
                                         <input type="text" name="service_3_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_3_title', 'Electrodomésticos Oster') }}">
+                                               value="{{ $section->getCustomData('service_3_title', 'Accesorios y Equipamiento') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 3</label>
@@ -223,12 +223,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Título Servicio 4</label>
                                         <input type="text" name="service_4_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_4_title', 'Garantía y Calidad') }}">
+                                               value="{{ $section->getCustomData('service_4_title', 'Cuidado y Bienestar') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 4</label>
                                         <input type="text" name="service_4_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_4_desc', 'Todos nuestros trabajos incluyen garantía y repuestos originales') }}">
+                                               value="{{ $section->getCustomData('service_4_desc', 'Ofrecemos planes de salud y bienestar para tus caballos') }}">
                                     </div>
                                 </div>
                             </div>

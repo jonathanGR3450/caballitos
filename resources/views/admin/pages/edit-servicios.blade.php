@@ -274,7 +274,7 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Servicio 5</label>
                                         <input type="text" name="service_5_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_5_title', 'Electrodomésticos Oster') }}">
+                                               value="{{ $section->getCustomData('service_5_title', 'Accesorios y Equipamiento') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 5</label>
@@ -295,7 +295,7 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Servicio 6</label>
                                         <input type="text" name="service_6_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_6_title', 'Servicio a Domicilio') }}">
+                                               value="{{ $section->getCustomData('service_6_title', 'Asesoría Personalizada') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 6</label>

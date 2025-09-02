@@ -56,16 +56,15 @@
                         {{-- INFO SECTION - Dinámico --}}
                         @if(isset($sectionsData['info']) && $sectionsData['info'])
                             @php $infoSection = $sectionsData['info']; @endphp
-                            <h2 class="section-title">{{ $infoSection->title ?? '¿Necesitas ayuda con tus electrodomésticos?' }}</h2>
+                            <h2 class="section-title">{{ $infoSection->title ?? '¿Buscas el caballo ideal para ti?' }}</h2>
                             <p class="section-description">
-                                {{ $infoSection->content ?? 'En ElectraHome somos especialistas en reparación, mantenimiento e instalación de línea blanca.' }}
+                                {{ $infoSection->content ?? 'En EquiMarket somos especialistas en la venta, cría y cuidado de caballos de distintas razas.' }}
                             </p>
                         @else
-                            <h2 class="section-title">¿Necesitas ayuda con tus electrodomésticos?</h2>
+                            <h2 class="section-title">¿Buscas el caballo ideal para ti?</h2>
                             <p class="section-description">
-                                En ElectraHome somos especialistas en reparación, mantenimiento e instalación de línea blanca. 
-                                También vendemos y reparamos electrodomésticos Oster. Contáctanos y recibe atención personalizada 
-                                con técnicos certificados.
+                                En EquiMarket somos especialistas en la venta, cría y cuidado de caballos de distintas razas.
+                                También vendemos y reparamos electrodomésticos Oster. Contáctanos y recibe atención personalizada con técnicos certificados.
                             </p>
                         @endif
                         
@@ -78,8 +77,8 @@
                                 <div class="service-item">
                                     <div class="service-icon">{{ $servicesSection->getCustomData('service_1_icon', '🔧') }}</div>
                                     <div class="service-text">
-                                        <h4>{{ $servicesSection->getCustomData('service_1_title', 'Reparación Especializada') }}</h4>
-                                        <p>{{ $servicesSection->getCustomData('service_1_desc', 'Lavadoras, secadoras, refrigeradoras, cocinas, microondas y más') }}</p>
+                                        <h4>{{ $servicesSection->getCustomData('service_1_title', 'Venta de Caballos') }}</h4>
+                                        <p>{{ $servicesSection->getCustomData('service_1_desc', 'Caballos de salto, paso fino, pura sangre y más') }}</p>
                                     </div>
                                 </div>
                                 
@@ -87,7 +86,7 @@
                                 <div class="service-item">
                                     <div class="service-icon">{{ $servicesSection->getCustomData('service_2_icon', '🏠') }}</div>
                                     <div class="service-text">
-                                        <h4>{{ $servicesSection->getCustomData('service_2_title', 'Servicio a Domicilio') }}</h4>
+                                        <h4>{{ $servicesSection->getCustomData('service_2_title', 'Asesoría Personalizada') }}</h4>
                                         <p>{{ $servicesSection->getCustomData('service_2_desc', 'Atendemos en toda la ciudad con horarios flexibles') }}</p>
                                     </div>
                                 </div>
@@ -96,7 +95,7 @@
                                 <div class="service-item">
                                     <div class="service-icon">{{ $servicesSection->getCustomData('service_3_icon', '⚡') }}</div>
                                     <div class="service-text">
-                                        <h4>{{ $servicesSection->getCustomData('service_3_title', 'Electrodomésticos Oster') }}</h4>
+                                        <h4>{{ $servicesSection->getCustomData('service_3_title', 'Accesorios y Equipamiento') }}</h4>
                                         <p>{{ $servicesSection->getCustomData('service_3_desc', 'Venta y reparación de licuadoras, freidoras de aire') }}</p>
                                     </div>
                                 </div>
@@ -105,8 +104,8 @@
                                 <div class="service-item">
                                     <div class="service-icon">{{ $servicesSection->getCustomData('service_4_icon', '✅') }}</div>
                                     <div class="service-text">
-                                        <h4>{{ $servicesSection->getCustomData('service_4_title', 'Garantía y Calidad') }}</h4>
-                                        <p>{{ $servicesSection->getCustomData('service_4_desc', 'Todos nuestros trabajos incluyen garantía y repuestos originales') }}</p>
+                                        <h4>{{ $servicesSection->getCustomData('service_4_title', 'Cuidado y Bienestar') }}</h4>
+                                        <p>{{ $servicesSection->getCustomData('service_4_desc', 'Ofrecemos planes de salud y bienestar para tus caballos') }}</p>
                                     </div>
                                 </div>
                             @else
@@ -114,32 +113,32 @@
                                 <div class="service-item">
                                     <div class="service-icon">🔧</div>
                                     <div class="service-text">
-                                        <h4>Reparación Especializada</h4>
-                                        <p>Lavadoras, secadoras, refrigeradoras, cocinas, microondas y más</p>
+                                        <h4>Venta de Caballos</h4>
+                                        <p>Caballos de salto, paso fino, pura sangre y más</p>
                                     </div>
                                 </div>
                                 
                                 <div class="service-item">
                                     <div class="service-icon">🏠</div>
                                     <div class="service-text">
-                                        <h4>Servicio a Domicilio</h4>
-                                        <p>Atendemos en toda la ciudad de Quito con horarios flexibles</p>
+                                        <h4>Asesoría Personalizada</h4>
+                                        <p>Te ayudamos a elegir el caballo ideal según tus necesidades</p>
                                     </div>
                                 </div>
                                 
                                 <div class="service-item">
                                     <div class="service-icon">⚡</div>
                                     <div class="service-text">
-                                        <h4>Electrodomésticos Oster</h4>
-                                        <p>Venta y reparación de licuadoras, freidoras de aire, extractores</p>
+                                        <h4>Accesorios y Equipamiento</h4>
+                                        <p>Venta de monturas, riendas, botas y todo lo que necesites para tu caballo</p>
                                     </div>
                                 </div>
                                 
                                 <div class="service-item">
                                     <div class="service-icon">✅</div>
                                     <div class="service-text">
-                                        <h4>Garantía y Calidad</h4>
-                                        <p>Todos nuestros trabajos incluyen garantía y repuestos originales</p>
+                                        <h4>Cuidado y Bienestar</h4>
+                                        <p>Ofrecemos planes de salud y bienestar para tus caballos</p>
                                     </div>
                                 </div>
                             @endif
@@ -256,13 +255,13 @@
                         @if(isset($sectionsData['form_header']) && $sectionsData['form_header'])
                             @php $formHeaderSection = $sectionsData['form_header']; @endphp
                             <div class="form-header">
-                                <h3>{{ $formHeaderSection->title ?? 'Contactanos' }}</h3>
-                                <p>{{ $formHeaderSection->content ?? '¿Tienes problemas con algún electrodoméstico? Completa el formulario y nos pondremos en contacto contigo.' }}</p>
+                                <h3>{{ $formHeaderSection->title ?? 'Contáctanos' }}</h3>
+                                <p>{{ $formHeaderSection->content ?? '¿Estás interesado en uno de nuestros caballos o tienes una consulta? Completa el formulario y nos pondremos en contacto contigo.' }}</p>
                             </div>
                         @else
                             <div class="form-header">
-                                <h3>Contactanos</h3>
-                                <p>¿Tienes problemas con algún electrodoméstico? Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas para agendar tu servicio técnico.</p>
+                                <h3>Contáctanos</h3>
+                                <p>¿Estás interesado en comprar un caballo, tienes preguntas sobre nuestros ejemplares o servicios? Completa el formulario y te responderemos en menos de 24 horas.</p>
                             </div>
                         @endif
                         
@@ -273,7 +272,7 @@
                             </div>
                         @endif
                         
-                        {{-- FORMULARIO - Mantiene toda la funcionalidad existente --}}
+                        {{-- FORMULARIO --}}
                         <form action="{{ route('contact.submit') }}" method="POST" class="contact-form">
                             @csrf
                             
@@ -281,12 +280,12 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="first_name" class="form-label">Nombre*</label>
                                     <input type="text" 
-                                           class="form-control @error('first_name') is-invalid @enderror" 
-                                           id="first_name" 
-                                           name="first_name" 
-                                           value="{{ old('first_name') }}" 
-                                           placeholder="Tu nombre" 
-                                           required>
+                                        class="form-control @error('first_name') is-invalid @enderror" 
+                                        id="first_name" 
+                                        name="first_name" 
+                                        value="{{ old('first_name') }}" 
+                                        placeholder="Tu nombre" 
+                                        required>
                                     @error('first_name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -295,12 +294,12 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="last_name" class="form-label">Apellido*</label>
                                     <input type="text" 
-                                           class="form-control @error('last_name') is-invalid @enderror" 
-                                           id="last_name" 
-                                           name="last_name" 
-                                           value="{{ old('last_name') }}" 
-                                           placeholder="Tu apellido" 
-                                           required>
+                                        class="form-control @error('last_name') is-invalid @enderror" 
+                                        id="last_name" 
+                                        name="last_name" 
+                                        value="{{ old('last_name') }}" 
+                                        placeholder="Tu apellido" 
+                                        required>
                                     @error('last_name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -311,12 +310,12 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="email" class="form-label">Email*</label>
                                     <input type="email" 
-                                           class="form-control @error('email') is-invalid @enderror" 
-                                           id="email" 
-                                           name="email" 
-                                           value="{{ old('email') }}" 
-                                           placeholder="tu@email.com" 
-                                           required>
+                                        class="form-control @error('email') is-invalid @enderror" 
+                                        id="email" 
+                                        name="email" 
+                                        value="{{ old('email') }}" 
+                                        placeholder="tu@email.com" 
+                                        required>
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -332,12 +331,12 @@
                                             <option value="+51">🇵🇪 +51</option>
                                         </select>
                                         <input type="tel" 
-                                               class="form-control phone-number @error('phone') is-invalid @enderror" 
-                                               id="phone" 
-                                               name="phone" 
-                                               value="{{ old('phone') }}" 
-                                               placeholder="98 765 4321" 
-                                               required>
+                                            class="form-control phone-number @error('phone') is-invalid @enderror" 
+                                            id="phone" 
+                                            name="phone" 
+                                            value="{{ old('phone') }}" 
+                                            placeholder="98 765 4321" 
+                                            required>
                                     </div>
                                     @error('phone')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -347,7 +346,7 @@
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="category_id" class="form-label">Categoria*</label>
+                                    <label for="category_id" class="form-label">Categoría del caballo*</label>
                                     <select class="form-control @error('category_id') is-invalid @enderror" 
                                             id="category_id" 
                                             name="category_id" 
@@ -380,27 +379,27 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label for="address" class="form-label">Dirección*</label>
+                                <label for="address" class="form-label">Ubicación*</label>
                                 <input type="text" 
-                                       class="form-control @error('address') is-invalid @enderror" 
-                                       id="address" 
-                                       name="address" 
-                                       value="{{ old('address') }}" 
-                                       placeholder="Av. Amazonas y Naciones Unidas, Sector La Carolina" 
-                                       required>
+                                    class="form-control @error('address') is-invalid @enderror" 
+                                    id="address" 
+                                    name="address" 
+                                    value="{{ old('address') }}" 
+                                    placeholder="Ej: Finca Los Potrillos, Madrid, España" 
+                                    required>
                                 @error('address')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             
                             <div class="mb-4">
-                                <label for="message" class="form-label">Describe el problema o consulta*</label>
+                                <label for="message" class="form-label">Consulta o mensaje*</label>
                                 <textarea class="form-control @error('message') is-invalid @enderror" 
-                                          id="message" 
-                                          name="message" 
-                                          rows="4" 
-                                          placeholder="Describe detalladamente el problema que tienes con tu electrodoméstico, marca, modelo si lo conoces, y síntomas específicos..." 
-                                          required>{{ old('message') }}</textarea>
+                                        id="message" 
+                                        name="message" 
+                                        rows="4" 
+                                        placeholder="Escribe aquí si deseas más información sobre un caballo, precios, pedigrees o entrenamientos disponibles..." 
+                                        required>{{ old('message') }}</textarea>
                                 @error('message')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
