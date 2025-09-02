@@ -256,12 +256,12 @@
                         @if(isset($sectionsData['form_header']) && $sectionsData['form_header'])
                             @php $formHeaderSection = $sectionsData['form_header']; @endphp
                             <div class="form-header">
-                                <h3>{{ $formHeaderSection->title ?? 'Solicita tu Servicio' }}</h3>
+                                <h3>{{ $formHeaderSection->title ?? 'Contactanos' }}</h3>
                                 <p>{{ $formHeaderSection->content ?? '¿Tienes problemas con algún electrodoméstico? Completa el formulario y nos pondremos en contacto contigo.' }}</p>
                             </div>
                         @else
                             <div class="form-header">
-                                <h3>Solicita tu Servicio</h3>
+                                <h3>Contactanos</h3>
                                 <p>¿Tienes problemas con algún electrodoméstico? Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas para agendar tu servicio técnico.</p>
                             </div>
                         @endif
@@ -326,9 +326,9 @@
                                     <label for="phone" class="form-label">Teléfono/WhatsApp*</label>
                                     <div class="phone-input">
                                         <select class="country-code" name="country_code">
-                                            <option value="+593" selected>🇪🇨 +593</option>
+                                            <option value="+593">🇪🇨 +593</option>
                                             <option value="+1">🇺🇸 +1</option>
-                                            <option value="+57">🇨🇴 +57</option>
+                                            <option value="+57" selected>🇨🇴 +57</option>
                                             <option value="+51">🇵🇪 +51</option>
                                         </select>
                                         <input type="tel" 
@@ -347,50 +347,40 @@
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="service_type" class="form-label">Tipo de Servicio*</label>
-                                    <select class="form-control @error('service_type') is-invalid @enderror" 
-                                            id="service_type" 
-                                            name="service_type" 
+                                    <label for="category_id" class="form-label">Categoria*</label>
+                                    <select class="form-control @error('category_id') is-invalid @enderror" 
+                                            id="category_id" 
+                                            name="category_id" 
                                             required>
-                                        <option value="">Selecciona un servicio</option>
-                                        <option value="reparacion" {{ old('service_type') == 'reparacion' ? 'selected' : '' }}>Reparación</option>
-                                        <option value="mantenimiento" {{ old('service_type') == 'mantenimiento' ? 'selected' : '' }}>Mantenimiento</option>
-                                        <option value="instalacion" {{ old('service_type') == 'instalacion' ? 'selected' : '' }}>Instalación</option>
-                                        <option value="venta" {{ old('service_type') == 'venta' ? 'selected' : '' }}>Compra de electrodomésticos</option>
-                                        <option value="consulta" {{ old('service_type') == 'consulta' ? 'selected' : '' }}>Consulta general</option>
+                                            @foreach($categories as $cat)
+                                                <option value="{{ $cat->id }}"
+                                                    {{ old('category_id', $product->category_id ?? '') == $cat->id ? 'selected' : '' }}>
+                                                    {{ $cat->name }}
+                                                </option>
+                                            @endforeach
                                     </select>
-                                    @error('service_type')
+                                    @error('category_id')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 
                                 <div class="col-md-6 mb-3">
-                                    <label for="appliance_type" class="form-label">Electrodoméstico</label>
-                                    <select class="form-control @error('appliance_type') is-invalid @enderror" 
-                                            id="appliance_type" 
-                                            name="appliance_type">
-                                        <option value="">Selecciona el electrodoméstico</option>
-                                        <option value="lavadora" {{ old('appliance_type') == 'lavadora' ? 'selected' : '' }}>Lavadora</option>
-                                        <option value="secadora" {{ old('appliance_type') == 'secadora' ? 'selected' : '' }}>Secadora</option>
-                                        <option value="refrigeradora" {{ old('appliance_type') == 'refrigeradora' ? 'selected' : '' }}>Refrigeradora</option>
-                                        <option value="cocina" {{ old('appliance_type') == 'cocina' ? 'selected' : '' }}>Cocina</option>
-                                        <option value="microondas" {{ old('appliance_type') == 'microondas' ? 'selected' : '' }}>Microondas</option>
-                                        <option value="calefon" {{ old('appliance_type') == 'calefon' ? 'selected' : '' }}>Calefón</option>
-                                        <option value="aspiradora" {{ old('appliance_type') == 'aspiradora' ? 'selected' : '' }}>Aspiradora</option>
-                                        <option value="lavavajillas" {{ old('appliance_type') == 'lavavajillas' ? 'selected' : '' }}>Lavavajillas</option>
-                                        <option value="licuadora" {{ old('appliance_type') == 'licuadora' ? 'selected' : '' }}>Licuadora Oster</option>
-                                        <option value="freidora" {{ old('appliance_type') == 'freidora' ? 'selected' : '' }}>Freidora de Aire Oster</option>
-                                        <option value="extractor" {{ old('appliance_type') == 'extractor' ? 'selected' : '' }}>Extractor Oster</option>
-                                        <option value="otro" {{ old('appliance_type') == 'otro' ? 'selected' : '' }}>Otro</option>
+                                    <label for="tipo_listado" class="form-label">Tipo de listado</label>
+                                    <select class="form-control select-fondo @error('tipo_listado') is-invalid @enderror" 
+                                            id="tipo_listado" 
+                                            name="tipo_listado">
+                                        <option value="normal" {{ old('tipo_listado') == 'normal' ? 'selected' : '' }}>Normal</option>
+                                        <option value="destacado" {{ old('tipo_listado') == 'destacado' ? 'selected' : '' }}>Destacado</option>
+                                        <option value="premium" {{ old('tipo_listado') == 'premium' ? 'selected' : '' }}>Premium</option>
                                     </select>
-                                    @error('appliance_type')
+                                    @error('tipo_listado')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="address" class="form-label">Dirección en Quito*</label>
+                                <label for="address" class="form-label">Dirección*</label>
                                 <input type="text" 
                                        class="form-control @error('address') is-invalid @enderror" 
                                        id="address" 
@@ -414,16 +404,6 @@
                                 @error('message')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="preferred_time" class="form-label">Horario Preferido</label>
-                                <select class="form-control" id="preferred_time" name="preferred_time">
-                                    <option value="">Selecciona un horario</option>
-                                    <option value="morning" {{ old('preferred_time') == 'morning' ? 'selected' : '' }}>Mañana (8:00 - 12:00)</option>
-                                    <option value="afternoon" {{ old('preferred_time') == 'afternoon' ? 'selected' : '' }}>Tarde (12:00 - 18:00)</option>
-                                    <option value="flexible" {{ old('preferred_time') == 'flexible' ? 'selected' : '' }}>Horario flexible</option>
-                                </select>
                             </div>
                             
                             <div class="whatsapp-option mb-4">
@@ -706,11 +686,30 @@
     padding: 12px;
     width: 110px;
     font-size: 0.85rem;
+    appearance: none; /* quita estilos nativos */
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
+/* Forzar opciones con fondo oscuro y texto claro */
 .country-code option {
-    background: #8B4513;
+    background: #8B4513 !important; /* marrón oscuro */
+    color: white !important;
+}
+.select-fondo {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
     color: white;
+    appearance: none; /* quita estilos nativos */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Forzar opciones con fondo oscuro y texto claro */
+.select-fondo option {
+    background: #8B4513 !important; /* marrón oscuro */
+    color: white !important;
 }
 
 .phone-number {
@@ -775,9 +774,9 @@
 }
 
 .alert-success {
-    background: rgba(0, 207, 180, 0.2);
-    border: 2px solid #DEB887;
-    color: #DEB887;
+    background: #28a745;
+    border: 2px solid #28a745;
+    color: white;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 30px;

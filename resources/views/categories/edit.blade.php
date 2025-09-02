@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('categories.update', $category) }}" method="POST" enctype="multipart/form-data" class="bg-dark p-4 rounded">
+    <form action="{{ route('categories.update', $category) }}" method="POST" enctype="multipart/form-data" class="p-4 rounded">
         @csrf
         @method('PUT')
 
@@ -55,7 +55,7 @@
         </div>
 
         <div class="d-flex gap-3">
-            <button type="submit" class="btn btn-warning text-dark fw-bold">
+            <button type="submit" class="btn btn-warning fw-bold">
                 <i class="fas fa-save me-2"></i>Update Category
             </button>
             <a href="{{ route('categories.index') }}" class="btn btn-secondary">

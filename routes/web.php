@@ -39,16 +39,14 @@ Route::post('/order/process', [ShopController::class, 'processOrder'])->name('or
 Route::get('/payment/gateway/{order}', [App\Http\Controllers\ShopController::class, 'paymentGateway'])->name('payment.gateway');
 Route::post('/payment/process/{order}', [App\Http\Controllers\ShopController::class, 'processPayment'])->name('payment.process');
 Route::get('/payment/success/{order}', [App\Http\Controllers\ShopController::class, 'paymentSuccess'])->name('payment.success');
-Route::get('/contacto', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contacto', [ContactController::class, 'submit'])->name('contact.submit');
+Route::get('/contacto', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::post('/contacto', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.submit');
 
 Route::post('/cart',           [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart',            [CartController::class, 'index'])->name('cart.index');
 Route::patch('/cart/{rowId}',  [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/partner-chefs', [HomeController::class, 'partnerChefs'])->name('partner.chefs');
-Route::post('/partner-chefs', [HomeController::class, 'submitPartnerChefs'])->name('partner.chefs.submit');
 Route::get('/shipping-policy', function () {
     return view('policies.shipping');
 })->name('shipping.policy');

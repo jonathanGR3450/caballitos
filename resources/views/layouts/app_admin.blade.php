@@ -304,6 +304,9 @@
                         <i class="fas fa-tools me-2"></i>Panel Admin <i class="fas fa-chevron-down ms-1"></i>
                     </a>
                     <ul class="dropdown-menu admin-menu">
+                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">
+                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                        </a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.products.index') }}">
                             <i class="fas fa-box me-2"></i>Admin Productos
                         </a></li>

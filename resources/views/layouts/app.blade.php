@@ -816,7 +816,7 @@ footer::before {
             </div>
 
             <a href="{{ route('about') }}">Quiénes Somos</a>
-            <a href="{{ route('partner.chefs') }}" class="{{ request()->routeIs('partner.chefs') ? 'active' : '' }}">Contacto</a>
+            <a href="{{ route('contact.index') }}" class="{{ request()->routeIs('contact.index') ? 'active' : '' }}">Contacto</a>
             <a href="{{ route('recipes') }}">Servicios</a>
         </div>
 
@@ -855,7 +855,7 @@ footer::before {
             </div>
             
             <a href="{{ route('about') }}">Quiénes Somos</a>
-            <a href="{{ route('partner.chefs') }}" class="{{ request()->routeIs('partner.chefs') ? 'active' : '' }}">Contacto</a>
+            <a href="{{ route('contact.index') }}" class="{{ request()->routeIs('contact.index') ? 'active' : '' }}">Contacto</a>
             <a href="{{ route('recipes') }}">Servicios</a>
         </div>
 
@@ -906,7 +906,7 @@ footer::before {
                     <li><a href="{{ route('home') }}" class="footer-link">Inicio</a></li>
                     <li><a href="{{ route('shop.index') }}" class="footer-link">Productos</a></li>
                     <li><a href="{{ route('about') }}" class="footer-link">Quiénes Somos</a></li>
-                    <li><a href="{{ route('partner.chefs') }}" class="footer-link">Contacto</a></li>
+                    <li><a href="{{ route('contact.index') }}" class="footer-link">Contacto</a></li>
                     <li><a href="{{ route('recipes') }}" class="footer-link">Servicios</a></li>
                 </ul>
             </div>
