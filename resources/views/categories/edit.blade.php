@@ -3,7 +3,7 @@
 @section('content')
 <div class="container py-5 text-white">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-warning mb-0">Edit Category 🐄</h2>
+        <h2 class="text-warning mb-0">Edit Category</h2>
         <a href="{{ route('categories.index') }}" class="btn btn-secondary">
             <i class="fas fa-arrow-left me-2"></i>Back to Categories
         </a>
@@ -68,16 +68,15 @@
 <style>
 /* Estilos para el formulario de edición */
 .form-control {
-    background-color: #2d3748;
-    border: 1px solid #4a5568;
-    color: #fff;
+    background-color: #FAF9F6;
+    color: #000;
 }
 
 .form-control:focus {
-    background-color: #2d3748;
+    background-color: #FAF9F6;
     border-color: #ffc107;
     box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
-    color: #fff;
+    color: #000;
 }
 
 .form-control::placeholder {

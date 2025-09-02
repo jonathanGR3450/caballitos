@@ -64,7 +64,7 @@
                     @php
                         $totalPrice = ($product->price ?? 0) + ($product->interest ?? 0);
                     @endphp
-                    <h3 class="text-success fw-bold">${{ number_format($totalPrice, 0, ',', '.') }}</h3>
+                    <h3 class="fw-bold">${{ number_format($totalPrice, 0, ',', '.') }}</h3>
 <small class="text-white">/ {{ $product->avg_weight ?: 'per lb' }}</small>
                 </div>
 
@@ -219,8 +219,11 @@
     border-radius: 50%;
 }
 .carousel-indicators .active {
-    background-color: #198754; /* verde Bootstrap */
+    background-color: #CD853F; /* verde Bootstrap */
 }
+
+.btn-success { background-color: #DEB887 !important; border-color: #DEB887 !important; }
+.btn-success:hover { background-color: #f7a831 !important; border-color: #f7a831 !important; color: #101820 !important; }
 
 </style>
 

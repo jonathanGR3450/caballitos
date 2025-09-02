@@ -1,9 +1,9 @@
 @extends('layouts.app_admin')
 
 @section('content')
-<div class="container py-5 text-white">
+<div class="container py-5 ">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-warning mb-0">Existing Categories 🐄</h2>
+        <h2 class="text-warning mb-0">Existing Categories </h2>
         <a href="{{ route('categories.create') }}" class="btn btn-success">
             <i class="fas fa-plus me-2"></i>Add New Category
         </a>
@@ -27,7 +27,7 @@
         <div class="row">
             @foreach($categories as $cat)
                 <div class="col-md-4 mb-4">
-                    <div class="card bg-dark text-white category-card h-100">
+                    <div class="card  category-card h-100">
                         @if ($cat->image)
                             <img src="{{ Storage::url($cat->image) }}" class="card-img-top" style="height: 200px; object-fit: cover;">
                         @else
@@ -49,7 +49,7 @@
                                 @endif
                                 
                                 @if($cat->description)
-                                    <p class="card-text text-light">{{ Str::limit($cat->description, 100) }}</p>
+                                    <p class="card-text ">{{ Str::limit($cat->description, 100) }}</p>
                                 @else
                                     <p class="card-text text-muted">No description available</p>
                                 @endif
@@ -96,7 +96,7 @@
 <style>
 /* Estilos adicionales para las tarjetas */
 .category-card {
-    border: 1px solid #495057;
+    border: 1px solid #DEB887;
     transition: all 0.3s ease;
     overflow: hidden;
 }
@@ -104,7 +104,7 @@
 .category-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
-    border-color: #ffc107;
+    border-color: #DEB887;
 }
 
 .category-card .card-img-top {
@@ -140,16 +140,8 @@
     transform: translateY(-1px);
 }
 
-.btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-}
-
-.btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
-    transform: translateY(-1px);
-}
+.btn-success { background-color: #DEB887; border-color: #DEB887; }
+.btn-success:hover { background-color: #f7a831; border-color: #f7a831; color: #101820; }
 
 .alert {
     border: none;

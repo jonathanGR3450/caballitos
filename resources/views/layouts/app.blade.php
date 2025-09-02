@@ -863,6 +863,7 @@ footer::before {
     </div>
 </nav>
 
+    @include('admin.products._flash')
     <main class="">
         @yield('content')
     </main>

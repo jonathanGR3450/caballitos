@@ -45,6 +45,12 @@ public function store(Request $request)
             }
         }
 
+        // crear Price
+        $prices = $request->input('prices', []);
+        foreach ($prices as $priceData) {
+            $product->prices()->create($priceData);
+        }
+
         DB::commit();
         return redirect()->route('admin.products.index')
                         ->with('success', 'Producto creado ✅');
@@ -151,6 +157,7 @@ public function destroy(Product $product)
         'stock'       => ['required', 'integer', 'min:0'],
         'category_id' => ['required', 'exists:categories,id'],
         'images.*'    => ['nullable', 'image', 'max:2048'],
+        'avg_weight'  => ['nullable', 'string', 'max:250'],
     ]);
 }
  public function show(Product $product)

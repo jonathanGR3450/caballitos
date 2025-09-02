@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container py-5 text-white">
-    <h2 class="mb-4 text-warning">Add New Category 🐄</h2>
+    <h2 class="mb-4 text-warning">Add New Category</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data" class="bg-dark p-4 rounded">
+    <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data" class="p-4 rounded">
         @csrf
 
         <div class="mb-3">
@@ -44,7 +44,7 @@
         </div>
 
         <div class="d-flex gap-3">
-            <button type="submit" class="btn btn-warning text-dark fw-bold">
+            <button type="submit" class="btn btn-success fw-bold">
                 <i class="fas fa-save me-2"></i>Save Category
             </button>
             <a href="{{ route('categories.index') }}" class="btn btn-secondary">
@@ -57,16 +57,15 @@
 <style>
 /* Estilos adicionales para mejorar el formulario */
 .form-control {
-    background-color: #2d3748;
-    border: 1px solid #4a5568;
-    color: #fff;
+    background-color: #FAF9F6;
+    color: #000;
 }
 
 .form-control:focus {
-    background-color: #2d3748;
-    border-color: #ffc107;
-    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
-    color: #fff;
+    background-color: #FAF9F6;
+    border-color: #DEB887;
+    box-shadow: 0 0 0 0.2rem rgba(222, 184, 135, 0.25);
+    color: #000;
 }
 
 .form-control::placeholder {
@@ -74,10 +73,13 @@
 }
 
 .btn-warning:hover {
-    background-color: #e0a800;
+    background-color: #DEB887;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 4px 8px rgba(222, 184, 135, 0.3);
 }
+
+.btn-success { background-color: #DEB887 !important; border-color: #DEB887 !important; }
+.btn-success:hover { background-color: #f7a831 !important; border-color: #f7a831 !important; color: #101820 !important; }
 
 .btn-secondary {
     background-color: #6c757d;
