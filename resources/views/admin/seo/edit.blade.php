@@ -154,8 +154,8 @@
                         <div class="col-md-4 field-group">
                             <h6><i class="fas fa-globe"></i> Nombre del Sitio</h6>
                             <input type="text" name="og_site_name" class="form-control" 
-                                   value="{{ old('og_site_name', $seo->og_site_name ?: 'ElectraHome') }}" 
-                                   placeholder="ElectraHome">
+                                   value="{{ old('og_site_name', $seo->og_site_name ?: env('APP_NAME', 'CaballosApp')) }}" 
+                                   placeholder="{{ env('APP_NAME', 'CaballosApp') }}">
                         </div>
                     </div>
                 </div>

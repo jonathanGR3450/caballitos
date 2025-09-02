@@ -68,7 +68,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Título Principal (H1)</label>
                                     <input type="text" name="title" class="form-control" 
-                                           value="{{ $section->title ?: 'Acerca de ElectraHome' }}" required>
+                                           value="{{ $section->title ?: 'Acerca de ' . env('APP_NAME', 'CaballosApp') }}" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Subtítulo</label>
@@ -137,7 +137,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Primer párrafo</label>
                                 <textarea name="paragraph_1" class="form-control" rows="3" 
-                                          placeholder="Ej: En ElectraHome, cada electrodoméstico que ofrecemos...">{{ $section->getCustomData('paragraph_1') }}</textarea>
+                                          placeholder="Ej: En {{ env('APP_NAME', 'CaballosApp') }}, cada electrodoméstico que ofrecemos...">{{ $section->getCustomData('paragraph_1') }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Segundo párrafo</label>
@@ -298,8 +298,8 @@
                             <div class="mb-3">
                                 <label class="form-label">Atribución de la cita</label>
                                 <input type="text" name="quote_author" class="form-control" 
-                                       value="{{ $section->getCustomData('quote_author') ?: '- Equipo ElectraHome, Aragua, Venezuela' }}" 
-                                       placeholder="- Equipo ElectraHome, Ciudad, País">
+                                       value="{{ $section->getCustomData('quote_author') ?: '- Equipo ' . env('APP_NAME', 'CaballosApp') . ', Aragua, Venezuela' }}" 
+                                       placeholder="- Equipo {{ env('APP_NAME', 'CaballosApp') }}, Ciudad, País">
                             </div>
                         </div>
 
@@ -343,7 +343,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Título principal</label>
                                 <input type="text" name="title" class="form-control" 
-                                       value="{{ $section->title ?: 'Por Qué Elegir ElectraHome' }}" required>
+                                       value="{{ $section->title ?: 'Por Qué Elegir ' . env('APP_NAME', 'CaballosApp') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Primer párrafo descriptivo</label>
@@ -441,7 +441,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Título de CTA</label>
                                 <input type="text" name="title" class="form-control" 
-                                       value="{{ $section->title ?: 'Únete a la Familia ElectraHome' }}" required>
+                                       value="{{ $section->title ?: 'Únete a la Familia ' . env('APP_NAME', 'CaballosApp') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Descripción de CTA</label>

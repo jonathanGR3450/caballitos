@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElectraHome</title>
+    <title>{{ env('APP_NAME', 'CaballosApp') }}</title>
 
     {{-- Favicon y meta para iconos --}}
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-96x96.png') }}" sizes="96x96">
@@ -773,7 +773,7 @@ footer::before {
     <div class="navbar-container">
          <div class="footer-logo mb-3">
                     <a href="{{ route('home') }}" class="d-inline-block" aria-label="Ir al inicio">
-                        <img src="{{ asset('images/logo.png') }}" alt="ElectraHome Logo" style="height: 60px;">
+                        <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" style="height: 60px;">
                     </a>
                 </div>
 
@@ -877,9 +877,9 @@ footer::before {
             <!-- Logo & descripción -->
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="footer-logo mb-3">
-                    <img src="{{ asset('images/logo.png') }}" alt="ElectraHome Logo" style="height: 50px;">
+                    <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" style="height: 50px;">
                 </div>
-                <h4 class="fw-bold mb-3">ElectraHome</h4>
+                <h4 class="fw-bold mb-3">{{ env('APP_NAME', 'CaballosApp') }}</h4>
                 <p class="text-white small mb-3">
                     Tu tienda especializada en electrodomésticos de calidad. Ofrecemos las mejores marcas con garantía, servicio técnico especializado y atención personalizada.
                 </p>
@@ -961,7 +961,7 @@ footer::before {
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="text-white small">
-                    &copy; {{ date('Y') }} ElectraHome. Todos los derechos reservados.
+                    &copy; {{ date('Y') }} {{ env('APP_NAME', 'CaballosApp') }}. Todos los derechos reservados.
                 </div>
             </div>
             <div class="col-md-6">

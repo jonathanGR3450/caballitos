@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contacto - ElectraHome | Servicio Técnico Especializado')
+@section('title', "Contacto - {{ env('APP_NAME', 'CaballosApp') }} | Servicio Técnico Especializado")
 
 @section('content')
 <div class="contact-page">
@@ -12,9 +12,9 @@
             <div class="hero-background">
                 {{-- Imagen de fondo dinámica o logo por defecto --}}
                 @if($heroSection->getImagesArray())
-                    <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Servicio Técnico ElectraHome" class="hero-bg-image">
+                    <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 @else
-                    <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico ElectraHome" class="hero-bg-image">
+                    <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 @endif
                 <div class="hero-overlay"></div>
             </div>
@@ -31,7 +31,7 @@
         {{-- Fallback si no hay sección hero --}}
         <section class="contact-hero">
             <div class="hero-background">
-                <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico ElectraHome" class="hero-bg-image">
+                <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 <div class="hero-overlay"></div>
             </div>
             <div class="container">

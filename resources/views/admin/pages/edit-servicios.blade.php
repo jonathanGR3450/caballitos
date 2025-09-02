@@ -441,7 +441,7 @@
                         <div class="field-group">
                             <h6><i class="fas fa-heading"></i> Título</h6>
                             <input type="text" name="title" class="form-control mb-3" 
-                                   value="{{ $section->title ?: 'Por Qué Elegir ElectraHome' }}" required>
+                                   value="{{ $section->title ?: 'Por Qué Elegir ' . env('APP_NAME', 'CaballosApp') }}" required>
                             <textarea name="content" class="form-control" rows="2" 
                                       placeholder="Descripción de las ventajas">{{ $section->content }}</textarea>
                         </div>

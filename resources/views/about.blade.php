@@ -1,7 +1,7 @@
 {{-- Reemplaza tu vista about.blade.php con este código --}}
 @extends('layouts.app')
 
-@section('title', 'Acerca de Nosotros - ElectraHome')
+@section('title', "Acerca de Nosotros - {{ env('APP_NAME', 'CaballosApp') }}")
 
 @section('content')
 <div class="about-page">
@@ -12,16 +12,16 @@
         <div class="hero-background">
             {{-- Imagen de fondo dinámica o logo por defecto --}}
             @if($heroSection->getImagesArray())
-                <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="ElectraHome" class="hero-bg-image">
+                <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             @else
-                <img src="{{ asset('images/logo.png') }}" alt="ElectraHome" class="hero-bg-image">
+                <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             @endif
             <div class="hero-overlay"></div>
         </div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h1 class="hero-title">{{ $heroSection->title ?? 'Acerca de ElectraHome' }}</h1>
+                    <h1 class="hero-title">{{ $heroSection->title ?? 'Acerca de ' . env('APP_NAME', 'CaballosApp') }}</h1>
                     <p class="hero-subtitle">{{ $heroSection->content ?? 'Tradición en Electrodomésticos de Calidad' }}</p>
                 </div>
             </div>
@@ -31,13 +31,13 @@
     {{-- Fallback si no hay sección hero --}}
     <section class="about-hero">
         <div class="hero-background">
-            <img src="{{ asset('images/logo.png') }}" alt="ElectraHome" class="hero-bg-image">
+            <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             <div class="hero-overlay"></div>
         </div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h1 class="hero-title">Acerca de ElectraHome</h1>
+                    <h1 class="hero-title">Acerca de {{ env('APP_NAME', 'CaballosApp') }}</h1>
                     <p class="hero-subtitle">Tradición en Electrodomésticos de Calidad</p>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                                 <p class="section-description">{{ $legacySection->getCustomData('paragraph_1') }}</p>
                             @else
                                 <p class="section-description">
-                                    En ElectraHome, cada electrodoméstico que ofrecemos representa años de innovación y compromiso 
+                                    En {{ env('APP_NAME', 'CaballosApp') }}, cada electrodoméstico que ofrecemos representa años de innovación y compromiso 
                                     con la calidad. Nos especializamos en productos <strong>Oster</strong>, una marca reconocida 
                                     mundialmente por su durabilidad, eficiencia y diseño superior.
                                 </p>
@@ -191,7 +191,7 @@
                             <div class="team-quote">
                                 <div class="quote-content">
                                     <p>"{{ $passionSection->getCustomData('team_quote', 'No solo vendemos electrodomésticos, creamos experiencias culinarias excepcionales para cada familia venezolana.') }}"</p>
-                                    <cite>{{ $passionSection->getCustomData('quote_author', '- Equipo ElectraHome, Aragua, Venezuela') }}</cite>
+                                    <cite>{{ $passionSection->getCustomData('quote_author', '- Equipo ' . env('APP_NAME', 'CaballosApp') . ', Aragua, Venezuela') }}</cite>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
                             @if($passionSection->getImagesArray())
                                 <img src="{{ Storage::url($passionSection->getImagesArray()[0]) }}" alt="{{ $passionSection->title }}" class="section-img">
                             @else
-                                <img src="{{ asset('images/logo.png') }}" alt="Equipo ElectraHome" class="section-img logo-placeholder">
+                                <img src="{{ asset('images/logo.png') }}" alt="Equipo {{ env('APP_NAME', 'CaballosApp') }}" class="section-img logo-placeholder">
                             @endif
                         </div>
                     </div>
@@ -216,14 +216,14 @@
             <div class="content-section bg-dark-blue">
                 <div class="row justify-content-center">
                     <div class="col-lg-10 text-center">
-                        <h2 class="section-title text-white">{{ $benefitsSection->title ?? 'Por Qué Elegir ElectraHome' }}</h2>
-                        
+                        <h2 class="section-title text-white">{{ $benefitsSection->title ?? 'Por Qué Elegir ' . env('APP_NAME', 'CaballosApp') }}</h2>
+
                         {{-- Párrafos dinámicos --}}
                         @if($benefitsSection->getCustomData('paragraph_1'))
                             <p class="section-description text-white mb-4">{{ $benefitsSection->getCustomData('paragraph_1') }}</p>
                         @else
                             <p class="section-description text-white mb-4">
-                                Elegir ElectraHome significa elegir productos que duran, un servicio que te respalda, 
+                                Elegir {{ env('APP_NAME', 'CaballosApp') }} significa elegir productos que duran, un servicio que te respalda, 
                                 y una experiencia de compra que supera tus expectativas. Nuestros electrodomésticos 
                                 Oster están diseñados para la vida moderna venezolana.
                             </p>
@@ -267,7 +267,7 @@
             <div class="content-section">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-8">
-                        <h2 class="section-title">{{ $ctaSection->title ?? 'Únete a la Familia ElectraHome' }}</h2>
+                        <h2 class="section-title">{{ $ctaSection->title ?? 'Únete a la Familia ' . env('APP_NAME', 'CaballosApp') }}</h2>
                         <p class="section-description mb-4">
                             {{ $ctaSection->content ?? 'Te invitamos a ser parte de esta historia. Explora nuestra selección de electrodomésticos Oster y descubre la diferencia que hace elegir calidad, servicio y compromiso.' }}
                         </p>

@@ -498,23 +498,25 @@ if ($section->page_id != $page->id) {
     $page = Page::where('slug', 'quienes-somos')->with(['sections' => function($query) {
         $query->orderBy('order');
     }])->first();
+
+    $appName = env('APP_NAME', 'CaballosApp');
     
     // Si no existe la página, crearla con secciones por defecto
     if (!$page) {
         $page = Page::create([
             'slug' => 'quienes-somos',
             'title' => 'Quiénes Somos',
-            'content' => 'Página sobre ElectraHome'
+            'content' => 'Página sobre ' . $appName
         ]);
         
         // Crear secciones por defecto
         $sectionsData = [
-            ['name' => 'hero', 'title' => 'Acerca de ElectraHome', 'content' => 'Tradición en Electrodomésticos de Calidad', 'order' => 1],
-            ['name' => 'legacy', 'title' => 'Tradición en Electrodomésticos de Calidad', 'content' => 'En ElectraHome, cada electrodoméstico que ofrecemos representa años de innovación...', 'order' => 2],
+            ['name' => 'hero', 'title' => 'Acerca de ' . $appName, 'content' => 'Tradición en Electrodomésticos de Calidad', 'order' => 1],
+            ['name' => 'legacy', 'title' => 'Tradición en Electrodomésticos de Calidad', 'content' => 'En ' . $appName . ', cada electrodoméstico que ofrecemos representa años de innovación...', 'order' => 2],
             ['name' => 'quality', 'title' => 'Garantía Oficial y Servicio Especializado', 'content' => 'Como distribuidores autorizados de Oster, ofrecemos garantía oficial...', 'order' => 3],
             ['name' => 'passion', 'title' => 'La Pasión Detrás del Servicio', 'content' => 'Nuestro equipo no son solo vendedores; somos entusiastas de la cocina...', 'order' => 4],
-            ['name' => 'benefits', 'title' => 'Por Qué Elegir ElectraHome', 'content' => 'Elegir ElectraHome significa elegir productos que duran...', 'order' => 5],
-            ['name' => 'cta', 'title' => 'Únete a la Familia ElectraHome', 'content' => 'Te invitamos a ser parte de esta historia...', 'order' => 6]
+            ['name' => 'benefits', 'title' => 'Por Qué Elegir ' . $appName, 'content' => 'Elegir ' . $appName . ' significa elegir productos que duran...', 'order' => 5],
+            ['name' => 'cta', 'title' => 'Únete a la Familia ' . $appName, 'content' => 'Te invitamos a ser parte de esta historia...', 'order' => 6]
         ];
         
         foreach ($sectionsData as $sectionData) {
@@ -550,7 +552,7 @@ public function editContacto()
         $page = Page::create([
             'slug' => 'contacto',
             'title' => 'Contacto',
-            'content' => 'Página de contacto de ElectraHome'
+            'content' => "Página de contacto de " . env('APP_NAME', 'CaballosApp')
         ]);
         
         // Crear secciones por defecto para contacto
@@ -618,7 +620,7 @@ public function editServicios()
         $page = Page::create([
             'slug' => 'servicios',
             'title' => 'Servicios',
-            'content' => 'Página de servicios de ElectraHome'
+            'content' => 'Página de servicios de ' . env('APP_NAME', 'CaballosApp')
         ]);
         
         // Crear secciones por defecto para servicios
@@ -649,7 +651,7 @@ public function editServicios()
             ],
             [
                 'name' => 'why_choose', 
-                'title' => 'Por Qué Elegir ElectraHome', 
+                'title' => 'Por Qué Elegir ' . env('APP_NAME', 'CaballosApp'), 
                 'content' => 'Razones que nos convierten en tu mejor opción', 
                 'order' => 5
             ],
@@ -708,7 +710,7 @@ public function servicios()
         $page = Page::create([
             'slug' => 'servicios',
             'title' => 'Nuestros Servicios',
-            'content' => 'Página de servicios de ElectraHome'
+            'content' => 'Página de servicios de ' . env('APP_NAME', 'CaballosApp')
         ]);
         
         // Crear secciones por defecto
@@ -799,7 +801,7 @@ private function createDefaultServicesSection($page)
         ],
         [
             'name' => 'why_choose',
-            'title' => 'Por Qué Elegir ElectraHome',
+            'title' => 'Por Qué Elegir ' . env('APP_NAME', 'CaballosApp'),
             'content' => 'Razones por las cuales somos tu mejor opción',
             'custom_data' => json_encode([
                 'reason_1_icon' => '⭐',

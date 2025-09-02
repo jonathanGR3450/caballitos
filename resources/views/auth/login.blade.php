@@ -12,7 +12,7 @@
                         <!-- Left Column - Image/Branding -->
                         <div class="col-lg-6 login-image-section">
                             <div class="login-brand">
-                                <img src="{{ asset('images/logo.png') }}" alt="ElectraHome Logo" class="brand-logo">
+                                <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" class="brand-logo">
                                 <h2 class="brand-title">Bienvenido de Nuevo</h2>
                                 <p class="brand-subtitle">
                                     Electrodomésticos de calidad premium Oster. Descubre equipos duraderos, eficientes y diseñados para hacer tu vida más fácil en la cocina.

@@ -839,6 +839,11 @@
                             <span style="{{ $estadoColor }}">{{ ucfirst($product->estado) }}</span>
                         </div>
 
+                        <div class="mb-2">
+                            <strong>Listado:</strong>
+                            <span >{{ ucfirst($product->tipo_listado) }}</span>
+                        </div>
+
                         <div class="pc-price-row">
                             <div class="pc-price">${{ number_format($totalPrice, 0, ',', '.') }}</div>
                             <div class="pc-weight">c/u</div>

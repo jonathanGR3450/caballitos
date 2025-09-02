@@ -123,6 +123,7 @@
                         <li><strong>Category:</strong> {{ $product->category->name ?? 'N/A' }}</li>
                         {{-- <li><strong>Weight:</strong> Sold per lb</li> --}}
                         <li><strong>Estado:</strong> {{ $product->estado ?? 'N/A' }}</li>
+                        <li><strong>Listado:</strong> {{ $product->tipo_listado ?? 'N/A' }}</li>
                     </ul>
                 </div>
 
