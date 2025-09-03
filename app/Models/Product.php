@@ -74,6 +74,11 @@ class Product extends Model
         return $this->hasOne(ProductExtra::class);
     }
 
+    public function questions()
+    {
+        return $this->hasMany(ProductQuestion::class);
+    }
+
     public static function getEstados()
     {
         return [

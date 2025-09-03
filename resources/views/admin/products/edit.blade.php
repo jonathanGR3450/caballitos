@@ -10,5 +10,7 @@
         @csrf @method('PUT')
         @include('admin.products._form', ['product' => $product])
     </form>
+
+    @include('admin.products._questions', ['product' => $product])
 </div>
 @endsection

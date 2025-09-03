@@ -9,14 +9,19 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\ProductQuestionController;
 
 /* ---------- Landing y páginas públicas ---------- */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 Route::view('/about',   'about')->name('about');
-Route::view('/insiders','insiders')->name('insiders');//
+Route::view('/insiders','insiders')->name('insiders');
+
+Route::post('/products/{product}/questions', [ProductQuestionController::class, 'store'])
+    ->name('products.questions.store');
+Route::put('/admin/questions/{question}', [ProductQuestionController::class, 'update'])
+    ->name('admin.questions.update');
 
 
 Route::get('/recipes', [App\Http\Controllers\Admin\PageController::class, 'servicios'])->name('recipes');
@@ -64,60 +69,60 @@ Route::get('/terms-conditions', function () {
 })->name('terms.conditions');
 /* ---------- Dashboard y perfil ---------- */
 Route::middleware(['auth', 'verified'])->group(function () {
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/profile',    [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile',  [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/profile',    [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile',  [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::prefix('admin')->group(function () {
+        Route::get('/categorias', [CategoryController::class, 'index'])->name('categories.index');
+        Route::get('/categorias/crear', [CategoryController::class, 'create'])->name('categories.create');
+        Route::post('/categorias', [CategoryController::class, 'store'])->name('categories.store');
+    });
+
+    Route::resource('categories', CategoryController::class);
+
+
+    // routes/web.php - SOLO cambia las rutas de páginas
+
     Route::prefix('admin')->group(function () {
-    Route::get('/categorias', [CategoryController::class, 'index'])->name('categories.index');
-    Route::get('/categorias/crear', [CategoryController::class, 'create'])->name('categories.create');
-    Route::post('/categorias', [CategoryController::class, 'store'])->name('categories.store');
-});
+        // Countries (NO TOCAR - YA FUNCIONAN)
+        Route::get('/countries', [LocationController::class, 'countriesIndex'])->name('admin.countries.index');
+        Route::post('/countries', [LocationController::class, 'countriesStore'])->name('admin.countries.store');
+        Route::delete('/countries/{id}', [LocationController::class, 'countriesDestroy'])->name('admin.countries.destroy');
 
-Route::resource('categories', CategoryController::class);
+        // Cities (NO TOCAR - YA FUNCIONAN)
+        Route::get('/cities', [LocationController::class, 'citiesIndex'])->name('admin.cities.index');
+        Route::post('/cities', [LocationController::class, 'citiesStore'])->name('admin.cities.store');
+        Route::delete('/cities/{id}', [LocationController::class, 'citiesDestroy'])->name('admin.cities.destroy');
 
+        // === RUTAS ESPECÍFICAS PARA PÁGINAS ===
+        
+        // Lista general de páginas
+        Route::get('pages', [App\Http\Controllers\Admin\PageController::class, 'index'])->name('admin.pages.index');
+        
+        // Página INICIO
+        Route::get('pages/inicio/edit', [App\Http\Controllers\Admin\PageController::class, 'editInicio'])->name('admin.pages.edit-inicio');
+        Route::put('pages/inicio', [App\Http\Controllers\Admin\PageController::class, 'updateInicio'])->name('admin.pages.update-inicio');
+        
+        // Página QUIÉNES SOMOS
+        Route::get('pages/quienes-somos/edit', [App\Http\Controllers\Admin\PageController::class, 'editQuienesSomos'])->name('admin.pages.edit-quienes-somos');
+        Route::put('pages/quienes-somos', [App\Http\Controllers\Admin\PageController::class, 'updateQuienesSomos'])->name('admin.pages.update-quienes-somos');
+        
+        // Página SERVICIOS
+        Route::get('pages/servicios/edit', [App\Http\Controllers\Admin\PageController::class, 'editServicios'])->name('admin.pages.edit-servicios');
+        Route::put('pages/servicios', [App\Http\Controllers\Admin\PageController::class, 'updateServicios'])->name('admin.pages.update-servicios');
+        
+        // Página CONTACTO
+        Route::get('pages/contacto/edit', [App\Http\Controllers\Admin\PageController::class, 'editContacto'])->name('admin.pages.edit-contacto');
+        Route::put('pages/contacto', [App\Http\Controllers\Admin\PageController::class, 'updateContacto'])->name('admin.pages.update-contacto');
+        
+        // Eliminar imágenes (funciona para todas las páginas)
+        Route::delete('pages/{page}/image', [App\Http\Controllers\Admin\PageController::class, 'deleteImage'])->name('admin.pages.delete-image');
 
-// routes/web.php - SOLO cambia las rutas de páginas
-
-Route::prefix('admin')->group(function () {
-    // Countries (NO TOCAR - YA FUNCIONAN)
-    Route::get('/countries', [LocationController::class, 'countriesIndex'])->name('admin.countries.index');
-    Route::post('/countries', [LocationController::class, 'countriesStore'])->name('admin.countries.store');
-    Route::delete('/countries/{id}', [LocationController::class, 'countriesDestroy'])->name('admin.countries.destroy');
-
-    // Cities (NO TOCAR - YA FUNCIONAN)
-    Route::get('/cities', [LocationController::class, 'citiesIndex'])->name('admin.cities.index');
-    Route::post('/cities', [LocationController::class, 'citiesStore'])->name('admin.cities.store');
-    Route::delete('/cities/{id}', [LocationController::class, 'citiesDestroy'])->name('admin.cities.destroy');
-
-    // === RUTAS ESPECÍFICAS PARA PÁGINAS ===
-    
-    // Lista general de páginas
-    Route::get('pages', [App\Http\Controllers\Admin\PageController::class, 'index'])->name('admin.pages.index');
-    
-    // Página INICIO
-    Route::get('pages/inicio/edit', [App\Http\Controllers\Admin\PageController::class, 'editInicio'])->name('admin.pages.edit-inicio');
-    Route::put('pages/inicio', [App\Http\Controllers\Admin\PageController::class, 'updateInicio'])->name('admin.pages.update-inicio');
-    
-    // Página QUIÉNES SOMOS
-    Route::get('pages/quienes-somos/edit', [App\Http\Controllers\Admin\PageController::class, 'editQuienesSomos'])->name('admin.pages.edit-quienes-somos');
-    Route::put('pages/quienes-somos', [App\Http\Controllers\Admin\PageController::class, 'updateQuienesSomos'])->name('admin.pages.update-quienes-somos');
-    
-    // Página SERVICIOS
-    Route::get('pages/servicios/edit', [App\Http\Controllers\Admin\PageController::class, 'editServicios'])->name('admin.pages.edit-servicios');
-    Route::put('pages/servicios', [App\Http\Controllers\Admin\PageController::class, 'updateServicios'])->name('admin.pages.update-servicios');
-    
-    // Página CONTACTO
-    Route::get('pages/contacto/edit', [App\Http\Controllers\Admin\PageController::class, 'editContacto'])->name('admin.pages.edit-contacto');
-    Route::put('pages/contacto', [App\Http\Controllers\Admin\PageController::class, 'updateContacto'])->name('admin.pages.update-contacto');
-    
-    // Eliminar imágenes (funciona para todas las páginas)
-    Route::delete('pages/{page}/image', [App\Http\Controllers\Admin\PageController::class, 'deleteImage'])->name('admin.pages.delete-image');
-
-    Route::delete('pages/{page}/sections/{section}/images', [App\Http\Controllers\Admin\PageController::class, 'deleteSectionImage'])
-    ->name('admin.pages.sections.delete-image');
-});
+        Route::delete('pages/{page}/sections/{section}/images', [App\Http\Controllers\Admin\PageController::class, 'deleteSectionImage'])
+        ->name('admin.pages.sections.delete-image');
+    });
 });
 
 /* ---------- CRUD de productos (solo usuarios logueados) ---------- */
