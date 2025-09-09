@@ -22,7 +22,7 @@
     <style>
         /* Navigation Responsive Styles - VERSIÓN PROFESIONAL */
         nav {
-            background: linear-gradient(135deg, #8B4513 0%, #8B4513 100%);
+            background: linear-gradient(135deg, #CD853F 50%, #8B4513 100%);
             padding: 12px 20px;
             border-bottom: 3px solid #DEB887;
             position: relative;
@@ -291,37 +291,15 @@
 
             <!-- Desktop Navigation -->
             <div class="nav-links">
-                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Inicio</a>
-                <a href="{{ route('shop.index') }}">Productos</a>
-                <a href="{{ route('about') }}">Quiénes Somos</a>
-                <a href="{{ route('insiders') }}">Miembros</a>
-                <a href="{{ route('chefs') }}">Contacto</a>
-                <a href="{{ route('wholesale') }}">Servicios</a>
+                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
+                <a href="{{ route('admin.pages.index') }}" class="{{ request()->routeIs('admin.pages.index') ? 'active' : '' }}">Páginas</a>
+                <a href="{{ route('admin.countries.index') }}" class="{{ request()->routeIs('admin.countries.index') ? 'active' : '' }}">Paises</a>
+                <a href="{{ route('admin.cities.index') }}" class="{{ request()->routeIs('admin.cities.index') ? 'active' : '' }}">Ciudades</a>
+                <a href="{{ route('admin.categories.index') }}" class="{{ request()->routeIs('admin.categories.index') ? 'active' : '' }}">Categorías</a>
+                <a href="{{ route('admin.products.index') }}" class="{{ request()->routeIs('admin.products.index') ? 'active' : '' }}">Productos</a>
 
-                @role('admin')
-                <div class="dropdown admin-dropdown">
-                    <a class="dropdown-toggle admin-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-tools me-2"></i>Panel Admin <i class="fas fa-chevron-down ms-1"></i>
-                    </a>
-                    <ul class="dropdown-menu admin-menu">
-                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">
-                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.products.index') }}">
-                            <i class="fas fa-box me-2"></i>Admin Productos
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.categories.index') }}">
-                            <i class="fas fa-folder me-2"></i>Admin Categorías
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.countries.index') }}">
-                            <i class="fas fa-globe me-2"></i>Gestionar Paises
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.cities.index') }}">
-                            <i class="fas fa-city me-2"></i>Gestionar Ciudades
-                        </a></li>
-                    </ul>
-                </div>
-                @endrole
+                <a href="{{ route('admin.roles.index') }}" class="{{ request()->routeIs('admin.roles.index') ? 'active' : '' }}">Roles</a>
+                <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.index') ? 'active' : '' }}">Usuarios</a>
             </div>
 
             <!-- Desktop Icons -->

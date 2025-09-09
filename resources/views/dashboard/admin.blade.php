@@ -148,11 +148,11 @@
             </a>
 
             <!-- Configuración General -->
-            <div class="admin-card" style="opacity: 0.6; cursor: not-allowed;">
+            {{-- <div class="admin-card" style="opacity: 0.6; cursor: not-allowed;">
                 <span class="icon">⚙️</span>
                 <h4>Configuración</h4>
                 <p>Próximamente: Configuración general del sitio web.</p>
-            </div>
+            </div> --}}
 
         </div>
 

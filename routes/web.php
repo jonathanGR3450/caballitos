@@ -40,8 +40,6 @@ Route::put('/admin/questions/{question}', [ProductQuestionController::class, 'up
 
 
 //los de dentro de recipes
-Route::get('/wholesale', [WholesaleController::class, 'index'])->name('wholesale.form');
-Route::post('/wholesale', [WholesaleController::class, 'submit'])->name('wholesale.submit');
 Route::put('/admin/pages/{page}/sections/{section}', [App\Http\Controllers\Admin\PageController::class, 'updateSection'])->name('admin.pages.sections.update');
 Route::view('/chefs',   'chefs')->name('chefs');
 Route::view('/wholesale','wholesale')->name('wholesale');
@@ -94,7 +92,7 @@ Route::middleware(['auth', 'verified', 'verified.user'])->group(function () {
 
     // routes/web.php - SOLO cambia las rutas de páginas
 
-    Route::prefix('admin')->as('admin.')->group(function () {
+    Route::prefix('admin')->as('admin.')->middleware(['auth', 'role:admin'])->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);

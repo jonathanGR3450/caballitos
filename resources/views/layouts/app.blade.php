@@ -120,10 +120,10 @@ nav {
 }
 
 .nav-icons a {
-    color: #FAF9F6;
+    color: #DEB887;
     text-decoration: none;
     transition: all 0.3s ease;
-    text-shadow: none;
+    position: relative;
 }
 
 .nav-icons a:hover {
@@ -784,6 +784,12 @@ footer::before {
                 Inicio
             </a>
 
+            @role('comprador')
+                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    Mis Compras
+                </a>
+            @endrole
+
             <!-- Productos Dropdown -->
             <div class="nav-item">
                 <a href="#" class="has-submenu">
@@ -801,23 +807,11 @@ footer::before {
                         <div class="category-item">
                             <a href="{{ route('shop.index') }}">Todos los productos</a>
                         </div>
-                        <div class="category-item">
-                            <a href="{{ route('shop.index', ['category' => 'licuadoras']) }}">Licuadoras</a>
-                        </div>
-                        <div class="category-item">
-                            <a href="{{ route('shop.index', ['category' => 'freidoras']) }}">Freidoras de Aire</a>
-                        </div>
-                        <div class="category-item">
-                            <a href="{{ route('shop.index', ['category' => 'sanducheras']) }}">Sanducheras</a>
-                        </div>
-                        <div class="category-item">
-                            <a href="{{ route('shop.index', ['category' => 'pequenos']) }}">Pequeños Electrodomésticos</a>
-                        </div>
                     @endforelse
                 </div>
             </div>
 
-            <a href="{{ route('about') }}">
+            <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">
                 Quiénes Somos
             </a>
             
@@ -825,7 +819,7 @@ footer::before {
                 Contacto
             </a>
             
-            <a href="{{ route('recipes') }}">
+            <a href="{{ route('recipes') }}" class="{{ request()->routeIs('recipes') ? 'active' : '' }}">
                 Servicios
             </a>
         </div>
@@ -838,7 +832,7 @@ footer::before {
                     <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" title="Mi cuenta">
                         <i class="fas fa-user-circle"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end" style="background: #013105;">
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="{{ route('dashboard') }}">
                                 <i class="fas fa-user me-2"></i>Mi Cuenta
@@ -891,6 +885,12 @@ footer::before {
             <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">
                 Inicio
             </a>
+
+            @role('comprador')
+                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    Mis Compras
+                </a>
+            @endrole
             
             <!-- Productos en móvil con submenu -->
             <div class="mobile-nav-item">
@@ -904,15 +904,11 @@ footer::before {
                         </a>
                     @empty
                         <a href="{{ route('shop.index') }}">Todos los productos</a>
-                        <a href="{{ route('shop.index', ['category' => 'licuadoras']) }}">Licuadoras</a>
-                        <a href="{{ route('shop.index', ['category' => 'freidoras']) }}">Freidoras de Aire</a>
-                        <a href="{{ route('shop.index', ['category' => 'sanducheras']) }}">Sanducheras</a>
-                        <a href="{{ route('shop.index', ['category' => 'pequenos']) }}">Pequeños Electrodomésticos</a>
                     @endforelse
                 </div>
             </div>
             
-            <a href="{{ route('about') }}">
+            <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">
                 Quiénes Somos
             </a>
             
@@ -920,7 +916,7 @@ footer::before {
                 Contacto
             </a>
             
-            <a href="{{ route('recipes') }}">
+            <a href="{{ route('recipes') }}" class="{{ request()->routeIs('recipes') ? 'active' : '' }}">
                 Servicios
             </a>
 
@@ -963,7 +959,7 @@ footer::before {
         <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
-    @endauth
+    @endauth
 </nav>
 
     @include('admin.products._flash')
