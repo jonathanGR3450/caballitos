@@ -37,7 +37,7 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-        return redirect()->route('categories.index')->with('success', 'Categoría creada correctamente');
+        return redirect()->route('admin.categories.index')->with('success', 'Categoría creada correctamente');
     }
     // Método para mostrar formulario de edición
   public function edit(Category $category)
@@ -68,7 +68,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
                         ->with('success', 'Category updated successfully!');
     }
 // Método para eliminar categoría
@@ -82,10 +82,10 @@ public function destroy(Category $category)
         
         $category->delete();
         
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
                         ->with('success', 'Category deleted successfully!');
     } catch (\Exception $e) {
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
                         ->with('error', 'Error deleting category. Please try again.');
     }
 }

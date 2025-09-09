@@ -4,7 +4,7 @@
 <div class="container py-5 text-white">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-warning mb-0">Edit Category</h2>
-        <a href="{{ route('categories.index') }}" class="btn btn-secondary">
+        <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
             <i class="fas fa-arrow-left me-2"></i>Back to Categories
         </a>
     </div>
@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('categories.update', $category) }}" method="POST" enctype="multipart/form-data" class="p-4 rounded">
+    <form action="{{ route('admin.categories.update', $category) }}" method="POST" enctype="multipart/form-data" class="p-4 rounded">
         @csrf
         @method('PUT')
 
@@ -58,7 +58,7 @@
             <button type="submit" class="btn btn-warning fw-bold">
                 <i class="fas fa-save me-2"></i>Update Category
             </button>
-            <a href="{{ route('categories.index') }}" class="btn btn-secondary">
+            <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
                 <i class="fas fa-times me-2"></i>Cancel
             </a>
         </div>

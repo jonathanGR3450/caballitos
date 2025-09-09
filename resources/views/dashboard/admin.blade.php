@@ -106,13 +106,6 @@
                 <p>Edita el contenido de Inicio, Quiénes Somos, Servicios y Contacto. Agrega texto, imágenes y videos.</p>
             </a>
 
-            <!-- Productos -->
-            <a href="{{ route('admin.products.index') }}" class="admin-card">
-                <span class="icon">📦</span>
-                <h4>Productos</h4>
-                <p>Administra tu catálogo de productos, precios, stock e imágenes.</p>
-            </a>
-
             <!-- Países -->
             <a href="{{ route('admin.countries.index') }}" class="admin-card">
                 <span class="icon">🌍</span>
@@ -127,8 +120,32 @@
                 <p>Administra las ciudades disponibles para cada país.</p>
             </a>
 
-            <!-- Categorías (si tienes) -->
-       
+            <!-- Categorías -->
+            <a href="{{ route('admin.categories.index') }}" class="admin-card">
+                <span class="icon">🗂️</span>
+                <h4>Categorías</h4>
+                <p>Organiza tus productos en categorías para facilitar la navegación.</p>
+            </a>
+
+            <!-- Productos -->
+            <a href="{{ route('admin.products.index') }}" class="admin-card">
+                <span class="icon">📦</span>
+                <h4>Productos</h4>
+                <p>Administra tu catálogo de productos, precios, stock e imágenes.</p>
+            </a>
+
+            {{-- roles --}}
+            <a href="{{ route('admin.roles.index') }}" class="admin-card">
+                <span class="icon">🔐</span>
+                <h4>Roles</h4>
+                <p>Gestiona los roles de usuario en el sistema.</p>
+            </a>
+            {{-- usuarios --}}
+            <a href="{{ route('admin.users.index') }}" class="admin-card">
+                <span class="icon">👥</span>
+                <h4>Usuarios</h4>
+                <p>Administra los usuarios registrados en el sistema.</p>
+            </a>
 
             <!-- Configuración General -->
             <div class="admin-card" style="opacity: 0.6; cursor: not-allowed;">

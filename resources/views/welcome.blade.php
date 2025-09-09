@@ -535,7 +535,7 @@
                         <h4 class="card-title fw-bold text-dark mb-2" style="font-family: 'Georgia', serif;">
                             {{ $product->name }}
                         </h4>
-                        <p class="card-text text-muted">{{ Str::limit($product->description, 120) }}</p>
+                        <p class="card-text text-muted">{{ Str::limit(strip_tags($product->description), 120) }}</p>
 
                         <div class="d-flex justify-content-between align-items-center mt-4">
                             <div>

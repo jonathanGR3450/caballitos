@@ -3,9 +3,9 @@
 @section('content')
 <div class="container py-5 ">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="text-warning mb-0">Existing Categories </h2>
-        <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
-            <i class="fas fa-plus me-2"></i>Add New Category
+        <h2 class="text-warning mb-0">Existing Roles </h2>
+        <a href="{{ route('admin.roles.create') }}" class="btn btn-success">
+            <i class="fas fa-plus me-2"></i>Add New Role
         </a>
     </div>
 
@@ -23,49 +23,42 @@
         </div>
     @endif
 
-    @if($categories->count() > 0)
+    @if($roles->count() > 0)
         <div class="row">
-            @foreach($categories as $cat)
+            @foreach($roles as $role)
                 <div class="col-md-4 mb-4">
-                    <div class="card  category-card h-100">
-                        @if ($cat->image)
-                            <img src="{{ Storage::url($cat->image) }}" class="card-img-top" style="height: 200px; object-fit: cover;">
-                        @else
-                            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
-                                <i class="fas fa-image fa-3x text-muted"></i>
-                            </div>
-                        @endif
+                    <div class="card  role-card h-100">
                         
                         <div class="card-body d-flex flex-column">
                             <div class="mb-auto">
-                                <h5 class="card-title text-warning">{{ $cat->name }}</h5>
+                                <h5 class="card-title text-warning">{{ $role->name }}</h5>
                                 
-                                @if($cat->country)
+                                @if($role->country)
                                     <div class="mb-2">
                                         <span class="badge bg-info">
-                                            <i class="fas fa-flag me-1"></i>{{ $cat->country }}
+                                            <i class="fas fa-flag me-1"></i>{{ $role->country }}
                                         </span>
                                     </div>
                                 @endif
                                 
-                                @if($cat->description)
-                                    <p class="card-text ">{{ Str::limit($cat->description, 100) }}</p>
+                                @if($role->description)
+                                    <p class="card-text ">{{ Str::limit($role->description, 100) }}</p>
                                 @else
                                     <p class="card-text text-muted">No description available</p>
                                 @endif
                                 
                                 <small class="text-muted">
-                                    <i class="fas fa-calendar me-1"></i>Created: {{ $cat->created_at->format('M d, Y') }}
+                                    <i class="fas fa-calendar me-1"></i>Created: {{ $role->created_at->format('M d, Y') }}
                                 </small>
                             </div>
                             
                             <!-- Action Buttons -->
                             <div class="mt-3 d-flex gap-2">
-                                <a href="{{ route('admin.categories.edit', $cat->id) }}" class="btn btn-warning btn-sm flex-fill">
+                                <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-warning btn-sm flex-fill">
                                     <i class="fas fa-edit me-1"></i>Edit
                                 </a>
                                 
-                                <form action="{{ route('admin.categories.destroy', $cat->id) }}" method="POST" class="flex-fill" onsubmit="return confirmDelete('{{ $cat->name }}')">
+                                <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" class="flex-fill" onsubmit="return confirmDelete('{{ $role->name }}')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm w-100">
@@ -84,10 +77,10 @@
             <div class="mb-4">
                 <i class="fas fa-folder-open fa-5x text-muted"></i>
             </div>
-            <h4 class="text-muted">No Categories Found</h4>
-            <p class="text-muted">Start by creating your first category</p>
-            <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
-                <i class="fas fa-plus me-2"></i>Create First Category
+            <h4 class="text-muted">No Roles Found</h4>
+            <p class="text-muted">Start by creating your first role</p>
+            <a href="{{ route('admin.roles.create') }}" class="btn btn-success">
+                <i class="fas fa-plus me-2"></i>Create First Role
             </a>
         </div>
     @endif
@@ -95,23 +88,23 @@
 
 <style>
 /* Estilos adicionales para las tarjetas */
-.category-card {
+.role-card {
     border: 1px solid #DEB887;
     transition: all 0.3s ease;
     overflow: hidden;
 }
 
-.category-card:hover {
+.role-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15);
     border-color: #DEB887;
 }
 
-.category-card .card-img-top {
+.role-card .card-img-top {
     transition: transform 0.3s ease;
 }
 
-.category-card:hover .card-img-top {
+.role-card:hover .card-img-top {
     transform: scale(1.05);
 }
 
@@ -154,7 +147,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .category-card {
+    .role-card {
         margin-bottom: 1rem;
     }
     
@@ -170,8 +163,8 @@
 </style>
 
 <script>
-function confirmDelete(categoryName) {
-    return confirm(`Are you sure you want to delete the category "${categoryName}"?\n\nThis action cannot be undone.`);
+function confirmDelete(roleName) {
+    return confirm(`Are you sure you want to delete the role "${roleName}"?\n\nThis action cannot be undone.`);
 }
 
 // Auto-hide alerts after 5 seconds

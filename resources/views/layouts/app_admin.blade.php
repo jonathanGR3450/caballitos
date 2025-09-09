@@ -310,7 +310,7 @@
                         <li><a class="dropdown-item" href="{{ route('admin.products.index') }}">
                             <i class="fas fa-box me-2"></i>Admin Productos
                         </a></li>
-                        <li><a class="dropdown-item" href="{{ route('categories.index') }}">
+                        <li><a class="dropdown-item" href="{{ route('admin.categories.index') }}">
                             <i class="fas fa-folder me-2"></i>Admin Categorías
                         </a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.countries.index') }}">
@@ -336,6 +336,12 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                       
                         <li><hr class="dropdown-divider"></li>
+                        {{-- profile --}}
+                        <li>
+                            <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                <i class="fas fa-user-edit me-2"></i>Perfil
+                            </a>
+                        </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('logout') }}" 
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -448,6 +448,31 @@
                         </div>
                     </div>
 
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="role" class="form-label">
+                                <i class="fas fa-users" style="margin-right: 8px; color: #c41e3a;"></i>
+                                {{ __('Rol') }}
+                            </label>
+                            <select id="role"
+                                    name="role"
+                                    class="form-control @error('role') is-invalid @enderror"
+                                    required>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->name }}" 
+                                        {{ old('role', 'comprador') == $role->name ? 'selected' : '' }}>
+                                        {{ ucfirst($role->name) }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            @error('role')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                    </div>
+
                     <button type="submit" class="register-btn">
                         <i class="fas fa-user-plus" style="margin-right: 10px;"></i>
                         {{ __('Crear Cuenta') }}

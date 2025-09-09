@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data" class="p-4 rounded">
+    <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data" class="p-4 rounded">
         @csrf
 
         <div class="mb-3">
@@ -47,7 +47,7 @@
             <button type="submit" class="btn btn-success fw-bold">
                 <i class="fas fa-save me-2"></i>Save Category
             </button>
-            <a href="{{ route('categories.index') }}" class="btn btn-secondary">
+            <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left me-2"></i>Back to Categories
             </a>
         </div>
