@@ -133,6 +133,17 @@ Route::middleware(['auth', 'verified', 'verified.user'])->group(function () {
         Route::delete('pages/{page}/image', [App\Http\Controllers\Admin\PageController::class, 'deleteImage'])->name('pages.delete-image');
 
         Route::delete('pages/{page}/sections/{section}/images', [App\Http\Controllers\Admin\PageController::class, 'deleteSectionImage'])->name('pages.sections.delete-image');
+
+
+        Route::get('/pages', [App\Http\Controllers\Admin\PageController::class, 'index'])->name('index');
+        Route::get('/inicio/edit', [App\Http\Controllers\Admin\PageController::class, 'editInicio'])->name('edit-inicio');
+        Route::get('/quienes-somos/edit', [App\Http\Controllers\Admin\PageController::class, 'editQuienesSomos'])->name('edit-quienes-somos');
+        Route::get('/servicios/edit', [App\Http\Controllers\Admin\PageController::class, 'editServicios'])->name('edit-servicios');
+        Route::get('/contacto/edit', [App\Http\Controllers\Admin\PageController::class, 'editContacto'])->name('edit-contacto');
+        Route::get('/{page}/sections', [App\Http\Controllers\Admin\PageController::class, 'manageSections'])->name('sections');
+        Route::delete('/{page}/sections/{section}/images', [App\Http\Controllers\Admin\PageController::class, 'deleteSectionImage'])->name('sections.delete-image');
+        
+
     });
 });
 
@@ -159,21 +170,6 @@ Route::prefix('cart')->name('cart.')->group(function () {
     // Rutas de descuentos
     Route::post('/discount', [CartController::class, 'applyDiscount'])->name('apply-discount');
     Route::delete('/discount', [CartController::class, 'removeDiscount'])->name('remove-discount');
-});
-
-Route::prefix('admin/pages')->name('admin.pages.')->group(function () {
-    Route::get('/', [App\Http\Controllers\Admin\PageController::class, 'index'])->name('index');
-    
-    // Rutas que redirigen a secciones
-    Route::get('/inicio/edit', [App\Http\Controllers\Admin\PageController::class, 'editInicio'])->name('edit-inicio');
-    Route::get('/quienes-somos/edit', [App\Http\Controllers\Admin\PageController::class, 'editQuienesSomos'])->name('edit-quienes-somos');
-    Route::get('/servicios/edit', [App\Http\Controllers\Admin\PageController::class, 'editServicios'])->name('edit-servicios');
-    Route::get('/contacto/edit', [App\Http\Controllers\Admin\PageController::class, 'editContacto'])->name('edit-contacto');
-    
-    // NUEVAS RUTAS PARA SECCIONES
-    Route::get('/{page}/sections', [App\Http\Controllers\Admin\PageController::class, 'manageSections'])->name('sections');
-    // Route::put('/{page}/sections/{section}', [App\Http\Controllers\Admin\PageController::class, 'updateSection'])->name('sections.update');
-    Route::delete('/{page}/sections/{section}/images', [App\Http\Controllers\Admin\PageController::class, 'deleteSectionImage'])->name('sections.delete-image');
 });
 
 

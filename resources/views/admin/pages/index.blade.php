@@ -50,28 +50,28 @@
                         <td>
                             @switch($page->slug)
                                 @case('inicio')
-                                    <a href="{{ route('admin.pages.edit-inicio') }}" 
+                                    <a href="{{ route('admin.edit-inicio') }}" 
                                        class="btn btn-sm btn-warning me-1">
                                         <i class="fas fa-edit"></i> Editar Inicio
                                     </a>
                                     @break
                                 
                                 @case('quienes-somos')
-                                    <a href="{{ route('admin.pages.edit-quienes-somos') }}" 
+                                    <a href="{{ route('admin.edit-quienes-somos') }}" 
                                        class="btn btn-sm btn-warning me-1">
                                         <i class="fas fa-edit"></i> Editar Quiénes Somos
                                     </a>
                                     @break
                                 
                                 @case('servicios')
-                                    <a href="{{ route('admin.pages.edit-servicios') }}" 
+                                    <a href="{{ route('admin.edit-servicios') }}" 
                                        class="btn btn-sm btn-warning me-1">
                                         <i class="fas fa-edit"></i> Editar Servicios
                                     </a>
                                     @break
                                 
                                 @case('contacto')
-                                    <a href="{{ route('admin.pages.edit-contacto') }}" 
+                                    <a href="{{ route('admin.edit-contacto') }}" 
                                        class="btn btn-sm btn-warning me-1">
                                         <i class="fas fa-edit"></i> Editar Contacto
                                     </a>

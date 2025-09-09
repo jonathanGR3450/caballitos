@@ -32,7 +32,7 @@
                 <h2 class="mb-1"><i class="fas fa-home"></i> Editar Página de Inicio</h2>
                 <p class="text-light mb-0">Gestiona el contenido de todas las secciones de la página principal</p>
             </div>
-            <a href="{{ route('admin.pages.index') }}" class="btn btn-secondary">
+            <a href="{{ route('admin.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
             </a>
         </div>
@@ -77,7 +77,7 @@
 
                 <!-- Body de sección -->
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 

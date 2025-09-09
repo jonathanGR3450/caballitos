@@ -21,7 +21,7 @@
 <div class="form-container">
     <h1>✏️ Editar: {{ ucfirst(str_replace('-', ' ', $page->slug)) }}</h1>
     
-    <form action="{{ route('admin.pages.update', $page) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.update', $page) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -82,7 +82,7 @@ Una URL por línea...">{{ old('video_urls', implode("\n", $page->getVideosArray(
         {{-- Botones --}}
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-success">💾 Guardar</button>
-            <a href="{{ route('admin.pages.index') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('admin.index') }}" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
 </div>

@@ -32,7 +32,7 @@
                 <h2 class="mb-1"><i class="fas fa-phone"></i> Editar Página "Contacto"</h2>
                 <p class="text-light mb-0">Gestiona toda la información de contacto y servicios</p>
             </div>
-            <a href="{{ route('admin.pages.index') }}" class="btn btn-secondary">
+            <a href="{{ route('admin.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
             </a>
         </div>
@@ -52,7 +52,7 @@
                     <h4><i class="fas fa-flag me-2"></i> Banner Principal <span class="badge badge-hero ms-2">Hero</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
                         
                         <div class="field-group">
@@ -111,7 +111,7 @@
                     <h4><i class="fas fa-info-circle me-2"></i> Información Principal <span class="badge badge-info ms-2">Info</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -142,7 +142,7 @@
                     <h4><i class="fas fa-cogs me-2"></i> Servicios Ofrecidos <span class="badge badge-services ms-2">Services</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -249,7 +249,7 @@
                     <h4><i class="fas fa-address-book me-2"></i> Información de Contacto <span class="badge badge-contact ms-2">Contact</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -347,7 +347,7 @@
                     <h4><i class="fas fa-edit me-2"></i> Encabezado del Formulario <span class="badge badge-form ms-2">Form</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">

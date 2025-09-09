@@ -39,7 +39,7 @@
                 <h2 class="mb-1"><i class="fas fa-users"></i> Editar Página "Quiénes Somos"</h2>
                 <p class="text-light mb-0">Personaliza cada sección con campos específicos</p>
             </div>
-            <a href="{{ route('admin.pages.index') }}" class="btn btn-secondary">
+            <a href="{{ route('admin.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
             </a>
         </div>
@@ -59,7 +59,7 @@
                     <h4><i class="fas fa-flag me-2"></i> Banner Principal <span class="badge badge-hero ms-2">Hero</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
                         
                         <div class="field-group">
@@ -123,7 +123,7 @@
                     <h4><i class="fas fa-award me-2"></i> Sección: Tradición y Calidad <span class="badge badge-legacy ms-2">Legacy</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -185,7 +185,7 @@
                     <h4><i class="fas fa-shield-alt me-2"></i> Sección: Garantía y Servicio <span class="badge badge-quality ms-2">Quality</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -269,7 +269,7 @@
                     <h4><i class="fas fa-heart me-2"></i> Sección: Pasión del Equipo <span class="badge badge-passion ms-2">Passion</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -335,7 +335,7 @@
                     <h4><i class="fas fa-star me-2"></i> Sección: Por Qué Elegirnos <span class="badge badge-benefits ms-2">Benefits</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -433,7 +433,7 @@
                     <h4><i class="fas fa-rocket me-2"></i> Sección: Llamada a la Acción <span class="badge badge-cta ms-2">CTA</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">

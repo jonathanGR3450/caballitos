@@ -292,7 +292,7 @@
             <!-- Desktop Navigation -->
             <div class="nav-links">
                 <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
-                <a href="{{ route('admin.pages.index') }}" class="{{ request()->routeIs('admin.pages.index') ? 'active' : '' }}">Páginas</a>
+                <a href="{{ route('admin.index') }}" class="{{ request()->routeIs('admin.pages.index') ? 'active' : '' }}">Páginas</a>
                 <a href="{{ route('admin.countries.index') }}" class="{{ request()->routeIs('admin.countries.index') ? 'active' : '' }}">Paises</a>
                 <a href="{{ route('admin.cities.index') }}" class="{{ request()->routeIs('admin.cities.index') ? 'active' : '' }}">Ciudades</a>
                 <a href="{{ route('admin.categories.index') }}" class="{{ request()->routeIs('admin.categories.index') ? 'active' : '' }}">Categorías</a>

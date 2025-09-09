@@ -35,7 +35,7 @@
                 <h2 class="mb-1"><i class="fas fa-search"></i> SEO: {{ ucfirst(str_replace('-', ' ', $page->slug)) }}</h2>
                 <p class="text-light mb-0">Configura meta tags, Open Graph y Schema.org para mejorar el posicionamiento</p>
             </div>
-            <a href="{{ route('admin.pages.index') }}" class="btn btn-secondary">
+            <a href="{{ route('admin.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
             </a>
         </div>
@@ -295,7 +295,7 @@
 
             {{-- BOTONES --}}
             <div class="d-flex justify-content-between">
-                <a href="{{ route('admin.pages.index') }}" class="btn btn-secondary btn-lg">
+                <a href="{{ route('admin.index') }}" class="btn btn-secondary btn-lg">
                     <i class="fas fa-arrow-left me-2"></i> Cancelar
                 </a>
                 <button type="submit" class="btn btn-success btn-lg">
