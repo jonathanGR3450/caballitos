@@ -313,6 +313,25 @@
                                 </a>
                             @endauth
                         </div>
+
+                        @php
+                            $compareIds = session('compare.products', []);
+                            $inCompare = in_array($product->id, $compareIds);
+                        @endphp
+                        <div class="pc-fav" style="position:absolute;top:10px;right:50px;z-index:10;">
+                            <form action="{{ route('compare.toggle', $product) }}"
+                                method="POST"
+                                class="compare-toggle d-inline"
+                                data-product-id="{{ $product->id }}">
+                                @csrf
+                                <button type="submit"
+                                        class="btn btn-sm {{ $inCompare ? 'btn-primary' : 'btn-outline-primary' }}"
+                                        aria-pressed="{{ $inCompare ? 'true' : 'false' }}"
+                                        aria-label="{{ $inCompare ? 'Quitar de comparar' : 'Agregar a comparar' }}">
+                                    <i class="fas fa-balance-scale"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
 
                     {{-- BODY --}}
@@ -363,27 +382,6 @@
                                 <span>{{ $product->stock <= 0 ? 'Agotado' : 'Agregar' }}</span>
                             </button>
                         </form>
-                        {{-- <div class="position-absolute top-0 end-0 p-2">
-                            @auth
-                                @php $isFav = in_array($product->id, $favoritesIds ?? []); @endphp
-                                <form action="{{ route('favorites.toggle', $product) }}"
-                                    method="POST"
-                                    class="fav-toggle d-inline"
-                                    data-product-id="{{ $product->id }}">
-                                    @csrf
-                                    <button type="submit"
-                                            class="btn btn-sm {{ $isFav ? 'btn-danger' : 'btn-outline-danger' }}"
-                                            aria-pressed="{{ $isFav ? 'true' : 'false' }}"
-                                            aria-label="{{ $isFav ? 'Quitar de favoritos' : 'Agregar a favoritos' }}">
-                                        <i class="{{ $isFav ? 'fas' : 'far' }} fa-heart"></i>
-                                    </button>
-                                </form>
-                            @else
-                                <a href="{{ route('login') }}" class="btn btn-sm btn-outline-danger" title="Inicia sesión para guardar favoritos">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            @endauth
-                        </div> --}}
                     </div>
                 </div>
             @empty

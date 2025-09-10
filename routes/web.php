@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Auth\ChatController;
 use App\Http\Controllers\Auth\FavoriteController;
 use App\Http\Controllers\Auth\ProductVendedorController;
+use App\Http\Controllers\CompareController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductQuestionController;
 use App\Http\Controllers\RoleController;
@@ -86,6 +87,11 @@ Route::get('/account-not-verified', function () {
     return view('auth.account-not-verified');
 })->name('verification.notice.admin');
 
+
+// rutas comprar productos
+Route::get('/comparar', [CompareController::class, 'index'])->name('compare.index');
+Route::post('/comparar/toggle/{product}', [CompareController::class, 'toggle'])->name('compare.toggle');
+Route::delete('/comparar/clear', [CompareController::class, 'clear'])->name('compare.clear');
 
 /* ---------- Dashboard y perfil ---------- */
 Route::middleware(['auth', 'verified', 'verified.user'])->group(function () {

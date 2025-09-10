@@ -97,9 +97,32 @@
                     <a href="{{ route('shop.index') }}" class="btn btn-outline-secondary">
                         <i class="fas fa-arrow-left"></i> Back to Shop
                     </a>
-                    <button class="btn btn-outline-danger" onclick="toggleWishlist()">
-                        <i class="fas fa-heart"></i> Add to Wishlist
-                    </button>
+
+                    @auth
+                        @php
+                            // En detalle no pasa nada si consultamos 1 vez a DB
+                            $isFav = auth()->user()
+                                ->favoriteProducts()
+                                ->where('products.id', $product->id)
+                                ->exists();
+                        @endphp
+
+                        <form id="favForm" action="{{ route('favorites.toggle', $product) }}" method="POST" class="d-inline">
+                            @csrf
+                            <button id="favBtn" type="submit"
+                                    class="btn {{ $isFav ? 'btn-danger' : 'btn-outline-danger' }}"
+                                    aria-pressed="{{ $isFav ? 'true' : 'false' }}"
+                                    aria-label="{{ $isFav ? 'Quitar de favoritos' : 'Agregar a favoritos' }}">
+                                <i class="{{ $isFav ? 'fas' : 'far' }} fa-heart"></i>
+                                <span class="fav-label">{{ $isFav ? 'Remove to Wishlist' : 'Add to Wishlist' }}</span>
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-outline-danger"
+                        title="Inicia sesión para guardar favoritos">
+                            <i class="far fa-heart"></i> Add to Wishlist
+                        </a>
+                    @endauth
                 </div>
 
                 <!-- Información adicional -->

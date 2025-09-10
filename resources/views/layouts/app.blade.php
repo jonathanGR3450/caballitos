@@ -893,6 +893,79 @@ footer::before {
     </div>
 </footer>
 
+@php
+  $cmpIds = session('compare.products', []);
+  $cmpCount = is_array($cmpIds) ? count($cmpIds) : 0;
+@endphp
+
+<div id="compareBar" class="compare-bar {{ $cmpCount ? '' : 'd-none' }}">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div>
+      <strong>{{ $cmpCount }}</strong> producto(s) para comparar
+    </div>
+    <div class="d-flex gap-2">
+      <a href="{{ route('compare.index') }}" class="btn btn-primary">Comparar ahora</a>
+      <form action="{{ route('compare.clear') }}" method="POST" onsubmit="return confirm('¿Vaciar la comparación?')">
+        @csrf @method('DELETE')
+        <button class="btn btn-outline-secondary">Vaciar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+.compare-bar{
+  position: fixed; left: 0; right:0; bottom: 15px;
+  z-index: 1050; padding: 10px 0;
+  background: rgba(250,249,246,.95);
+  border-top: 2px solid #DEB887; border-bottom: 2px solid #DEB887;
+  box-shadow: 0 8px 25px rgba(222,184,135,.45);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const token = document.querySelector('meta[name="csrf-token"]')?.content;
+
+  document.querySelectorAll('form.compare-toggle').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      if(!btn) return;
+      btn.disabled = true;
+
+      try{
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'X-CSRF-TOKEN': token, 'Accept': 'application/json' }
+        });
+        if(!res.ok){ form.submit(); return; }
+        const data = await res.json();
+
+        const isAdded = data.status === 'added';
+        btn.classList.toggle('btn-primary', isAdded);
+        btn.classList.toggle('btn-outline-primary', !isAdded);
+        btn.setAttribute('aria-pressed', isAdded ? 'true' : 'false');
+        btn.setAttribute('aria-label', isAdded ? 'Quitar de comparar' : 'Agregar a comparar');
+
+        // Mostrar/actualizar barra
+        const bar = document.getElementById('compareBar');
+        if (bar){
+          bar.classList.toggle('d-none', data.count === 0);
+          const strong = bar.querySelector('strong');
+          if (strong) strong.textContent = data.count;
+        }
+      }catch(err){
+        form.submit();
+      }finally{
+        btn.disabled = false;
+      }
+    }, { passive:false });
+  });
+});
+</script>
+
+
 <script>
 
      function toggleMobileMenu() {

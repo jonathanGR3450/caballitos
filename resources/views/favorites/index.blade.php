@@ -85,6 +85,24 @@
                                 </a>
                             @endauth
                         </div>
+                        @php
+                            $compareIds = session('compare.products', []);
+                            $inCompare = in_array($product->id, $compareIds);
+                        @endphp
+                        <div class="pc-fav" style="position:absolute;top:10px;right:50px;z-index:10;">
+                            <form action="{{ route('compare.toggle', $product) }}"
+                                method="POST"
+                                class="compare-toggle d-inline"
+                                data-product-id="{{ $product->id }}">
+                                @csrf
+                                <button type="submit"
+                                        class="btn btn-sm {{ $inCompare ? 'btn-primary' : 'btn-outline-primary' }}"
+                                        aria-pressed="{{ $inCompare ? 'true' : 'false' }}"
+                                        aria-label="{{ $inCompare ? 'Quitar de comparar' : 'Agregar a comparar' }}">
+                                    <i class="fas fa-balance-scale"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
 
                     {{-- BODY --}}
