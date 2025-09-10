@@ -31,7 +31,13 @@ class Product extends Model
         'vence',
         'fecha_vencimiento',
         'tipo_listado',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     // Scope para obtener productos vencidos
     public function scopeVencidos($query)

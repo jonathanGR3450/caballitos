@@ -833,6 +833,12 @@
                         <h3 class="pc-title">
                             <a href="{{ route('product.show', $product) }}">{{ $product->name }}</a>
                         </h3>
+                        
+                        @isset($product->user_id)
+                            <h3 class="pc-title">
+                                <a href="{{ route('vendedor.perfil', $product->user) }}">Vendedor: {{ $product->user->name }}</a>
+                            </h3>
+                        @endisset
 
                         <div class="mb-2">
                             <strong>Estado:</strong>

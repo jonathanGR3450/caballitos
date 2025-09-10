@@ -1,38 +1,5 @@
 @csrf
 
-<style>
-/* Fondo principal para evitar el blanco */
-body, .container, .container-fluid {
-    background: #FAF9F6 !important;
-    color: #101820;
-}
-
-/* Asegurar que el contenedor del formulario tenga fondo */
-.form-container, .main-content {
-    background: #FAF9F6;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #DEB887;
-}
-
-/* Dark mode amigable dentro del editor */
-.ck-content {
-  background: #FAF9F6 !important;
-  color: #101820 !important;
-}
-.ck.ck-editor__main>.ck-editor__editable {
-  border-color: #DEB887 !important;
-}
-.ck.ck-toolbar {
-  background: #FAF9F6 !important;
-  border-color: #DEB887 !important;
-}
-.ck.ck-button, .ck.ck-toolbar__separator {
-  filter: brightness(0.9);
-}
-.btn-success { background-color: #DEB887; border-color: #DEB887; }
-.btn-success:hover { background-color: #f7a831; border-color: #f7a831; color: #101820; }
-</style>
 
 <div class="form-container">
 
@@ -341,7 +308,7 @@ body, .container, .container-fluid {
 
 <div class="d-flex justify-content-between mt-4">
     <button class="btn btn-success px-4">💾 Save Product</button>
-    <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Cancel</a>
+    <a href="{{ route('vendedor.products.index') }}" class="btn btn-secondary">Cancel</a>
 </div>
 
 </div>
@@ -380,11 +347,6 @@ body, .container, .container-fluid {
   .then(editor => {
     // Ajuste visual para dark mode
     const editable = editor.ui.getEditableElement();
-    editable.style.backgroundColor = '#111';
-    editable.style.color = '#e6e6e6';
-    editable.style.minHeight = '180px';
-    editable.style.border = '1px solid #444';
-    editable.style.borderRadius = '6px';
   })
   .catch(console.error);
 let priceIndex = {{ isset($product) && $product->prices->count() > 0 ? $product->prices->count() : 1 }};

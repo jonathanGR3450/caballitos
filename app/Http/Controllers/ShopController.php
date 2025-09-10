@@ -24,121 +24,121 @@ use Square\Types\Currency;
 class ShopController extends Controller
 {
 
-public function index(Request $request) 
-{
-    $query = Product::vigentes()->with(['images', 'category', 'extra']);
-    
-    // 🔹 Filtro por categoría (por ID como espera la vista)
-    if ($request->filled('category')) {
-        $query->where('category_id', $request->category);
-    }
-    
-    // 🔹 Filtro por país (en la categoría)
-    if ($request->filled('country')) {
-        $country = trim($request->country);
-        $query->whereHas('category', function ($q) use ($country) {
-            $q->where('country', $country);
+    public function index(Request $request) 
+    {
+        $query = Product::vigentes()->with(['images', 'category', 'extra']);
+        
+        // 🔹 Filtro por categoría (por ID como espera la vista)
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->category);
+        }
+        
+        // 🔹 Filtro por país (en la categoría)
+        if ($request->filled('country')) {
+            $country = trim($request->country);
+            $query->whereHas('category', function ($q) use ($country) {
+                $q->where('country', $country);
+            });
+        }
+
+        // filtro por estado
+        if ($request->filled('estado')) {
+            $query->where('estado', $request->estado);
+        }
+
+        // filtro por tipo lista
+        if ($request->filled('tipo_listado')) {
+            $query->where('tipo_listado', $request->tipo_listado);
+        }
+
+        // 🔹 Filtro por rango de precios
+        if ($request->filled('price_min')) {
+            $query->whereRaw('(COALESCE(price, 0) + COALESCE(interest, 0)) >= ?', [$request->price_min]);
+        }
+        if ($request->filled('price_max')) {
+            $query->whereRaw('(COALESCE(price, 0) + COALESCE(interest, 0)) <= ?', [$request->price_max]);
+        }
+
+        // 🔹 Filtros por extra
+        $query->whereHas('extra', function ($q) use ($request) {
+            if ($request->filled('ubicacion')) {
+                $q->where('ubicacion', 'LIKE', '%' . $request->ubicacion . '%');
+            }
+            if ($request->filled('raza')) {
+                $q->where('raza', 'LIKE', '%' . $request->raza . '%');
+            }
+            if ($request->filled('edad')) {
+                $q->where('edad', 'LIKE', '%' . $request->edad . '%');
+            }
+            if ($request->filled('genero')) {
+                $q->where('genero', $request->genero);
+            }
+            if ($request->filled('pedigri')) {
+                $q->where('pedigri', $request->pedigri);
+            }
+            if ($request->filled('entrenamiento')) {
+                $q->where('entrenamiento', 'LIKE', '%' . $request->entrenamiento . '%');
+            }
+            if ($request->filled('historial_salud')) {
+                $q->where('historial_salud', 'LIKE', '%' . $request->historial_salud . '%');
+            }
         });
-    }
 
-    // filtro por estado
-    if ($request->filled('estado')) {
-        $query->where('estado', $request->estado);
+        // 🔹 Búsqueda general (en nombre y descripción del producto)
+        if ($request->filled('search')) {
+            $search = trim($request->search);
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%");
+            });
+        }
+        
+        // 🔹 Ordenamiento
+        switch ($request->get('sort')) {
+            case 'price_low':  
+                $query->orderByRaw('(COALESCE(price, 0) + COALESCE(interest, 0)) ASC'); 
+                break;
+            case 'price_high': 
+                $query->orderByRaw('(COALESCE(price, 0) + COALESCE(interest, 0)) DESC'); 
+                break;
+            case 'name':       
+                $query->orderBy('name', 'asc');   
+                break;
+            case 'newest':     
+                $query->latest();                 
+                break;
+            default:           
+                $query->latest();                 
+                break;
+        }
+        
+        // 🔹 Paginar productos
+        $products = $query->paginate(12)->appends($request->query());
+        
+        // 🔹 Obtener categorías completas (como espera la vista)
+        $categories = \App\Models\Category::query()
+            ->withCount('products')
+            ->orderBy('name')
+            ->get();
+        
+        // 🔹 Obtener países disponibles
+        $countries = \App\Models\Category::query()
+            ->select('country')
+            ->whereNotNull('country')
+            ->where('country', '!=', '')
+            ->distinct()
+            ->orderBy('country')
+            ->pluck('country');
+        
+        // Detectar si hay filtros aplicados
+        $hasFilters = $request->hasAny([
+            'category', 'country', 'search', 'sort',
+            'price_min', 'price_max',
+            'ubicacion', 'raza', 'edad', 'genero', 'pedigri', 'entrenamiento', 'historial_salud'
+        ]);
+        
+        return view('shop.index', compact('products', 'categories', 'countries', 'hasFilters'));
     }
-
-    // filtro por tipo lista
-    if ($request->filled('tipo_listado')) {
-        $query->where('tipo_listado', $request->tipo_listado);
-    }
-
-    // 🔹 Filtro por rango de precios
-    if ($request->filled('price_min')) {
-        $query->whereRaw('(COALESCE(price, 0) + COALESCE(interest, 0)) >= ?', [$request->price_min]);
-    }
-    if ($request->filled('price_max')) {
-        $query->whereRaw('(COALESCE(price, 0) + COALESCE(interest, 0)) <= ?', [$request->price_max]);
-    }
-
-    // 🔹 Filtros por extra
-    $query->whereHas('extra', function ($q) use ($request) {
-        if ($request->filled('ubicacion')) {
-            $q->where('ubicacion', 'LIKE', '%' . $request->ubicacion . '%');
-        }
-        if ($request->filled('raza')) {
-            $q->where('raza', 'LIKE', '%' . $request->raza . '%');
-        }
-        if ($request->filled('edad')) {
-            $q->where('edad', 'LIKE', '%' . $request->edad . '%');
-        }
-        if ($request->filled('genero')) {
-            $q->where('genero', $request->genero);
-        }
-        if ($request->filled('pedigri')) {
-            $q->where('pedigri', $request->pedigri);
-        }
-        if ($request->filled('entrenamiento')) {
-            $q->where('entrenamiento', 'LIKE', '%' . $request->entrenamiento . '%');
-        }
-        if ($request->filled('historial_salud')) {
-            $q->where('historial_salud', 'LIKE', '%' . $request->historial_salud . '%');
-        }
-    });
-
-    // 🔹 Búsqueda general (en nombre y descripción del producto)
-    if ($request->filled('search')) {
-        $search = trim($request->search);
-        $query->where(function ($q) use ($search) {
-            $q->where('name', 'LIKE', "%{$search}%")
-              ->orWhere('description', 'LIKE', "%{$search}%");
-        });
-    }
-    
-    // 🔹 Ordenamiento
-    switch ($request->get('sort')) {
-        case 'price_low':  
-            $query->orderByRaw('(COALESCE(price, 0) + COALESCE(interest, 0)) ASC'); 
-            break;
-        case 'price_high': 
-            $query->orderByRaw('(COALESCE(price, 0) + COALESCE(interest, 0)) DESC'); 
-            break;
-        case 'name':       
-            $query->orderBy('name', 'asc');   
-            break;
-        case 'newest':     
-            $query->latest();                 
-            break;
-        default:           
-            $query->latest();                 
-            break;
-    }
-    
-    // 🔹 Paginar productos
-    $products = $query->paginate(12)->appends($request->query());
-    
-    // 🔹 Obtener categorías completas (como espera la vista)
-    $categories = \App\Models\Category::query()
-        ->withCount('products')
-        ->orderBy('name')
-        ->get();
-    
-    // 🔹 Obtener países disponibles
-    $countries = \App\Models\Category::query()
-        ->select('country')
-        ->whereNotNull('country')
-        ->where('country', '!=', '')
-        ->distinct()
-        ->orderBy('country')
-        ->pluck('country');
-    
-    // Detectar si hay filtros aplicados
-    $hasFilters = $request->hasAny([
-        'category', 'country', 'search', 'sort',
-        'price_min', 'price_max',
-        'ubicacion', 'raza', 'edad', 'genero', 'pedigri', 'entrenamiento', 'historial_salud'
-    ]);
-    
-    return view('shop.index', compact('products', 'categories', 'countries', 'hasFilters'));
-}
 
 
 

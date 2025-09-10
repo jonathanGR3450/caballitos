@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController; // <-- NUEVO
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Auth\ProductVendedorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductQuestionController;
 use App\Http\Controllers\RoleController;
@@ -28,6 +29,7 @@ Route::get('/checkout', [ShopController::class, 'checkout'])->name('checkout.ind
 Route::post('/checkout/calculate', [ShopController::class, 'calculateShippingAndTax'])->name('checkout.calculate');
 Route::post('/order/process', [ShopController::class, 'processOrder'])->name('order.process');
 
+Route::get('/vendedor/perfil/{user}', [\App\Http\Controllers\VendedorController::class, 'perfil'])->name('vendedor.perfil');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
@@ -90,7 +92,11 @@ Route::middleware(['auth', 'verified', 'verified.user'])->group(function () {
     Route::patch('/profile',  [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // routes/web.php - SOLO cambia las rutas de páginas
+    Route::post('/vendedor/perfil/rate/{user}', [\App\Http\Controllers\VendedorController::class, 'store'])->name('vendedor.rate');
+    // ruta para cargar productos siendo vendedor
+    Route::prefix('vendedor')->as('vendedor.')->middleware(['auth', 'role:vendedor'])->group(function () {
+        Route::resource('/vendedor/products', ProductVendedorController::class);
+    });
 
     Route::prefix('admin')->as('admin.')->middleware(['auth', 'role:admin'])->group(function () {
         Route::resource('categories', CategoryController::class);

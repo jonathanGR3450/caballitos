@@ -28,43 +28,53 @@ class ProductController extends Controller
         return view('admin.products.create', compact('categories','countries'));
     }
 
-    /*──────────────────────── STORE ───────────────────────*/
-public function store(Request $request)
-{
-    $data = $this->validated($request);
+    protected function saveProduct(Request $request)
+    {
+        $data = $this->validated($request);
 
-    try {
-        DB::beginTransaction();
-        
-        $product = Product::create($data);
+        try {
+            DB::beginTransaction();
+            
+            $product = Product::create($data);
 
-        if ($request->has('has_extras')) {
-            $product->extra()->create($request->only([
-                'ubicacion','raza','edad','genero','pedigri','entrenamiento','historial_salud'
-            ]));
-        }
-
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $file) {
-                $path = $file->store('products', 'public');
-                $product->images()->create(['image' => $path]);
+            if ($request->has('has_extras')) {
+                $product->extra()->create($request->only([
+                    'ubicacion','raza','edad','genero','pedigri','entrenamiento','historial_salud'
+                ]));
             }
-        }
 
-        // crear Price
-        $prices = $request->input('prices', []);
-        foreach ($prices as $priceData) {
-            $product->prices()->create($priceData);
-        }
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $file) {
+                    $path = $file->store('products', 'public');
+                    $product->images()->create(['image' => $path]);
+                }
+            }
 
-        DB::commit();
-        return redirect()->route('admin.products.index')
-                        ->with('success', 'Producto creado ✅');
-    } catch (\Exception $e) {
-        DB::rollback();
-        return back()->with('error', 'Error al crear el producto');
+            // crear Price
+            $prices = $request->input('prices', []);
+            foreach ($prices as $priceData) {
+                $product->prices()->create($priceData);
+            }
+
+            DB::commit();
+            return $product;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
-}
+
+    /*──────────────────────── STORE ───────────────────────*/
+    public function store(Request $request)
+    {
+        try {
+            $this->saveProduct($request);
+            return redirect()->route('admin.products.index')
+                ->with('success', 'Producto creado ✅');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error al crear el producto');
+        }
+    }
 
     /*──────────────────────── EDIT ────────────────────────*/
 public function edit($id)
@@ -108,6 +118,7 @@ public function update(Request $request, Product $product)
         'pedigri'    => $request->has_extras ? ['required', 'boolean'] : ['nullable', 'boolean'],
         'entrenamiento' => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
         'historial_salud' => $request->has_extras ? ['required', 'string'] : ['nullable', 'string'],
+        'has_extras' => ['nullable', 'boolean']
     ]);
 
     // Actualizar el producto base (excluyendo images y prices)
@@ -178,9 +189,9 @@ public function destroy(Product $product)
 }
 
     /*──────────────────── VALIDACIÓN CENTRAL ──────────────*/
- private function validated(Request $request): array
+ public function validated(Request $request): array
 {
-    return $request->validate([
+    $rules = [
         'name'        => ['required', 'string', 'max:255'],
         'description' => ['nullable', 'string'],
         'price'       => ['required', 'numeric', 'min:0'],
@@ -190,7 +201,7 @@ public function destroy(Product $product)
         'avg_weight'  => ['nullable', 'string', 'max:250'],
         'estado'      => ['required', 'in:' . implode(',', Product::getEstados())],
         'vence'      => ['required', 'boolean'],
-        'fecha_vencimiento' => 'required_if:vence,1|date|after_or_equal:today',
+        'fecha_vencimiento' => ['required_if:vence,1','date','after_or_equal:today'],
         'tipo_listado' => ['required', 'in:' . implode(',', Product::getTiposListado())],
         'ubicacion'  => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
         'raza'       => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
@@ -199,7 +210,9 @@ public function destroy(Product $product)
         'pedigri'    => $request->has_extras ? ['required', 'boolean'] : ['nullable', 'boolean'],
         'entrenamiento' => $request->has_extras ? ['required', 'string', 'max:250'] : ['nullable', 'string', 'max:250'],
         'historial_salud' => $request->has_extras ? ['required', 'string'] : ['nullable', 'string'],
-    ]);
+        'has_extras' => ['nullable', 'boolean'],
+    ];
+    return $request->validate($rules);
 }
  public function show(Product $product)
     {
