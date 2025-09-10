@@ -94,6 +94,29 @@
                             </li>
                         </ul>
                     </div>
+                    {{-- @php
+                        $unreadGlobal = auth()->user()->unreadMessagesCount(); // usa tu método del modelo
+                    @endphp
+                    <li class="nav-item position-relative">
+                        <a class="nav-link" href="{{ route('chats.index') }}" title="Mensajes">
+                            <i class="bi bi-chat-dots"></i>
+                            @if($unreadGlobal > 0)
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ $unreadGlobal > 99 ? '99+' : $unreadGlobal }}
+                                </span>
+                            @endif
+                        </a>
+                    </li>
+                     --}}
+                    <li class="nav-item">
+                        @php
+                            $unreadGlobal = auth()->user()->unreadMessagesCount() ?? 0;
+                        @endphp
+                        <a class="nav-link position-relative" href="{{ route('chats.index') }}">
+                            <i class="fas fa-envelope"></i>
+                            <span class="badge bg-secondary ms-1">{{ $unreadGlobal }}</span>
+                        </a>
+                    </li>
                 @else
                     <!-- Usuario no autenticado -->
                     <a href="{{ route('login') }}" title="Iniciar sesión">

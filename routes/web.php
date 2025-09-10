@@ -8,11 +8,13 @@ use App\Http\Controllers\Admin\ProductController; // <-- NUEVO
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Auth\ChatController;
 use App\Http\Controllers\Auth\ProductVendedorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductQuestionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VendedorController;
 
 /* ---------- Landing y páginas públicas ---------- */
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -92,8 +94,21 @@ Route::middleware(['auth', 'verified', 'verified.user'])->group(function () {
     Route::patch('/profile',  [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::post('/vendedor/perfil/rate/{user}', [\App\Http\Controllers\VendedorController::class, 'store'])->name('vendedor.rate');
+    
+    // Listar mis chats
+    Route::get('/chats', [ChatController::class, 'index'])->name('chats.index');
+    // Abrir un chat
+    Route::get('/chats/{chat}', [ChatController::class, 'show'])->name('chats.show');
+    // Enviar mensaje
+    Route::post('/chats/{chat}/messages', [ChatController::class, 'send'])->name('chats.send');
+    // Iniciar o continuar chat desde el perfil del vendedor
+    Route::post('/chats/start/{vendedor}', [ChatController::class, 'start'])->name('chats.start');
+    // Endpoint rápido para contar no leídos (útil para AJAX/polling si quieres)
+    Route::get('/chats/unread-count', [ChatController::class, 'unreadCount'])->name('chats.unreadCount');
+
+
     // ruta para cargar productos siendo vendedor
+    Route::post('/vendedor/perfil/rate/{user}', [\App\Http\Controllers\VendedorController::class, 'store'])->name('vendedor.rate');
     Route::prefix('vendedor')->as('vendedor.')->middleware(['auth', 'role:vendedor'])->group(function () {
         Route::resource('/vendedor/products', ProductVendedorController::class);
     });

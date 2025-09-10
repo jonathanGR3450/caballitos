@@ -604,6 +604,16 @@
                 <button type="submit" class="btn btn-primary">Enviar calificación</button>
             </form>
         </div>
+
+        @if(auth()->id() !== $user->id)
+            <form action="{{ route('chats.start', $user) }}" method="POST" class="d-inline">
+                @csrf
+                <button class="btn btn-primary mt-4">
+                    Mensaje al vendedor
+                </button>
+            </form>
+        @endif
+
     @endauth
 
 </div>
