@@ -85,6 +85,11 @@ class Product extends Model
         return $this->hasMany(ProductQuestion::class);
     }
 
+    public function favoredBy()
+    {
+        return $this->belongsToMany(User::class, 'favorite_products')->withTimestamps();
+    }
+
     public static function getEstados()
     {
         return [

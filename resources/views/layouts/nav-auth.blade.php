@@ -94,20 +94,6 @@
                             </li>
                         </ul>
                     </div>
-                    {{-- @php
-                        $unreadGlobal = auth()->user()->unreadMessagesCount(); // usa tu método del modelo
-                    @endphp
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="{{ route('chats.index') }}" title="Mensajes">
-                            <i class="bi bi-chat-dots"></i>
-                            @if($unreadGlobal > 0)
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    {{ $unreadGlobal > 99 ? '99+' : $unreadGlobal }}
-                                </span>
-                            @endif
-                        </a>
-                    </li>
-                     --}}
                     <li class="nav-item">
                         @php
                             $unreadGlobal = auth()->user()->unreadMessagesCount() ?? 0;
@@ -115,6 +101,20 @@
                         <a class="nav-link position-relative" href="{{ route('chats.index') }}">
                             <i class="fas fa-envelope"></i>
                             <span class="badge bg-secondary ms-1">{{ $unreadGlobal }}</span>
+                        </a>
+                    </li>
+
+                    @php
+                        // Puedes cachear esto si prefieres
+                        $favCount = auth()->user()->favoriteProducts()->count() ?? 0;
+                    @endphp
+                    <li class="nav-item position-relative">
+                        <a class="nav-link" href="{{ route('favorites.index') }}" title="Mis favoritos">
+                            <i class="fas fa-heart"></i>
+                            <span class="badge bg-secondary ms-1">{{ $favCount }}</span>
+                            {{-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ $favCount > 99 ? '99+' : $favCount }}
+                            </span> --}}
                         </a>
                     </li>
                 @else

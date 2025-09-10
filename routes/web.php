@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Auth\ChatController;
+use App\Http\Controllers\Auth\FavoriteController;
 use App\Http\Controllers\Auth\ProductVendedorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductQuestionController;
@@ -18,7 +19,6 @@ use App\Http\Controllers\VendedorController;
 
 /* ---------- Landing y páginas públicas ---------- */
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contacto', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 Route::post('/contacto', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.submit');
@@ -105,6 +105,10 @@ Route::middleware(['auth', 'verified', 'verified.user'])->group(function () {
     Route::post('/chats/start/{vendedor}', [ChatController::class, 'start'])->name('chats.start');
     // Endpoint rápido para contar no leídos (útil para AJAX/polling si quieres)
     Route::get('/chats/unread-count', [ChatController::class, 'unreadCount'])->name('chats.unreadCount');
+
+    // lista de favoritos
+    Route::get('/favoritos', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/favoritos/toggle/{product}', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
 
 
     // ruta para cargar productos siendo vendedor

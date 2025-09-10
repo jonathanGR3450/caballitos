@@ -98,4 +98,9 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('sender_id', '<>', $this->id)
             ->count();
     }
+
+    public function favoriteProducts()
+    {
+        return $this->belongsToMany(Product::class, 'favorite_products')->withTimestamps();
+    }
 }

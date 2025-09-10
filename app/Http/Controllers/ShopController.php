@@ -114,6 +114,14 @@ class ShopController extends Controller
         
         // 🔹 Paginar productos
         $products = $query->paginate(12)->appends($request->query());
+
+        $favoritesIds = [];
+        if (auth()->check()) {
+            $favoritesIds = auth()->user()
+                ->favoriteProducts()
+                ->pluck('products.id')
+                ->all();
+        }
         
         // 🔹 Obtener categorías completas (como espera la vista)
         $categories = \App\Models\Category::query()
@@ -137,7 +145,7 @@ class ShopController extends Controller
             'ubicacion', 'raza', 'edad', 'genero', 'pedigri', 'entrenamiento', 'historial_salud'
         ]);
         
-        return view('shop.index', compact('products', 'categories', 'countries', 'hasFilters'));
+        return view('shop.index', compact('products', 'categories', 'countries', 'hasFilters', 'favoritesIds'));
     }
 
 
