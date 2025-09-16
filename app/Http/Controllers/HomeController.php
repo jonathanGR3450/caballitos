@@ -35,7 +35,7 @@ public function index()
         }
     }
 
-    // Obtener productos destacados
+    // Obtener productos
     $featuredProducts = Product::with(['category', 'images'])
         ->where('stock', '>', 0)
         ->limit(8)

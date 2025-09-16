@@ -7,11 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\TipoListado;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProductVendedorController extends ProductController
 {
+
+    use AuthorizesRequests, ValidatesRequests; 
+    
     /*──────────────────────── INDEX ───────────────────────*/
     public function index()
     {
@@ -27,11 +33,15 @@ class ProductVendedorController extends ProductController
     /*──────────────────────── STORE ───────────────────────*/
     public function store(Request $request)
     {
+        $this->authorize('create', \App\Models\Product::class);
         $this->validated($request);
+        $user = Auth::user();
 
         try {
             $product = $this->saveProduct($request);
-            $product->user_id = Auth::id();
+            $product->user_id = $user->id;
+            $product->tipo_listado_id = $user->tipo_listado_id;
+
             $product->save();
             return redirect()->route('vendedor.products.index')
                 ->with('success', 'Producto creado ✅');
@@ -58,7 +68,6 @@ class ProductVendedorController extends ProductController
 
         $categories = \App\Models\Category::all();
         $countries  = \App\Models\Country::with('cities')->get();
-
         return view('vendedor.products.edit', compact('product', 'categories', 'countries'));
     }
 
@@ -70,7 +79,19 @@ class ProductVendedorController extends ProductController
             abort(403, 'No tienes permiso para editar este producto');
         }
 
-        return parent::update($request, $product);
+        $this->validated($request);
+        $user = Auth::user();
+
+        try {
+            $product = $this->updateProduct($request, $product);
+            $product->user_id = $user->id;
+            $product->tipo_listado_id = $user->tipo_listado_id;
+
+            $product->save();
+            return back()->with('success', 'Producto actualizado ✔️');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error al crear el producto');
+        }
     }
 
     /*──────────────────────── DESTROY ─────────────────────*/

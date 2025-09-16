@@ -7,6 +7,26 @@
 
     @include('vendedor.products._flash')
 
+    @php
+    $u = auth()->user();
+    $remaining = $u?->remainingQuota();
+    $ends = $u?->membershipEndsAt()?->isoFormat('YYYY-MM-DD');
+    @endphp
+
+    @if($u && $u->tipoListado)
+    <div class="alert alert-info">
+        Plan: <strong>{{ $u->tipoListado->nombre }}</strong> —
+        @if(is_null($remaining))
+        Publicaciones: <strong>Ilimitadas</strong>
+        @else
+        Te quedan <strong>{{ $remaining }}</strong> publicaciones
+        @endif
+        @if($ends)
+        &nbsp;|&nbsp; Vigente hasta: <strong>{{ $ends }}</strong>
+        @endif
+    </div>
+    @endif
+
     <form action="{{ route('vendedor.products.store') }}" method="POST" enctype="multipart/form-data">
         @include('vendedor.products._form', ['product' => null])
     </form>

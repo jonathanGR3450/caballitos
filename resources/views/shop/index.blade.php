@@ -115,11 +115,12 @@
                 {{-- filtro por tipo listado --}}
                 <div class="filter-group">
                     <label class="filter-label">Tipo de Listado:</label>
-                    <select name="tipo_listado" class="filter-select">
+                    <select name="tipo_listado_id" class="form-control border-secondary">
                         <option value="">Todos</option>
-                        @foreach(\App\Models\Product::getTiposListado() as $tipo)
-                            <option value="{{ $tipo }}" {{ request('tipo_listado') == $tipo ? 'selected' : '' }}>
-                                {{ $tipo }}
+                        @foreach($tipoListados as $listado)
+                            <option value="{{ $listado->id }}"
+                                {{ (string)request('tipo_listado_id') === (string)$listado->id ? 'selected' : '' }}>
+                                {{ $listado->nombre }}
                             </option>
                         @endforeach
                     </select>
@@ -242,14 +243,14 @@
         <div class="products-grid">
             @forelse ($products as $product)
                 @php
-                    // Estilos visuales según tipo_listado
-                    $cardStyle = match($product->tipo_listado) {
+                    // Estilos visuales según tipoListado
+                    $cardStyle = match($product->tipoListado?->slug) {
                         'premium' => 'background: #fff8e1; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.6); border: 2px solid #ffc107;',
                         'destacado' => 'background: #e3f2fd; box-shadow: 0 4px 15px rgba(13, 110, 253, 0.6); border: 2px solid #0d6efd;',
                         default => 'background: #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid #ddd;',
                     };
 
-                    $badgeClass = match($product->tipo_listado) {
+                    $badgeClass = match($product->tipoListado?->slug) {
                         'premium' => 'badge bg-warning text-dark',
                         'destacado' => 'badge bg-primary',
                         default => 'badge bg-secondary',
@@ -338,7 +339,7 @@
                     <div class="pc-body">
                         {{-- Badge tipo listado --}}
                         <span class="{{ $badgeClass }}">
-                            {{ ucfirst($product->tipo_listado) }}
+                            {{ ucfirst($product->tipoListado?->nombre) }}
                         </span>
 
                         <div class="pc-category">{{ $product->category->name ?? 'Sin categoría' }}</div>
@@ -360,7 +361,7 @@
 
                         <div class="mb-2">
                             <strong>Listado:</strong>
-                            <span >{{ ucfirst($product->tipo_listado) }}</span>
+                            <span >{{ ucfirst($product->tipoListado?->nombre) }}</span>
                         </div>
 
                         <div class="pc-price-row">

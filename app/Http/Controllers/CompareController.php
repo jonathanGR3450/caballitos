@@ -26,7 +26,7 @@ class CompareController extends Controller
             'avg_weight' => 'Peso prom.',
             'stock' => 'Stock',
             'estado' => 'Estado',
-            'tipo_listado' => 'Tipo listado',
+            'tipo_listado_id' => 'Tipo listado',
         ];
 
         return view('compare.index', [

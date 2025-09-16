@@ -6,6 +6,7 @@ use App\Mail\ContactFormMail;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Page;
+use App\Models\TipoListado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -36,8 +37,9 @@ class ContactController extends Controller
         }
 
         $categories = Category::with('products')->get();
+        $tipoListados = TipoListado::where('is_activo', true)->get();
 
-        return view('partner-chefs', compact('sectionsData', 'page', 'categories'));
+        return view('partner-chefs', compact('sectionsData', 'page', 'categories', 'tipoListados'));
     }
 
     public function store(Request $request)
@@ -49,7 +51,7 @@ class ContactController extends Controller
             'phone'          => 'required|string|max:20',
             'country_code'   => 'nullable|string|max:5',
             'category_id'    => 'required|exists:categories,id',
-            'tipo_listado'   => 'nullable|in:normal,destacado,premium',
+            'tipo_listado_id'   => 'nullable|exists:tipo_listados,id',
             'address'        => 'required|string|max:500',
             'message'        => 'required|string|max:2000',
             'whatsapp_contact' => 'nullable|boolean',

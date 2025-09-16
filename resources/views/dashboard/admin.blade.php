@@ -146,6 +146,12 @@
                 <h4>Usuarios</h4>
                 <p>Administra los usuarios registrados en el sistema.</p>
             </a>
+            {{-- membresias --}}
+            <a href="{{ route('admin.tipo-listado.index') }}" class="admin-card">
+                <span class="icon">👥</span>
+                <h4>Membresias</h4>
+                <p>Administra las membresias registradas en el sistema.</p>
+            </a>
 
             <!-- Configuración General -->
             {{-- <div class="admin-card" style="opacity: 0.6; cursor: not-allowed;">

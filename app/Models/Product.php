@@ -30,8 +30,8 @@ class Product extends Model
         'estado',
         'vence',
         'fecha_vencimiento',
-        'tipo_listado',
         'user_id',
+        'tipo_listado_id'
     ];
 
     public function user()
@@ -88,6 +88,11 @@ class Product extends Model
     public function favoredBy()
     {
         return $this->belongsToMany(User::class, 'favorite_products')->withTimestamps();
+    }
+
+    public function tipoListado()
+    {
+        return $this->belongsTo(TipoListado::class, 'tipo_listado_id');
     }
 
     public static function getEstados()

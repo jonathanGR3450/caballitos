@@ -33,6 +33,8 @@
                         <th>{{ __('Name') }}</th>
                         <th>{{ __('Email') }}</th>
                         <th>{{ __('Roles') }}</th>
+                        <th>{{ __('Listado') }}</th>
+                        <th>{{ __('Fecha Membresia') }}</th>
                         <th>{{ __('Verified') }}</th>
                         <th>{{ __('Created At') }}</th>
                         <th class="text-center">{{ __('Actions') }}</th>
@@ -53,6 +55,14 @@
                                     <span class="text-muted small">No roles</span>
                                 @endif
                             </td>
+                            <td>
+                                @if($user->tipoListado->count() > 0)
+                                    <span class="badge bg-primary">{{ $user->tipoListado->nombre }}</span>
+                                @else
+                                    <span class="text-muted small">No Listado</span>
+                                @endif
+                            </td>
+                            <td>{{ $user->membresia_comprada_en?->format('Y-m-d') }}</td>
                             <td>
                                 <input type="checkbox" {{ $user->is_verified ? 'checked' : '' }} onchange="toggleVerify({{ $user->id }}, this.checked)">
                             </td>

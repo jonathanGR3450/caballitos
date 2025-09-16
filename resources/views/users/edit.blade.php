@@ -1,7 +1,7 @@
 @extends('layouts.app_admin')
 
 @section('content')
-<div class="container py-5 text-white">
+<div class="container py-5 ">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-warning mb-0">Edit User</h2>
         <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
@@ -24,33 +24,33 @@
         @method('PUT')
 
         <div class="mb-3">
-            <label for="name" class="form-label text-light">Name</label>
+            <label for="name" class="form-label ">Name</label>
             <input type="text" name="name" id="name" class="form-control"
                    required value="{{ old('name', $user->name) }}"
                    placeholder="Enter user name">
         </div>
 
         <div class="mb-3">
-            <label for="email" class="form-label text-light">Email</label>
+            <label for="email" class="form-label ">Email</label>
             <input type="email" name="email" id="email" class="form-control"
                    required value="{{ old('email', $user->email) }}"
                    placeholder="Enter email address">
         </div>
 
         <div class="mb-3">
-            <label for="password" class="form-label text-light">Password (leave blank to keep current)</label>
+            <label for="password" class="form-label ">Password (leave blank to keep current)</label>
             <input type="password" name="password" id="password" class="form-control"
                    placeholder="Enter new password">
         </div>
 
         <div class="mb-3">
-            <label for="password_confirmation" class="form-label text-light">Confirm Password</label>
+            <label for="password_confirmation" class="form-label ">Confirm Password</label>
             <input type="password" name="password_confirmation" id="password_confirmation"
                    class="form-control" placeholder="Confirm new password">
         </div>
 
         <div class="mb-3">
-            <label for="role" class="form-label text-light">Assign Role</label>
+            <label for="role" class="form-label ">Assign Role</label>
             <select name="role" id="role" class="form-select" required>
                 <option value="">-- Select Role --</option>
                 @foreach ($roles as $role)
@@ -60,6 +60,24 @@
                     </option>
                 @endforeach
             </select>
+        </div>
+        <div class="mb-3">
+            <label for="tipo_listado_id" class="form-label ">Assign Listado</label>
+            <select name="tipo_listado_id" id="tipo_listado_id" class="form-select" required>
+                <option value="">-- Select Listado --</option>
+                @foreach($tipoListados as $listado)
+                    <option value="{{ $listado->id }}"
+                        {{ old('tipo_listado_id', $user->tipo_listado_id ?? '') == $listado->id ? 'selected' : '' }}>
+                        {{ $listado->nombre }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="membresia_comprada_en" class="form-label ">Fecha de Compra Membresia</label>
+            <input type="date" id="membresia_comprada_en" name="membresia_comprada_en"
+                class="form-control"
+                value="{{ old('membresia_comprada_en', $user->membresia_comprada_en ?? '') }}">
         </div>
 
         <div class="d-flex gap-3">

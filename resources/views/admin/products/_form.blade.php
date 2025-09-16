@@ -75,10 +75,13 @@ body, .container, .container-fluid {
     </div>
     <div class="col-md-4 mb-4">
         <label class="form-label fw-bold">Tipo de listado</label>
-        <select name="tipo_listado" class="form-control border-secondary">
-            <option value="normal" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'normal' ? 'selected' : '' }}>Normal</option>
-            <option value="destacado" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'destacado' ? 'selected' : '' }}>Destacado</option>
-            <option value="premium" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'premium' ? 'selected' : '' }}>Premium</option>
+        <select name="tipo_listado_id" class="form-control border-secondary">
+            @foreach($tipoListados as $listado)
+                <option value="{{ $listado->id }}"
+                    {{ old('tipo_listado_id', $product->tipo_listado_id ?? '') == $listado->id ? 'selected' : '' }}>
+                    {{ $listado->nombre }}
+                </option>
+            @endforeach
         </select>
     </div>
 

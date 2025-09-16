@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Price;
-
+use App\Models\TipoListado;
 use Illuminate\Support\Facades\Log;
 
 use Square\SquareClient;
@@ -26,7 +26,12 @@ class ShopController extends Controller
 
     public function index(Request $request) 
     {
-        $query = Product::vigentes()->with(['images', 'category', 'extra']);
+        $query = Product::vigentes()
+            ->with(['images','category','extra','tipoListado'])
+            ->leftJoin('tipo_listados as tl','tl.id','=','products.tipo_listado_id')
+            ->select('products.*')
+            ->orderByRaw("FIELD(tl.slug, 'premium','destacado','regular') DESC")
+            ->orderBy('products.created_at','desc');
         
         // 🔹 Filtro por categoría (por ID como espera la vista)
         if ($request->filled('category')) {
@@ -47,8 +52,8 @@ class ShopController extends Controller
         }
 
         // filtro por tipo lista
-        if ($request->filled('tipo_listado')) {
-            $query->where('tipo_listado', $request->tipo_listado);
+        if ($request->filled('tipo_listado_id')) {
+            $query->where('tipo_listado_id', $request->tipo_listado_id);
         }
 
         // 🔹 Filtro por rango de precios
@@ -140,12 +145,14 @@ class ShopController extends Controller
         
         // Detectar si hay filtros aplicados
         $hasFilters = $request->hasAny([
-            'category', 'country', 'search', 'sort',
-            'price_min', 'price_max',
-            'ubicacion', 'raza', 'edad', 'genero', 'pedigri', 'entrenamiento', 'historial_salud'
+            'category','country','search','sort',
+            'price_min','price_max','tipo_listado_id','estado',
+            'ubicacion','raza','edad','genero','pedigri','entrenamiento','historial_salud'
         ]);
+
+        $tipoListados = TipoListado::where('is_activo', true)->get();
         
-        return view('shop.index', compact('products', 'categories', 'countries', 'hasFilters', 'favoritesIds'));
+        return view('shop.index', compact('products', 'categories', 'countries', 'hasFilters', 'favoritesIds', 'tipoListados'));
     }
 
 

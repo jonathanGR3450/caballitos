@@ -15,6 +15,7 @@ use App\Http\Controllers\CompareController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductQuestionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TipoListadoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendedorController;
 
@@ -128,6 +129,8 @@ Route::middleware(['auth', 'verified', 'verified.user'])->group(function () {
         Route::resource('roles', RoleController::class);
         Route::resource('users', UserController::class);
         Route::patch('/users/{user}/toggle-verify', [UserController::class, 'toggleVerify'])->name('users.toggle-verify');
+        Route::resource('tipo-listado', TipoListadoController::class)->parameters(['tipo-listados' => 'tipoListado']);
+        Route::patch('/tipo-listado/{tipoListado}/toggle-active', [TipoListadoController::class, 'toggleActive'])->name('tipo-listado.toggle-active');
 
         // Countries (NO TOCAR - YA FUNCIONAN)
         Route::get('/countries', [LocationController::class, 'countriesIndex'])->name('countries.index');

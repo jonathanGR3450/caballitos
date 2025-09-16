@@ -16,14 +16,19 @@ class Contact extends Model
         'phone',
         'country_code',
         'category_id',
-        'tipo_listado',
         'address',
         'message',
         'whatsapp_contact',
+        'tipo_listado_id',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function tipoListado()
+    {
+        return $this->belongsTo(TipoListado::class, 'tipo_listado_id');
     }
 }

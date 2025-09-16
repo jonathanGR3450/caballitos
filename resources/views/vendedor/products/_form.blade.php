@@ -40,14 +40,6 @@
             @endforeach
         </select>
     </div>
-    <div class="col-md-4 mb-4">
-        <label class="form-label fw-bold">Tipo de listado</label>
-        <select name="tipo_listado" class="form-control border-secondary">
-            <option value="normal" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'normal' ? 'selected' : '' }}>Normal</option>
-            <option value="destacado" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'destacado' ? 'selected' : '' }}>Destacado</option>
-            <option value="premium" {{ old('tipo_listado', $product->tipo_listado ?? '') == 'premium' ? 'selected' : '' }}>Premium</option>
-        </select>
-    </div>
 
 </div>
 <div class="form-check mb-3">

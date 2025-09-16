@@ -364,15 +364,18 @@
                                 </div>
                                 
                                 <div class="col-md-6 mb-3">
-                                    <label for="tipo_listado" class="form-label">Tipo de listado</label>
-                                    <select class="form-control select-fondo @error('tipo_listado') is-invalid @enderror" 
-                                            id="tipo_listado" 
-                                            name="tipo_listado">
-                                        <option value="normal" {{ old('tipo_listado') == 'normal' ? 'selected' : '' }}>Normal</option>
-                                        <option value="destacado" {{ old('tipo_listado') == 'destacado' ? 'selected' : '' }}>Destacado</option>
-                                        <option value="premium" {{ old('tipo_listado') == 'premium' ? 'selected' : '' }}>Premium</option>
+                                    <label for="tipo_listado_id" class="form-label">Tipo de listado</label>
+                                    <select class="form-control select-fondo @error('tipo_listado_id') is-invalid @enderror" 
+                                            id="tipo_listado_id" 
+                                            name="tipo_listado_id">
+                                        @foreach($tipoListados as $listado)
+                                            <option value="{{ $listado->id }}"
+                                                {{ old('tipo_listado_id', $product->tipo_listado_id ?? '') == $listado->id ? 'selected' : '' }}>
+                                                {{ $listado->nombre }}
+                                            </option>
+                                        @endforeach
                                     </select>
-                                    @error('tipo_listado')
+                                    @error('tipo_listado_id')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

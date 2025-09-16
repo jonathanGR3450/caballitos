@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use App\Models\TipoListado;
 use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::with('roles')->paginate(10);
+        $users = User::with('roles', 'tipoListado')->paginate(10);
         return view('users.index', compact('users'));
     }
 
@@ -31,7 +32,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('users.create', compact('roles'));
+        $tipoListados = TipoListado::where('is_activo', true)->get();
+        return view('users.create', compact('roles', 'tipoListados'));
     }
 
     public function store(Request $request)
@@ -41,12 +43,16 @@ class UserController extends Controller
             'email'    => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
             'role'     => 'required|exists:roles,name',
+            'tipo_listado_id'     => 'required|exists:tipo_listados,id',
+            'membresia_comprada_en' => 'required|date',
         ]);
 
         $user = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
+            'tipo_listado_id' => $request->tipo_listado_id,
+            'membresia_comprada_en' => $request->membresia_comprada_en,
         ]);
 
         $user->assignRole($request->role);
@@ -58,7 +64,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
-        return view('users.edit', compact('user', 'roles'));
+        $tipoListados = TipoListado::where('is_activo', true)->get();
+        return view('users.edit', compact('user', 'roles', 'tipoListados'));
     }
 
     // ← Y ESTE TAMBIÉN
@@ -69,6 +76,8 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|min:6|confirmed',
             'role'  => 'required|exists:roles,name',
+            'tipo_listado_id' => 'required|exists:tipo_listados,id',
+            'membresia_comprada_en' => 'required|date',
         ]);
 
         $user->update([
@@ -77,6 +86,8 @@ class UserController extends Controller
             'password' => $request->password
                 ? Hash::make($request->password)
                 : $user->password,
+            'tipo_listado_id' => $request->tipo_listado_id,
+            'membresia_comprada_en' => $request->membresia_comprada_en,
         ]);
 
         $user->syncRoles([$request->role]);
