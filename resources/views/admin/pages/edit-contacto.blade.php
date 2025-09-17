@@ -207,7 +207,7 @@
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 3</label>
                                         <input type="text" name="service_3_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_3_desc', 'Venta y reparación de licuadoras, freidoras de aire') }}">
+                                               value="{{ $section->getCustomData('service_3_desc', 'Venta caballos') }}">
                                     </div>
                                 </div>
                             </div>
@@ -302,12 +302,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Correo</label>
                                         <input type="email" name="email" class="form-control" 
-                                               value="{{ $section->getCustomData('email', 'info@electrahome.com') }}">
+                                               value="{{ $section->getCustomData('email', 'info@freepegasus.com') }}">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="form-label">Enlace Mailto</label>
                                         <input type="text" name="email_link" class="form-control" 
-                                               value="{{ $section->getCustomData('email_link', 'mailto:info@electrahome.com') }}">
+                                               value="{{ $section->getCustomData('email_link', 'mailto:info@freepegasus.com') }}">
                                     </div>
                                 </div>
                             </div>

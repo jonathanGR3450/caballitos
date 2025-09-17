@@ -802,7 +802,7 @@ footer::before {
                     <a href="#" class="social-link me-3" title="WhatsApp">
                         <i class="fab fa-whatsapp fa-lg"></i>
                     </a>
-                    <a href="mailto:info@electrahome.com" class="social-link" title="Email">
+                    <a href="mailto:info@freepegasus.com" class="social-link" title="Email">
                         <i class="fas fa-envelope fa-lg"></i>
                     </a>
                 </div>
@@ -820,14 +820,17 @@ footer::before {
                 </ul>
             </div>
 
+            @php
+                $categories = App\Models\Category::all();
+            @endphp
+
             <!-- Categorías de Productos -->
             <div class="col-lg-2 col-md-6 mb-4">
                 <h5 class="text-uppercase fw-semibold mb-3">Categorías</h5>
                 <ul class="list-unstyled footer-links">
-                    <li><a href="{{ route('shop.index', ['category' => 'licuadoras']) }}" class="footer-link">Licuadoras</a></li>
-                    <li><a href="{{ route('shop.index', ['category' => 'freidoras']) }}" class="footer-link">Freidoras de Aire</a></li>
-                    <li><a href="{{ route('shop.index', ['category' => 'sanducheras']) }}" class="footer-link">Sanducheras</a></li>
-                    <li><a href="{{ route('shop.index', ['category' => 'pequenos']) }}" class="footer-link">Pequeños Electrodomésticos</a></li>
+                    @foreach ($categories as $item)
+                        <li><a href="{{ route('shop.index', ['category' => $item->id]) }}" class="footer-link">{{$item->name}}</a></li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -838,7 +841,7 @@ footer::before {
                 <div class="contact-info">
                     <p class="text-white small mb-2">
                         <i class="fas fa-envelope me-2 text-info"></i>
-                        <a href="mailto:info@electrahome.com" class="footer-link">info@electrahome.com</a>
+                        <a href="mailto:info@freepegasus.com" class="footer-link">info@freepegasus.com</a>
                     </p>
                     <p class="text-white small mb-2">
                         <i class="fas fa-phone me-2 text-info"></i>
