@@ -34,7 +34,7 @@
                         <td>{{ ucfirst($order->payment_status) }}</td>
                         <td>
                             @if($order->payment_status === 'pending')
-                                <a href="{{ route('payment.gateway', $order->id) }}" class="btn btn-primary btn-sm">Pay Now</a>
+                                <a href="{{ route('payment.process', $order->id) }}" class="btn btn-primary btn-sm">Pay Now</a>
                             @else
                                 <span class="text-success">Paid</span>
                             @endif

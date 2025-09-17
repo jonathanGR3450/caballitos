@@ -18,6 +18,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TipoListadoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendedorController;
+use App\Models\Order;
 
 /* ---------- Landing y páginas públicas ---------- */
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -60,13 +61,31 @@ Route::post('/order/process', [ShopController::class, 'processOrder'])->name('or
 
 // Ruta para la pasarela de pago
 Route::get('/payment/gateway/{order}', [App\Http\Controllers\ShopController::class, 'paymentGateway'])->name('payment.gateway');
-Route::post('/payment/process/{order}', [App\Http\Controllers\ShopController::class, 'processPayment'])->name('payment.process');
-Route::get('/payment/success/{order}', [App\Http\Controllers\ShopController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('/payment/process/{order}', [App\Http\Controllers\ShopController::class, 'processPayment'])->name('payment.process');
+// Route::get('/payment/success/{order}', [App\Http\Controllers\ShopController::class, 'paymentSuccess'])->name('payment.success');
 
-Route::post('/cart',           [CartController::class, 'add'])->name('cart.add');
-Route::get('/cart',            [CartController::class, 'index'])->name('cart.index');
-Route::patch('/cart/{rowId}',  [CartController::class, 'update'])->name('cart.update');
-Route::delete('/cart/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/payment/success/{order}', function($orderId) {
+    $order = Order::find($orderId);
+    if ($order) {
+        $order->update(['payment_status' => 'paid', 'status' => 'confirmed']);
+    }
+    return view('payment.success', compact('order'));
+})->name('payment.success');
+
+Route::get('/payment/pending/{order}', function($orderId) {
+    $order = Order::find($orderId);
+    return view('payment.pending', compact('order'));
+})->name('payment.pending');
+
+Route::get('/payment/failure/{order}', function($orderId) {
+    $order = Order::find($orderId);
+    return view('payment.failure', compact('order'));
+})->name('payment.failure');
+
+// Route::post('/cart',           [CartController::class, 'add'])->name('cart.add');
+// Route::get('/cart',            [CartController::class, 'index'])->name('cart.index');
+// Route::patch('/cart/{rowId}',  [CartController::class, 'update'])->name('cart.update');
+// Route::delete('/cart/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::get('/shipping-policy', function () {
     return view('policies.shipping');
@@ -189,7 +208,7 @@ Route::middleware(['auth'])
           Route::resource('products', ProductController::class)->except(['show']);
 });
 // Rutas del carrito
-Route::prefix('cart')->name('cart.')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('cart')->name('cart.')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('index');
     Route::post('/', [CartController::class, 'add'])->name('add');
     Route::patch('/{rowId}', [CartController::class, 'update'])->name('update');

@@ -47,9 +47,10 @@
 
 @section('content')
 <div class="container">
-    <div class="alert alert-success text-center">
-        <h2>¡Pago Exitoso!</h2>
-        <p>Tu orden #{{ $order->order_number }} ha sido procesada correctamente.</p>
+    <div class="alert alert-warning text-center">
+        <h2>Pago Pendiente</h2>
+        <p>Tu orden #{{ $order->order_number }} está siendo procesada.</p>
+        <p>Recibirás una confirmación pronto.</p>
         <a href="{{ route('shop.index') }}" class="btn btn-primary">Volver a la tienda</a>
     </div>
 </div>

@@ -326,7 +326,7 @@ class ShopController extends Controller
                 Cart::destroy();
 
                 // Redirigir a pasarela de pago
-                return redirect()->route('payment.gateway', ['order' => $order->id])
+                return redirect()->route('payment.process', ['order' => $order->id])
                                 ->with('success', 'Order created successfully! Order #' . $order->order_number);
 
             } catch (\Exception $e) {
@@ -352,138 +352,72 @@ public function processPayment(Request $request, Order $order)
     }      
 
     try {         
-        // Validar datos del pago         
-        $request->validate([
-            'token' => 'required|string', // Token del card_token de MercadoPago
-            'payment_method_id' => 'required|string', // visa, master, etc.
-            'installments' => 'required|integer|min:1',
-            'issuer_id' => 'nullable|string',
-            'payer_email' => 'required|email'
-        ]);          
-
-        \Log::info('Processing MercadoPago payment for order', [             
+        \Log::info('Creating MercadoPago preference for order', [             
             'order_id' => $order->id,             
-            'amount' => $order->total_amount,             
-            'token' => $request->token         
+            'amount' => $order->total_amount        
         ]);          
 
-        // Crear pago usando MercadoPago API         
-        $paymentData = [             
-            'token' => $request->token,
-            'issuer_id' => $request->issuer_id,
-            'payment_method_id' => $request->payment_method_id,
-            'transaction_amount' => (float) $order->total_amount,
-            'installments' => (int) $request->installments,
-            'description' => 'Order #' . $order->order_number,
-            'external_reference' => 'order_' . $order->id,
-            'payer' => [
-                'email' => $request->payer_email,
-                'first_name' => $order->customer_name ?? 'Customer',
-                'last_name' => '', 
-                'identification' => [
-                    'type' => 'DNI', // o CC, CE, etc según tu país
-                    'number' => '00000000' // Deberías pedirlo en el form
+        // Datos de la preferencia - SIMPLE
+        $preferenceData = [             
+            'items' => [
+                [
+                    'title' => 'Order #' . $order->order_number,
+                    'quantity' => 1,
+                    'unit_price' => (float) $order->total_amount
                 ]
             ],
-            'statement_descriptor' => 'TU_TIENDA', // Aparece en el resumen de tarjeta
-            'notification_url' => route('mercadopago.webhook'), // Para webhooks
-            'metadata' => [
-                'order_id' => $order->id,
-                'order_number' => $order->order_number
-            ]
+            'external_reference' => 'order_' . $order->id,
+            'back_urls' => [
+                'success' => url('/payment/success/' . $order->id),
+                'pending' => url('/payment/pending/' . $order->id), 
+                'failure' => url('/payment/failure/' . $order->id)
+            ],
+            'auto_return' => 'approved'
         ];          
 
-        // Determinar URL según ambiente
-        $baseUrl = env('MERCADOPAGO_ENV', 'sandbox') === 'production' 
-            ? 'https://api.mercadopago.com' 
-            : 'https://api.mercadopago.com';
-
+        // Llamada a MercadoPago API
         $ch = curl_init();         
-        curl_setopt($ch, CURLOPT_URL, $baseUrl . '/v1/payments');         
+        curl_setopt($ch, CURLOPT_URL, env('MERCADOPAGO_URL'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);         
         curl_setopt($ch, CURLOPT_POST, true);         
         curl_setopt($ch, CURLOPT_HTTPHEADER, [             
-            'Authorization: Bearer ' . env('MERCADOPAGO_ACCESS_TOKEN'),             
-            'Content-Type: application/json',
-            'X-Idempotency-Key: order_' . $order->id . '_' . time()
+            'Authorization: Bearer ' . env('MERCADOPAGO_PUBLIC_KEY'),             
+            'Content-Type: application/json'
         ]);         
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($paymentData));          
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($preferenceData));          
 
         $response = curl_exec($ch);         
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);         
-        curl_close($ch);          
-
-        \Log::info('MercadoPago API Response', [
-            'http_code' => $httpCode,
-            'response' => $response
-        ]);
+        curl_close($ch);        
 
         if ($httpCode !== 200 && $httpCode !== 201) {             
-            $errorData = json_decode($response, true);             
-            $errorMessage = 'Payment processing failed';
-            
-            if (isset($errorData['message'])) {
-                $errorMessage = $errorData['message'];
-            } elseif (isset($errorData['cause'][0]['description'])) {
-                $errorMessage = $errorData['cause'][0]['description'];
-            }
-                                      
-            \Log::error('MercadoPago payment failed', [                 
-                'http_code' => $httpCode,                 
-                'response' => $response             
-            ]);                          
-
-            return back()->with('error', 'Payment failed: ' . $errorMessage);         
+            \Log::error('MercadoPago error', ['response' => $response]);                          
+            return redirect()->route('dashboard')->with('error', 'Error al crear el pago. Intenta de nuevo.');         
         }          
 
-        // Procesar respuesta exitosa         
-        $paymentResult = json_decode($response, true);         
-        $transactionId = $paymentResult['id'];
-        $status = $paymentResult['status'];
-        $statusDetail = $paymentResult['status_detail'];
+        // Obtener URL de checkout
+        $result = json_decode($response, true);         
+        $checkoutUrl = $result['sandbox_init_point']; // URL para pruebas
 
-        // MercadoPago tiene diferentes estados
-        if ($status === 'approved') {
-            $order->update([                 
-                'payment_status' => 'paid',                 
-                'status' => 'confirmed',                  
-                'payment_method' => 'mercadopago',                 
-                'transaction_id' => $transactionId,                 
-                'paid_at' => now()             
-            ]);              
+        // Actualizar orden
+        $order->update([                 
+            'payment_status' => 'pending',                 
+            'status' => 'pending_payment',                  
+            'payment_method' => 'mercadopago'
+        ]);              
 
-            \Log::info('MercadoPago payment successful', [                 
-                'order_id' => $order->id,                 
-                'transaction_id' => $transactionId             
-            ]);                      
+        \Log::info('Redirecting to MercadoPago', [                 
+            'order_id' => $order->id,
+            'url' => $checkoutUrl           
+        ]);                      
 
-            return redirect()->route('payment.success', $order)                 
-                ->with('success', 'Payment processed successfully!');
-        } elseif ($status === 'pending') {
-            $order->update([                 
-                'payment_status' => 'pending',                 
-                'status' => 'pending_payment',                  
-                'payment_method' => 'mercadopago',                 
-                'transaction_id' => $transactionId
-            ]);
-
-            return redirect()->route('payment.pending', $order)                 
-                ->with('info', 'Payment is being processed. You will receive confirmation soon.');
-        } else {
-            // rejected, cancelled, etc.
-            \Log::warning('MercadoPago payment not approved', [                 
-                'order_id' => $order->id,                 
-                'status' => $status,
-                'status_detail' => $statusDetail
-            ]);
-
-            return back()->with('error', 'Payment was not approved: ' . $statusDetail);
-        }
+        // ¡Redirigir directamente a MercadoPago!
+        return redirect($checkoutUrl);
 
     } catch (\Exception $e) {         
-        \Log::error('MercadoPago payment processing error: ' . $e->getMessage());         
-        return back()->with('error', 'Payment processing failed. Please try again.');
-    }
+        \Log::error('Error: ' . $e->getMessage());         
+        return redirect()->route('dashboard')->with('error', 'Error al procesar el pago. Intenta de nuevo.');     
+    } 
 }
 public function paymentSuccess(Order $order) 
 {
