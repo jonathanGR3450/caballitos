@@ -12,9 +12,9 @@
         <div class="hero-background">
             {{-- Imagen de fondo dinámica o logo por defecto --}}
             @if($heroSection->getImagesArray())
-                <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+                <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             @else
-                <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+                <img src="{{ asset('images/logo.png') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             @endif
             <div class="hero-overlay"></div>
         </div>
@@ -22,7 +22,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h1 class="hero-title">{{ $heroSection->title ?? 'Acerca de ' . env('APP_NAME', 'CaballosApp') }}</h1>
-                    <p class="hero-subtitle">{{ $heroSection->content ?? 'Tradición en Electrodomésticos de Calidad' }}</p>
+                    <p class="hero-subtitle">{{ $heroSection->content ?? 'Tradición en cría y comercio equino' }}</p>
                 </div>
             </div>
         </div>
@@ -31,14 +31,14 @@
     {{-- Fallback si no hay sección hero --}}
     <section class="about-hero">
         <div class="hero-background">
-            <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+            <img src="{{ asset('images/logo.png') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             <div class="hero-overlay"></div>
         </div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h1 class="hero-title">Acerca de {{ env('APP_NAME', 'CaballosApp') }}</h1>
-                    <p class="hero-subtitle">Tradición en Electrodomésticos de Calidad</p>
+                    <p class="hero-subtitle">Tradición en cría y comercio equino</p>
                 </div>
             </div>
         </div>
@@ -56,16 +56,16 @@
                 <div class="row align-items-center mb-5">
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <div class="content-text">
-                            <h2 class="section-title">{{ $legacySection->title ?? 'Tradición en Electrodomésticos de Calidad' }}</h2>
+                            <h2 class="section-title">{{ $legacySection->title ?? 'Tradición en cría y comercio equino' }}</h2>
                             
                             {{-- Párrafos dinámicos --}}
                             @if($legacySection->getCustomData('paragraph_1'))
                                 <p class="section-description">{{ $legacySection->getCustomData('paragraph_1') }}</p>
                             @else
                                 <p class="section-description">
-                                    En {{ env('APP_NAME', 'CaballosApp') }}, cada electrodoméstico que ofrecemos representa años de innovación y compromiso 
-                                    con la calidad. Nos especializamos en productos <strong>Oster</strong>, una marca reconocida 
-                                    mundialmente por su durabilidad, eficiencia y diseño superior.
+                                    En {{ env('APP_NAME', 'CaballosApp') }}, cada caballo listado representa años de selección responsable,
+                                    bienestar animal y pasión por el mundo ecuestre. Conectamos compradores con vendedores y haras verificados,
+                                    priorizando la transparencia y la confianza.
                                 </p>
                             @endif
 
@@ -73,8 +73,8 @@
                                 <p class="section-description">{{ $legacySection->getCustomData('paragraph_2') }}</p>
                             @else
                                 <p class="section-description">
-                                    Desde licuadoras de alta potencia hasta freidoras de aire revolucionarias, cada producto 
-                                    está diseñado para hacer tu vida más fácil y eficiente en la cocina.
+                                    Encontrarás ejemplares de distintas razas, edades y disciplinas (salto, doma, enduro y más),
+                                    con información clave como pedigrí, historial de salud y entrenamiento.
                                 </p>
                             @endif
 
@@ -85,9 +85,8 @@
                                 </blockquote>
                             @else
                                 <blockquote class="company-quote">
-                                    "Imagínate una cocina donde cada electrodoméstico funciona a la perfección, donde la calidad 
-                                    se encuentra con la innovación. No solo vendemos productos, ofrecemos soluciones que 
-                                    transforman tu experiencia culinaria diaria."
+                                    "No solo publicamos caballos: construimos relaciones de confianza entre compradores,
+                                    vendedores y criadores, siempre con el bienestar del caballo como prioridad."
                                 </blockquote>
                             @endif
                         </div>
@@ -98,7 +97,7 @@
                             @if($legacySection->getImagesArray())
                                 <img src="{{ Storage::url($legacySection->getImagesArray()[0]) }}" alt="{{ $legacySection->title }}" class="section-img">
                             @else
-                                <img src="{{ asset('images/logo.png') }}" alt="Productos Oster de Calidad" class="section-img logo-placeholder">
+                                <img src="{{ asset('images/logo.png') }}" alt="Caballos verificados y bienestar animal" class="section-img logo-placeholder">
                             @endif
                         </div>
                     </div>
@@ -106,23 +105,22 @@
             </div>
             @endif
 
-            {{-- QUALITY SECTION - Garantía y Servicio --}}
+            {{-- QUALITY SECTION - Verificación y Seguridad --}}
             @if(isset($sectionsData['quality']) && $sectionsData['quality'])
             @php $qualitySection = $sectionsData['quality']; @endphp
             <div class="content-section bg-light-blue">
                 <div class="row align-items-center mb-5">
                     <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
                         <div class="content-text">
-                            <h2 class="section-title">{{ $qualitySection->title ?? 'Garantía Oficial y Servicio Especializado' }}</h2>
+                            <h2 class="section-title">{{ $qualitySection->title ?? 'Verificación veterinaria y transparencia' }}</h2>
                             
                             {{-- Párrafos dinámicos --}}
                             @if($qualitySection->getCustomData('paragraph_1'))
                                 <p class="section-description">{{ $qualitySection->getCustomData('paragraph_1') }}</p>
                             @else
                                 <p class="section-description">
-                                    Como distribuidores autorizados de Oster, ofrecemos garantía oficial en todos nuestros 
-                                    productos. Nuestro equipo técnico especializado está capacitado directamente por la marca 
-                                    para brindar el mejor servicio postventa de Venezuela.
+                                    Trabajamos con perfiles verificados y documentación actualizada: pedigrí, controles de salud
+                                    y antecedentes de entrenamiento. Fomentamos procesos de transacción seguros y claros.
                                 </p>
                             @endif
 
@@ -130,17 +128,17 @@
                                 <p class="section-description">{{ $qualitySection->getCustomData('paragraph_2') }}</p>
                             @else
                                 <p class="section-description">
-                                    Cada producto viene con manual en español, repuestos originales disponibles, y un servicio 
-                                    técnico que entiende perfectamente las necesidades del mercado venezolano.
+                                    Ofrecemos soporte durante la negociación y facilitamos pagos seguros (p. ej., Mercado Pago),
+                                    manteniendo la trazabilidad y la confianza entre las partes.
                                 </p>
                             @endif
 
                             {{-- Badges dinámicos --}}
                             <div class="quality-badges">
-                                <span class="badge-item">✓ {{ $qualitySection->getCustomData('badge_1', 'Garantía Oficial') }}</span>
-                                <span class="badge-item">✓ {{ $qualitySection->getCustomData('badge_2', 'Servicio Técnico') }}</span>
-                                <span class="badge-item">✓ {{ $qualitySection->getCustomData('badge_3', 'Repuestos Originales') }}</span>
-                                <span class="badge-item">✓ {{ $qualitySection->getCustomData('badge_4', 'Soporte en Español') }}</span>
+                                <span class="badge-item">✓ {{ $qualitySection->getCustomData('badge_1', 'Vendedores verificados') }}</span>
+                                <span class="badge-item">✓ {{ $qualitySection->getCustomData('badge_2', 'Exámenes veterinarios') }}</span>
+                                <span class="badge-item">✓ {{ $qualitySection->getCustomData('badge_3', 'Pedigrí y documentación') }}</span>
+                                <span class="badge-item">✓ {{ $qualitySection->getCustomData('badge_4', 'Pago seguro (Mercado Pago)') }}</span>
                             </div>
                         </div>
                     </div>
@@ -150,7 +148,7 @@
                             @if($qualitySection->getImagesArray())
                                 <img src="{{ Storage::url($qualitySection->getImagesArray()[0]) }}" alt="{{ $qualitySection->title }}" class="section-img">
                             @else
-                                <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico Especializado" class="section-img logo-placeholder">
+                                <img src="{{ asset('images/logo.png') }}" alt="Verificación y documentación equina" class="section-img logo-placeholder">
                             @endif
                         </div>
                     </div>
@@ -165,16 +163,16 @@
                 <div class="row align-items-center mb-5">
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <div class="content-text">
-                            <h2 class="section-title">{{ $passionSection->title ?? 'La Pasión Detrás del Servicio' }}</h2>
+                            <h2 class="section-title">{{ $passionSection->title ?? 'Nuestra pasión por los caballos' }}</h2>
                             
                             {{-- Párrafos dinámicos --}}
                             @if($passionSection->getCustomData('paragraph_1'))
                                 <p class="section-description">{{ $passionSection->getCustomData('paragraph_1') }}</p>
                             @else
                                 <p class="section-description">
-                                    Nuestro equipo no son solo vendedores; somos entusiastas de la cocina que entendemos 
-                                    la importancia de tener herramientas confiables. Conocemos cada producto, cada 
-                                    característica, y cada beneficio que puede aportar a tu hogar.
+                                    Somos criadores, jinetes y amantes del mundo ecuestre. Conocemos las necesidades
+                                    de cada disciplina y apostamos por el bienestar, el manejo responsable y
+                                    el acompañamiento honesto durante todo el proceso.
                                 </p>
                             @endif
 
@@ -182,16 +180,17 @@
                                 <p class="section-description">{{ $passionSection->getCustomData('paragraph_2') }}</p>
                             @else
                                 <p class="section-description">
-                                    Esta pasión se traduce en un servicio personalizado que no solo te ayuda a encontrar 
-                                    el producto perfecto, sino que te acompaña durante toda su vida útil.
+                                    Nuestra misión es conectar el caballo correcto con la persona adecuada,
+                                    promoviendo transacciones seguras y relaciones a largo plazo entre compradores,
+                                    vendedores y haras.
                                 </p>
                             @endif
 
                             {{-- Quote del equipo dinámico --}}
                             <div class="team-quote">
                                 <div class="quote-content">
-                                    <p>"{{ $passionSection->getCustomData('team_quote', 'No solo vendemos electrodomésticos, creamos experiencias culinarias excepcionales para cada familia venezolana.') }}"</p>
-                                    <cite>{{ $passionSection->getCustomData('quote_author', '- Equipo ' . env('APP_NAME', 'CaballosApp') . ', Aragua, Venezuela') }}</cite>
+                                    <p>"{{ $passionSection->getCustomData('team_quote', 'No solo publicamos caballos, construimos confianza y bienestar alrededor de cada ejemplar.') }}"</p>
+                                    <cite>{{ $passionSection->getCustomData('quote_author', '- Equipo ' . env('APP_NAME', 'CaballosApp')) }}</cite>
                                 </div>
                             </div>
                         </div>
@@ -223,9 +222,8 @@
                             <p class="section-description text-white mb-4">{{ $benefitsSection->getCustomData('paragraph_1') }}</p>
                         @else
                             <p class="section-description text-white mb-4">
-                                Elegir {{ env('APP_NAME', 'CaballosApp') }} significa elegir productos que duran, un servicio que te respalda, 
-                                y una experiencia de compra que supera tus expectativas. Nuestros electrodomésticos 
-                                Oster están diseñados para la vida moderna venezolana.
+                                Elegir {{ env('APP_NAME', 'CaballosApp') }} significa apostar por la transparencia, el bienestar animal
+                                y la seguridad en cada operación. Somos una comunidad ecuestre construida sobre la confianza.
                             </p>
                         @endif
 
@@ -233,27 +231,27 @@
                             <p class="section-description text-white mb-5">{{ $benefitsSection->getCustomData('paragraph_2') }}</p>
                         @else
                             <p class="section-description text-white mb-5">
-                                Además, cada compra incluye capacitación gratuita sobre el uso del producto, recetas 
-                                exclusivas, y acceso a nuestra comunidad de usuarios donde compartimos tips y trucos culinarios.
+                                Acompañamos a compradores, vendedores y haras con asesoría, visibilidad y herramientas
+                                para concretar transacciones responsables y exitosas.
                             </p>
                         @endif
 
                         {{-- Beneficios dinámicos --}}
                         <div class="benefits-grid">
                             <div class="benefit-item">
-                                <div class="benefit-icon">{{ $benefitsSection->getCustomData('benefit_1_icon', '⚡') }}</div>
-                                <h4>{{ $benefitsSection->getCustomData('benefit_1_title', 'Mejor para Ti') }}</h4>
-                                <p>{{ $benefitsSection->getCustomData('benefit_1_desc', 'Productos eficientes, duraderos y fáciles de usar') }}</p>
+                                <div class="benefit-icon">{{ $benefitsSection->getCustomData('benefit_1_icon', '🐎') }}</div>
+                                <h4>{{ $benefitsSection->getCustomData('benefit_1_title', 'Caballos verificados') }}</h4>
+                                <p>{{ $benefitsSection->getCustomData('benefit_1_desc', 'Perfiles completos con documentación y transparencia') }}</p>
                             </div>
                             <div class="benefit-item">
-                                <div class="benefit-icon">{{ $benefitsSection->getCustomData('benefit_2_icon', '🛠️') }}</div>
-                                <h4>{{ $benefitsSection->getCustomData('benefit_2_title', 'Mejor Servicio') }}</h4>
-                                <p>{{ $benefitsSection->getCustomData('benefit_2_desc', 'Garantía oficial y soporte técnico especializado') }}</p>
+                                <div class="benefit-icon">{{ $benefitsSection->getCustomData('benefit_2_icon', '🩺') }}</div>
+                                <h4>{{ $benefitsSection->getCustomData('benefit_2_title', 'Seguridad y bienestar') }}</h4>
+                                <p>{{ $benefitsSection->getCustomData('benefit_2_desc', 'Exámenes veterinarios, pedigrí y control de calidad') }}</p>
                             </div>
                             <div class="benefit-item">
-                                <div class="benefit-icon">{{ $benefitsSection->getCustomData('benefit_3_icon', '🏠') }}</div>
-                                <h4>{{ $benefitsSection->getCustomData('benefit_3_title', 'Mejor Hogar') }}</h4>
-                                <p>{{ $benefitsSection->getCustomData('benefit_3_desc', 'Cocinas más eficientes y momentos familiares especiales') }}</p>
+                                <div class="benefit-icon">{{ $benefitsSection->getCustomData('benefit_3_icon', '🤝') }}</div>
+                                <h4>{{ $benefitsSection->getCustomData('benefit_3_title', 'Acompañamiento integral') }}</h4>
+                                <p>{{ $benefitsSection->getCustomData('benefit_3_desc', 'Soporte durante todo el proceso de compra/venta') }}</p>
                             </div>
                         </div>
                     </div>
@@ -267,19 +265,19 @@
             <div class="content-section">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-8">
-                        <h2 class="section-title">{{ $ctaSection->title ?? 'Únete a la Familia ' . env('APP_NAME', 'CaballosApp') }}</h2>
+                        <h2 class="section-title">{{ $ctaSection->title ?? 'Únete a la comunidad ' . env('APP_NAME', 'CaballosApp') }}</h2>
                         <p class="section-description mb-4">
-                            {{ $ctaSection->content ?? 'Te invitamos a ser parte de esta historia. Explora nuestra selección de electrodomésticos Oster y descubre la diferencia que hace elegir calidad, servicio y compromiso.' }}
+                            {{ $ctaSection->content ?? 'Explora ejemplares verificados o publica tus caballos con visibilidad y soporte. Hagamos juntos un mercado equino más seguro y transparente.' }}
                         </p>
                         <a href="{{ route('shop.index') }}" class="cta-button">
-                            {{ $ctaSection->getCustomData('button_text', 'Explorar Productos Ahora') }}
+                            {{ $ctaSection->getCustomData('button_text', 'Explorar Caballos Ahora') }}
                         </a>
                         
                         {{-- Pregunta final dinámica --}}
                         @if($ctaSection->getCustomData('final_question'))
                             <p class="cta-question">{{ $ctaSection->getCustomData('final_question') }}</p>
                         @else
-                            <p class="cta-question">¿Cuál es tu razón para elegir electrodomésticos de calidad?</p>
+                            <p class="cta-question">¿Qué tipo de caballo estás buscando hoy?</p>
                         @endif
                     </div>
                 </div>

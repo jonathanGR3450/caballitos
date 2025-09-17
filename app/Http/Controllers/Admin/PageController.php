@@ -509,14 +509,14 @@ if ($section->page_id != $page->id) {
             'content' => 'Página sobre ' . $appName
         ]);
         
-        // Crear secciones por defecto
+        // Crear secciones por defecto (enfocadas en caballos)
         $sectionsData = [
-            ['name' => 'hero', 'title' => 'Acerca de ' . $appName, 'content' => 'Tradición en Electrodomésticos de Calidad', 'order' => 1],
-            ['name' => 'legacy', 'title' => 'Tradición en Electrodomésticos de Calidad', 'content' => 'En ' . $appName . ', cada electrodoméstico que ofrecemos representa años de innovación...', 'order' => 2],
-            ['name' => 'quality', 'title' => 'Garantía Oficial y Servicio Especializado', 'content' => 'Como distribuidores autorizados de Oster, ofrecemos garantía oficial...', 'order' => 3],
-            ['name' => 'passion', 'title' => 'La Pasión Detrás del Servicio', 'content' => 'Nuestro equipo no son solo vendedores; somos entusiastas de la cocina...', 'order' => 4],
-            ['name' => 'benefits', 'title' => 'Por Qué Elegir ' . $appName, 'content' => 'Elegir ' . $appName . ' significa elegir productos que duran...', 'order' => 5],
-            ['name' => 'cta', 'title' => 'Únete a la Familia ' . $appName, 'content' => 'Te invitamos a ser parte de esta historia...', 'order' => 6]
+            ['name' => 'hero', 'title' => 'Acerca de ' . $appName, 'content' => 'Tradición en cría y comercio equino', 'order' => 1],
+            ['name' => 'legacy', 'title' => 'Tradición en cría y comercio equino', 'content' => 'En ' . $appName . ', cada caballo listado refleja años de selección responsable, bienestar animal y pasión por el mundo ecuestre.', 'order' => 2],
+            ['name' => 'quality', 'title' => 'Transparencia, bienestar y seguridad', 'content' => 'Trabajamos con vendedores verificados, documentación al día (pedigrí, exámenes veterinarios) y procesos de compra seguros (depósito en garantía / Mercado Pago).', 'order' => 3],
+            ['name' => 'passion', 'title' => 'Nuestra pasión por los caballos', 'content' => 'Somos una comunidad de criadores, jinetes y profesionales. Ponemos el bienestar del caballo y la confianza del comprador en el centro de todo.', 'order' => 4],
+            ['name' => 'benefits', 'title' => 'Por qué elegir ' . $appName, 'content' => 'Acceso a ejemplares verificados, trato justo, soporte durante la transacción y una comunidad confiable.', 'order' => 5],
+            ['name' => 'cta', 'title' => 'Únete a la comunidad ' . $appName, 'content' => 'Encuentra el caballo ideal o publica tus ejemplares con herramientas de gestión, verificación y visibilidad.', 'order' => 6]
         ];
         
         foreach ($sectionsData as $sectionData) {
@@ -533,6 +533,7 @@ if ($section->page_id != $page->id) {
     return view('admin.pages.edit-quienes-somos', compact('page'));
 }
 
+
 public function updateQuienesSomos(Request $request)
 {
     $page = Page::where('slug', 'quienes-somos')->firstOrFail();
@@ -547,7 +548,6 @@ public function editContacto()
         $query->orderBy('order');
     }])->first();
     
-    // Si no existe la página, crearla con secciones por defecto
     if (!$page) {
         $page = Page::create([
             'slug' => 'contacto',
@@ -555,24 +555,23 @@ public function editContacto()
             'content' => "Página de contacto de " . env('APP_NAME', 'CaballosApp')
         ]);
         
-        // Crear secciones por defecto para contacto
         $sectionsData = [
             [
                 'name' => 'hero', 
                 'title' => 'Contáctanos', 
-                'content' => 'Servicio técnico especializado en línea blanca y electrodomésticos en Quito', 
+                'content' => 'Marketplace especializado en compra y venta de caballos', 
                 'order' => 1
             ],
             [
                 'name' => 'info', 
-                'title' => '¿Buscas el caballo ideal para ti?', 
-                'content' => 'En EquiMarket somos especialistas en la venta, cría y cuidado de caballos de distintas razas.', 
+                'title' => '¿Buscas el caballo ideal?', 
+                'content' => 'En ' . env('APP_NAME', 'CaballosApp') . ' conectamos compradores con criadores y vendedores verificados. Publica tus ejemplares o encuentra tu próximo caballo con seguridad.', 
                 'order' => 2
             ],
             [
                 'name' => 'services', 
                 'title' => 'Nuestros Servicios', 
-                'content' => 'Servicios especializados para tu hogar', 
+                'content' => 'Servicios para compradores, vendedores y granjas de cría (haras)', 
                 'order' => 3
             ],
             [
@@ -615,7 +614,6 @@ public function editServicios()
         $query->orderBy('order');
     }])->first();
     
-    // Si no existe la página, crearla con secciones por defecto
     if (!$page) {
         $page = Page::create([
             'slug' => 'servicios',
@@ -623,42 +621,41 @@ public function editServicios()
             'content' => 'Página de servicios de ' . env('APP_NAME', 'CaballosApp')
         ]);
         
-        // Crear secciones por defecto para servicios
         $sectionsData = [
             [
                 'name' => 'hero', 
                 'title' => 'Nuestros Servicios', 
-                'content' => 'Servicios especializados en electrodomésticos y línea blanca', 
+                'content' => 'Servicios para compra y venta de caballos', 
                 'order' => 1
             ],
             [
                 'name' => 'intro', 
-                'title' => 'Expertos en Electrodomésticos', 
-                'content' => 'Con años de experiencia en el sector, ofrecemos servicios integrales...', 
+                'title' => 'Expertos en el mundo equino', 
+                'content' => 'Con años de experiencia, ofrecemos soluciones para compradores, vendedores y haras: publicación, verificación y soporte en transacciones.', 
                 'order' => 2
             ],
             [
                 'name' => 'services_list', 
                 'title' => 'Servicios Disponibles', 
-                'content' => 'Amplia gama de servicios para tus electrodomésticos', 
+                'content' => 'Servicios clave para transacciones seguras y exitosas', 
                 'order' => 3
             ],
             [
                 'name' => 'process', 
-                'title' => 'Nuestro Proceso de Trabajo', 
-                'content' => 'Metodología probada para garantizar resultados', 
+                'title' => 'Cómo funciona', 
+                'content' => 'Proceso diseñado para seguridad, transparencia y bienestar animal', 
                 'order' => 4
             ],
             [
                 'name' => 'why_choose', 
-                'title' => 'Por Qué Elegir ' . env('APP_NAME', 'CaballosApp'), 
-                'content' => 'Razones que nos convierten en tu mejor opción', 
+                'title' => 'Por qué elegir ' . env('APP_NAME', 'CaballosApp'), 
+                'content' => 'Razones para confiar en nosotros', 
                 'order' => 5
             ],
             [
                 'name' => 'cta', 
-                'title' => 'Solicita tu Servicio Hoy', 
-                'content' => '¿Listo para reparar tu electrodoméstico? Contáctanos ahora', 
+                'title' => 'Publica o encuentra tu caballo hoy', 
+                'content' => '¿Listo para publicar o comprar? Contáctanos y te acompañamos en todo el proceso.', 
                 'order' => 6
             ]
         ];
@@ -679,17 +676,16 @@ public function editServicios()
             }
         }
         
-        // Recargar la página con las secciones
         $page = $page->fresh(['sections']);
     }
 
-    // Obtener la página con sus secciones ordenadas
     $page = Page::where('slug', 'servicios')->with(['sections' => function($query) {
         $query->orderBy('order');
     }])->first();
 
     return view('admin.pages.edit-servicios', compact('page'));
 }
+
 
 public function updateServicios(Request $request)
 {
@@ -700,12 +696,10 @@ public function updateServicios(Request $request)
 
 public function servicios()
 {
-    // Obtener la página de servicios con sus secciones activas
     $page = Page::where('slug', 'servicios')->with(['sections' => function($query) {
         $query->where('is_active', true)->orderBy('order');
     }])->first();
     
-    // Si no existe la página, crear estructura básica
     if (!$page) {
         $page = Page::create([
             'slug' => 'servicios',
@@ -713,16 +707,13 @@ public function servicios()
             'content' => 'Página de servicios de ' . env('APP_NAME', 'CaballosApp')
         ]);
         
-        // Crear secciones por defecto
         $this->createDefaultServicesSection($page);
         
-        // Recargar con secciones
         $page->load(['sections' => function($query) {
             $query->where('is_active', true)->orderBy('order');
         }]);
     }
     
-    // Convertir secciones a array asociativo para fácil acceso
     $sectionsData = [];
     foreach($page->sections as $section) {
         $sectionsData[$section->name] = $section;
@@ -740,93 +731,93 @@ private function createDefaultServicesSection($page)
         [
             'name' => 'hero',
             'title' => 'Nuestros Servicios',
-            'content' => 'Servicios especializados en electrodomésticos',
+            'content' => 'Servicios especializados para el mercado equino',
             'order' => 1,
             'is_active' => true
         ],
         [
             'name' => 'intro', 
-            'title' => 'Expertos en Electrodomésticos',
-            'content' => 'Con más de 10 años de experiencia, ofrecemos servicios de reparación y mantenimiento de electrodomésticos con la más alta calidad.',
+            'title' => 'Expertos en el mundo equino',
+            'content' => 'Ofrecemos publicación de listados, verificación documental y veterinaria, asesoría y soporte durante todo el proceso de compra/venta.',
             'order' => 2,
             'is_active' => true
         ],
         [
             'name' => 'services_list',
             'title' => 'Servicios Disponibles',
-            'content' => 'Ofrecemos una amplia gama de servicios especializados',
+            'content' => 'Soluciones para compradores, vendedores y haras',
             'custom_data' => json_encode([
-                'service_1_icon' => '🔧',
-                'service_1_title' => 'Reparación de Lavadoras',
-                'service_1_desc' => 'Diagnóstico y reparación de todo tipo de lavadoras',
-                'service_2_icon' => '❄️',
-                'service_2_title' => 'Reparación de Refrigeradoras',
-                'service_2_desc' => 'Servicio técnico especializado en refrigeración',
-                'service_3_icon' => '🍳',
-                'service_3_title' => 'Reparación de Cocinas',
-                'service_3_desc' => 'Mantenimiento y reparación de cocinas eléctricas y gas',
-                'service_4_icon' => '🌀',
-                'service_4_title' => 'Reparación de Secadoras',
-                'service_4_desc' => 'Servicio completo para secadoras de ropa',
-                'service_5_icon' => '⚡',
-                'service_5_title' => 'Accesorios y Equipamiento',
-                'service_5_desc' => 'Reparación especializada en productos Oster',
-                'service_6_icon' => '🏠',
-                'service_6_title' => 'Asesoría Personalizada',
-                'service_6_desc' => 'Atendemos en tu hogar u oficina'
+                'service_1_icon' => '🐎',
+                'service_1_title' => 'Asesoría de compra/venta',
+                'service_1_desc' => 'Acompañamiento experto para elegir o listar caballos',
+                'service_2_icon' => '⭐',
+                'service_2_title' => 'Publicación Premium/Destacada',
+                'service_2_desc' => 'Mayor visibilidad en la plataforma',
+                'service_3_icon' => '🩺',
+                'service_3_title' => 'Verificación veterinaria',
+                'service_3_desc' => 'Chequeos y pruebas documentadas',
+                'service_4_icon' => '📄',
+                'service_4_title' => 'Gestión de pedigrí y documentos',
+                'service_4_desc' => 'Documentación y trámites ordenados',
+                'service_5_icon' => '🚚',
+                'service_5_title' => 'Transporte equino',
+                'service_5_desc' => 'Logística segura para el caballo',
+                'service_6_icon' => '🏇',
+                'service_6_title' => 'Entrenamiento y acondicionamiento',
+                'service_6_desc' => 'Programas a medida con profesionales'
             ]),
             'order' => 3,
             'is_active' => true
         ],
         [
             'name' => 'process',
-            'title' => 'Nuestro Proceso de Trabajo',
-            'content' => 'Seguimos un proceso sistemático para garantizar el mejor servicio',
+            'title' => 'Cómo funciona',
+            'content' => 'Proceso centrado en seguridad y bienestar',
             'custom_data' => json_encode([
                 'step_1_number' => '1',
-                'step_1_title' => 'Diagnóstico',
-                'step_1_desc' => 'Evaluamos el problema y identificamos la solución',
+                'step_1_title' => 'Evaluación del ejemplar',
+                'step_1_desc' => 'Información, historial y salud',
                 'step_2_number' => '2',
-                'step_2_title' => 'Presupuesto',
-                'step_2_desc' => 'Te damos un presupuesto claro y sin sorpresas',
+                'step_2_title' => 'Publicación y alcance',
+                'step_2_desc' => 'Listados optimizados y difusión',
                 'step_3_number' => '3',
-                'step_3_title' => 'Reparación',
-                'step_3_desc' => 'Realizamos la reparación con repuestos originales',
+                'step_3_title' => 'Negociación segura',
+                'step_3_desc' => 'Soporte y pago seguro (Mercado Pago)',
                 'step_4_number' => '4',
-                'step_4_title' => 'Garantía',
-                'step_4_desc' => 'Tu electrodoméstico queda con garantía de servicio'
+                'step_4_title' => 'Entrega y seguimiento',
+                'step_4_desc' => 'Logística y posventa responsable'
             ]),
             'order' => 4,
             'is_active' => true
         ],
         [
             'name' => 'why_choose',
-            'title' => 'Por Qué Elegir ' . env('APP_NAME', 'CaballosApp'),
-            'content' => 'Razones por las cuales somos tu mejor opción',
+            'title' => 'Por qué elegir ' . env('APP_NAME', 'CaballosApp'),
+            'content' => 'Confianza, bienestar y alcance',
             'custom_data' => json_encode([
-                'reason_1_icon' => '⭐',
-                'reason_1_title' => 'Experiencia Comprobada',
-                'reason_1_desc' => 'Más de 10 años reparando electrodomésticos',
-                'reason_2_icon' => '🛡️',
-                'reason_2_title' => 'Garantía Completa',
-                'reason_2_desc' => 'Todos nuestros trabajos incluyen garantía',
-                'reason_3_icon' => '⚡',
-                'reason_3_title' => 'Servicio Rápido',
-                'reason_3_desc' => 'Atención inmediata y respuesta en 24h',
-                'reason_4_icon' => '💰',
-                'reason_4_title' => 'Precios Justos',
-                'reason_4_desc' => 'Presupuestos transparentes sin costos ocultos'
+                'reason_1_icon' => '🛡️',
+                'reason_1_title' => 'Vendedores verificados',
+                'reason_1_desc' => 'Perfiles y reputación auditables',
+                'reason_2_icon' => '❤️',
+                'reason_2_title' => 'Bienestar y transparencia',
+                'reason_2_desc' => 'Documentación, pedigrí y controles',
+                'reason_3_icon' => '💳',
+                'reason_3_title' => 'Pago seguro',
+                'reason_3_desc' => 'Integramos Mercado Pago',
+                'reason_4_icon' => '🌍',
+                'reason_4_title' => 'Alcance internacional',
+                'reason_4_desc' => 'Visibilidad para compradores y haras'
             ]),
             'order' => 5,
             'is_active' => true
         ],
         [
             'name' => 'cta',
-            'title' => 'Solicita tu Servicio Hoy',
-            'content' => '¿Necesitas reparar tu electrodoméstico? Contáctanos ahora y recibe atención personalizada. Nuestros expertos están listos para ayudarte.',
+            'title' => 'Publica o encuentra tu caballo hoy',
+            'content' => '¿Listo para publicar o comprar? Contáctanos y te acompañamos de principio a fin.',
             'custom_data' => json_encode([
-                'button_primary_text' => 'Contactar Ahora',
-                'button_secondary_text' => 'Ver Más Servicios'
+                'button_primary_text' => 'Contactar ahora',
+                'button_secondary_text' => 'Ver más servicios'
             ]),
             'order' => 6,
             'is_active' => true

@@ -73,7 +73,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Subtítulo</label>
                                     <input type="text" name="content" class="form-control" 
-                                           value="{{ $section->content ?: 'Tradición en Electrodomésticos de Calidad' }}" required>
+                                           value="{{ $section->content ?: 'Tradición Ecuestre de Calidad' }}" required>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                         <div class="field-group">
                             <h6><i class="fas fa-heading"></i> Título de Sección</h6>
                             <input type="text" name="title" class="form-control mb-3" 
-                                   value="{{ $section->title ?: 'Tradición en Electrodomésticos de Calidad' }}" required>
+                                   value="{{ $section->title ?: 'Tradición Ecuestre de Calidad' }}" required>
                         </div>
 
                         <div class="field-group">
@@ -137,17 +137,17 @@
                             <div class="mb-3">
                                 <label class="form-label">Primer párrafo</label>
                                 <textarea name="paragraph_1" class="form-control" rows="3" 
-                                          placeholder="Ej: En {{ env('APP_NAME', 'CaballosApp') }}, cada electrodoméstico que ofrecemos...">{{ $section->getCustomData('paragraph_1') }}</textarea>
+                                          placeholder="Ej: En {{ env('APP_NAME', 'CaballosApp') }}, cada caballo que listamos representa selección y crianza responsable...">{{ $section->getCustomData('paragraph_1') }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Segundo párrafo</label>
                                 <textarea name="paragraph_2" class="form-control" rows="3" 
-                                          placeholder="Ej: Desde licuadoras de alta potencia...">{{ $section->getCustomData('paragraph_2') }}</textarea>
+                                          placeholder="Ej: Desde potros con gran proyección hasta ejemplares domados para distintas disciplinas...">{{ $section->getCustomData('paragraph_2') }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Cita destacada (Quote)</label>
                                 <textarea name="quote" class="form-control" rows="2" 
-                                          placeholder="Ej: Imagínate una cocina donde cada electrodoméstico funciona a la perfección...">{{ $section->getCustomData('quote') }}</textarea>
+                                          placeholder="Ej: Imagina una caballeriza donde cada ejemplar es elegido por su linaje, temperamento y desempeño...">{{ $section->getCustomData('quote') }}</textarea>
                             </div>
                         </div>
 
@@ -178,11 +178,11 @@
                 </div>
             </div>
 
-            {{-- SECCIÓN QUALITY - Garantía --}}
+            {{-- SECCIÓN QUALITY - Verificación y Confianza --}}
             @elseif($section->name === 'quality')
             <div class="section-card">
                 <div class="section-header">
-                    <h4><i class="fas fa-shield-alt me-2"></i> Sección: Garantía y Servicio <span class="badge badge-quality ms-2">Quality</span></h4>
+                    <h4><i class="fas fa-shield-alt me-2"></i> Sección: Verificación y Confianza <span class="badge badge-quality ms-2">Quality</span></h4>
                 </div>
                 <div class="section-body">
                     <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
@@ -191,7 +191,7 @@
                         <div class="field-group">
                             <h6><i class="fas fa-heading"></i> Título de Sección</h6>
                             <input type="text" name="title" class="form-control mb-3" 
-                                   value="{{ $section->title ?: 'Garantía Oficial y Servicio Especializado' }}" required>
+                                   value="{{ $section->title ?: 'Verificación de Pedigrí y Confianza' }}" required>
                         </div>
 
                         <div class="field-group">
@@ -199,12 +199,12 @@
                             <div class="mb-3">
                                 <label class="form-label">Primer párrafo</label>
                                 <textarea name="paragraph_1" class="form-control" rows="3" 
-                                          placeholder="Sobre garantía oficial y distribución autorizada...">{{ $section->getCustomData('paragraph_1') }}</textarea>
+                                          placeholder="Sobre verificación de vendedores, pedigrí y documentación...">{{ $section->getCustomData('paragraph_1') }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Segundo párrafo</label>
                                 <textarea name="paragraph_2" class="form-control" rows="3" 
-                                          placeholder="Sobre servicio técnico y soporte...">{{ $section->getCustomData('paragraph_2') }}</textarea>
+                                          placeholder="Sobre soporte al comprador, asesoría y procesos seguros...">{{ $section->getCustomData('paragraph_2') }}</textarea>
                             </div>
                         </div>
 
@@ -213,15 +213,15 @@
                             <div class="row">
                                 <div class="col-md-6 mb-2">
                                     <input type="text" name="badge_1" class="form-control" 
-                                           value="{{ $section->getCustomData('badge_1') ?: 'Garantía Oficial' }}" placeholder="Badge 1">
+                                           value="{{ $section->getCustomData('badge_1') ?: 'Pedigrí Verificado' }}" placeholder="Badge 1">
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <input type="text" name="badge_2" class="form-control" 
-                                           value="{{ $section->getCustomData('badge_2') ?: 'Servicio Técnico' }}" placeholder="Badge 2">
+                                           value="{{ $section->getCustomData('badge_2') ?: 'Vendedores Validados' }}" placeholder="Badge 2">
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <input type="text" name="badge_3" class="form-control" 
-                                           value="{{ $section->getCustomData('badge_3') ?: 'Repuestos Originales' }}" placeholder="Badge 3">
+                                           value="{{ $section->getCustomData('badge_3') ?: 'Asesoría Ecuestre' }}" placeholder="Badge 3">
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <input type="text" name="badge_4" class="form-control" 
@@ -230,9 +230,9 @@
                             </div>
                             <div class="mt-2">
                                 <strong>Vista previa:</strong>
-                                <span class="badge-item">✓ Garantía Oficial</span>
-                                <span class="badge-item">✓ Servicio Técnico</span>
-                                <span class="badge-item">✓ Repuestos Originales</span>
+                                <span class="badge-item">✓ Pedigrí Verificado</span>
+                                <span class="badge-item">✓ Vendedores Validados</span>
+                                <span class="badge-item">✓ Asesoría Ecuestre</span>
                                 <span class="badge-item">✓ Soporte en Español</span>
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <input type="file" name="images[]" class="form-control" accept="image/*">
-                                    <small class="text-muted">Imagen sobre servicio técnico/garantía</small>
+                                    <small class="text-muted">Imagen sobre verificación/seguridad</small>
                                 </div>
                                 <div class="col-md-4">
                                     @if($section->getImagesArray())
@@ -256,7 +256,7 @@
 
                         <input type="hidden" name="is_active" value="1">
                         <button type="submit" class="btn btn-success btn-lg">
-                            <i class="fas fa-save me-2"></i> Guardar Garantía y Servicio
+                            <i class="fas fa-save me-2"></i> Guardar Verificación y Confianza
                         </button>
                     </form>
                 </div>
@@ -275,7 +275,7 @@
                         <div class="field-group">
                             <h6><i class="fas fa-heading"></i> Título</h6>
                             <input type="text" name="title" class="form-control mb-3" 
-                                   value="{{ $section->title ?: 'La Pasión Detrás del Servicio' }}" required>
+                                   value="{{ $section->title ?: 'La Pasión Detrás del Proyecto' }}" required>
                         </div>
 
                         <div class="field-group">
@@ -283,12 +283,12 @@
                             <div class="mb-3">
                                 <label class="form-label">Primer párrafo</label>
                                 <textarea name="paragraph_1" class="form-control" rows="3" 
-                                          placeholder="Sobre el equipo y su expertise...">{{ $section->getCustomData('paragraph_1') }}</textarea>
+                                          placeholder="Sobre el equipo y su experiencia ecuestre...">{{ $section->getCustomData('paragraph_1') }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Segundo párrafo</label>
                                 <textarea name="paragraph_2" class="form-control" rows="3" 
-                                          placeholder="Sobre el servicio personalizado...">{{ $section->getCustomData('paragraph_2') }}</textarea>
+                                          placeholder="Sobre el acompañamiento a compradores y criadores...">{{ $section->getCustomData('paragraph_2') }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Cita del Equipo</label>
@@ -308,7 +308,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <input type="file" name="images[]" class="form-control" accept="image/*">
-                                    <small class="text-muted">Foto del equipo o ambiente de trabajo</small>
+                                    <small class="text-muted">Foto del equipo o entorno ecuestre</small>
                                 </div>
                                 <div class="col-md-4">
                                     @if($section->getImagesArray())
@@ -348,12 +348,12 @@
                             <div class="mb-3">
                                 <label class="form-label">Primer párrafo descriptivo</label>
                                 <textarea name="paragraph_1" class="form-control" rows="3" 
-                                          placeholder="Descripción general de los beneficios...">{{ $section->getCustomData('paragraph_1') }}</textarea>
+                                          placeholder="Descripción general de los beneficios del marketplace...">{{ $section->getCustomData('paragraph_1') }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Segundo párrafo descriptivo</label>
                                 <textarea name="paragraph_2" class="form-control" rows="3" 
-                                          placeholder="Beneficios adicionales como capacitación, recetas, etc...">{{ $section->getCustomData('paragraph_2') }}</textarea>
+                                          placeholder="Beneficios adicionales como asesoría, logística, etc...">{{ $section->getCustomData('paragraph_2') }}</textarea>
                             </div>
                         </div>
 
@@ -365,17 +365,17 @@
                                 <div class="col-md-2">
                                     <label class="form-label">Emoji/Icono 1</label>
                                     <input type="text" name="benefit_1_icon" class="form-control text-center" 
-                                           value="{{ $section->getCustomData('benefit_1_icon') ?: '⚡' }}" style="font-size: 1.5rem;">
+                                           value="{{ $section->getCustomData('benefit_1_icon') ?: '🐎' }}" style="font-size: 1.5rem;">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Título beneficio 1</label>
                                     <input type="text" name="benefit_1_title" class="form-control" 
-                                           value="{{ $section->getCustomData('benefit_1_title') ?: 'Mejor para Ti' }}">
+                                           value="{{ $section->getCustomData('benefit_1_title') ?: 'Elección Informada' }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Descripción beneficio 1</label>
                                     <input type="text" name="benefit_1_desc" class="form-control" 
-                                           value="{{ $section->getCustomData('benefit_1_desc') ?: 'Productos eficientes, duraderos y fáciles de usar' }}">
+                                           value="{{ $section->getCustomData('benefit_1_desc') ?: 'Fichas, fotos y videos detallados para decidir mejor' }}">
                                 </div>
                             </div>
 
@@ -384,17 +384,17 @@
                                 <div class="col-md-2">
                                     <label class="form-label">Emoji/Icono 2</label>
                                     <input type="text" name="benefit_2_icon" class="form-control text-center" 
-                                           value="{{ $section->getCustomData('benefit_2_icon') ?: '🛠️' }}" style="font-size: 1.5rem;">
+                                           value="{{ $section->getCustomData('benefit_2_icon') ?: '✅' }}" style="font-size: 1.5rem;">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Título beneficio 2</label>
                                     <input type="text" name="benefit_2_title" class="form-control" 
-                                           value="{{ $section->getCustomData('benefit_2_title') ?: 'Mejor Servicio' }}">
+                                           value="{{ $section->getCustomData('benefit_2_title') ?: 'Vendedores Confiables' }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Descripción beneficio 2</label>
                                     <input type="text" name="benefit_2_desc" class="form-control" 
-                                           value="{{ $section->getCustomData('benefit_2_desc') ?: 'Garantía oficial y soporte técnico especializado' }}">
+                                           value="{{ $section->getCustomData('benefit_2_desc') ?: 'Verificación, reputación y soporte en español' }}">
                                 </div>
                             </div>
 
@@ -403,17 +403,17 @@
                                 <div class="col-md-2">
                                     <label class="form-label">Emoji/Icono 3</label>
                                     <input type="text" name="benefit_3_icon" class="form-control text-center" 
-                                           value="{{ $section->getCustomData('benefit_3_icon') ?: '🏠' }}" style="font-size: 1.5rem;">
+                                           value="{{ $section->getCustomData('benefit_3_icon') ?: '🤝' }}" style="font-size: 1.5rem;">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Título beneficio 3</label>
                                     <input type="text" name="benefit_3_title" class="form-control" 
-                                           value="{{ $section->getCustomData('benefit_3_title') ?: 'Mejor Hogar' }}">
+                                           value="{{ $section->getCustomData('benefit_3_title') ?: 'Mejor Experiencia' }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Descripción beneficio 3</label>
                                     <input type="text" name="benefit_3_desc" class="form-control" 
-                                           value="{{ $section->getCustomData('benefit_3_desc') ?: 'Cocinas más eficientes y momentos familiares especiales' }}">
+                                           value="{{ $section->getCustomData('benefit_3_desc') ?: 'Proceso seguro y acompañamiento en la compra' }}">
                                 </div>
                             </div>
                         </div>
@@ -441,22 +441,22 @@
                             <div class="mb-3">
                                 <label class="form-label">Título de CTA</label>
                                 <input type="text" name="title" class="form-control" 
-                                       value="{{ $section->title ?: 'Únete a la Familia ' . env('APP_NAME', 'CaballosApp') }}" required>
+                                       value="{{ $section->title ?: 'Únete a la Comunidad ' . env('APP_NAME', 'CaballosApp') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Descripción de CTA</label>
                                 <textarea name="content" class="form-control" rows="3" 
-                                          placeholder="Invitación para que visiten la tienda...">{{ $section->content }}</textarea>
+                                          placeholder="Invitación para explorar el marketplace...">{{ $section->content }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Texto del botón</label>
                                 <input type="text" name="button_text" class="form-control" 
-                                       value="{{ $section->getCustomData('button_text') ?: 'Explorar Productos Ahora' }}">
+                                       value="{{ $section->getCustomData('button_text') ?: 'Explorar Caballos Ahora' }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Pregunta final (opcional)</label>
                                 <input type="text" name="final_question" class="form-control" 
-                                       value="{{ $section->getCustomData('final_question') ?: '¿Cuál es tu razón para elegir electrodomésticos de calidad?' }}" 
+                                       value="{{ $section->getCustomData('final_question') ?: '¿Cuál es tu próxima meta ecuestre?' }}" 
                                        placeholder="Pregunta que genere reflexión...">
                             </div>
                         </div>

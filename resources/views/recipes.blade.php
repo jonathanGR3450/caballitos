@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Servicios - {{ env('APP_NAME', 'CaballosApp') }} | Reparación y Mantenimiento de Electrodomésticos")
+@section('title', "Servicios - {{ env('APP_NAME', 'CaballosApp') }} | Servicios Ecuestres y Publicación de Caballos")
 
 @section('content')
 
@@ -21,7 +21,7 @@
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-10">
                         <h1 class="hero-title">{{ $heroSection->title ?? 'Nuestros Servicios' }}</h1>
-                        <p class="hero-subtitle">{{ $heroSection->content ?? 'Servicio técnico especializado en línea blanca y electrodomésticos Oster en Quito' }}</p>
+                        <p class="hero-subtitle">{{ $heroSection->content ?? 'Servicios ecuestres para compra, venta y bienestar de caballos' }}</p>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-10">
                         <h1 class="hero-title">Nuestros Servicios</h1>
-                        <p class="hero-subtitle">Servicio técnico especializado en línea blanca y electrodomésticos Oster en Quito</p>
+                        <p class="hero-subtitle">Servicios ecuestres para compra, venta y bienestar de caballos</p>
                     </div>
                 </div>
             </div>
@@ -50,15 +50,15 @@
             <div class="container">
                 <div class="row text-center mb-5">
                     <div class="col-lg-8 mx-auto">
-                        <h2 class="section-title">{{ $introSection->title ?? '¿Qué Hacemos?' }}</h2>
+                        <h2 class="section-title">{{ $introSection->title ?? '¿Qué Ofrecemos?' }}</h2>
                         <p class="section-description">
-                            {{ $introSection->content ?? 'Somos especialistas en reparación, mantenimiento e instalación de electrodomésticos. Con más de 10 años de experiencia, brindamos servicio técnico certificado en toda la ciudad de Quito.' }}
+                            {{ $introSection->content ?? 'Somos especialistas en compra-venta, asesoría y cuidado de caballos. Te acompañamos con información de pedigrí, salud, entrenamiento y logística para que tomes la mejor decisión.' }}
                         </p>
                     </div>
                 </div>
 
                 <div class="row g-4">
-                    <!-- Reparación -->
+                    <!-- Servicio 1 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="service-card">
                             <div class="service-icon">
@@ -66,48 +66,48 @@
                             </div>
                             <h3 class="service-title">Venta de Caballos</h3>
                             <p class="service-description">
-                                Diagnóstico y reparación de fallas en todos los tipos de electrodomésticos con repuestos originales y garantía.
+                                Publicación y promoción de ejemplares verificados con fotos, videos y detalle de pedigrí y estado de salud.
                             </p>
                             <ul class="service-features">
-                                <li><i class="fas fa-check"></i>Diagnóstico gratuito</li>
-                                <li><i class="fas fa-check"></i>Repuestos originales</li>
-                                <li><i class="fas fa-check"></i>Garantía incluida</li>
+                                <li><i class="fas fa-check"></i>Anuncios verificados</li>
+                                <li><i class="fas fa-check"></i>Galería foto/video</li>
+                                <li><i class="fas fa-check"></i>Soporte durante la venta</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Mantenimiento -->
+                    <!-- Servicio 2 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-cogs"></i>
                             </div>
-                            <h3 class="service-title">Mantenimiento Preventivo</h3>
+                            <h3 class="service-title">Cuidado y Bienestar</h3>
                             <p class="service-description">
-                                Servicios de limpieza y mantenimiento programado para prolongar la vida útil de tus electrodomésticos.
+                                Orientación en planes sanitarios, nutrición y herrado con proveedores aliados y profesionales del sector.
                             </p>
                             <ul class="service-features">
-                                <li><i class="fas fa-check"></i>Limpieza profunda</li>
-                                <li><i class="fas fa-check"></i>Revisión completa</li>
-                                <li><i class="fas fa-check"></i>Planes de mantenimiento</li>
+                                <li><i class="fas fa-check"></i>Plan sanitario</li>
+                                <li><i class="fas fa-check"></i>Evaluación veterinaria</li>
+                                <li><i class="fas fa-check"></i>Programas de bienestar</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Instalación -->
+                    <!-- Servicio 3 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-tools"></i>
                             </div>
-                            <h3 class="service-title">Instalación Profesional</h3>
+                            <h3 class="service-title">Entrenamiento y Preparación</h3>
                             <p class="service-description">
-                                Instalación segura y correcta de electrodomésticos nuevos con conexiones eléctricas y de agua certificadas.
+                                Acompañamiento en entrenamiento básico y preparación para disciplinas como salto, doma y enduro.
                             </p>
                             <ul class="service-features">
-                                <li><i class="fas fa-check"></i>Instalación certificada</li>
-                                <li><i class="fas fa-check"></i>Pruebas de funcionamiento</li>
-                                <li><i class="fas fa-check"></i>Capacitación de uso</li>
+                                <li><i class="fas fa-check"></i>Planes por nivel</li>
+                                <li><i class="fas fa-check"></i>Sesiones de evaluación</li>
+                                <li><i class="fas fa-check"></i>Acompañamiento de entrenador</li>
                             </ul>
                         </div>
                     </div>
@@ -119,16 +119,16 @@
             <div class="container">
                 <div class="row text-center mb-5">
                     <div class="col-lg-8 mx-auto">
-                        <h2 class="section-title">¿Qué Hacemos?</h2>
+                        <h2 class="section-title">¿Qué Ofrecemos?</h2>
                         <p class="section-description">
-                            Somos especialistas en reparación, mantenimiento e instalación de electrodomésticos. 
-                            Con más de 10 años de experiencia, brindamos servicio técnico certificado en toda la ciudad de Quito.
+                            Somos especialistas en compra-venta, asesoría y cuidado de caballos. 
+                            Te acompañamos con información de pedigrí, salud, entrenamiento y logística para que tomes la mejor decisión.
                         </p>
                     </div>
                 </div>
 
                 <div class="row g-4">
-                    <!-- Reparación -->
+                    <!-- Servicio 1 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="service-card">
                             <div class="service-icon">
@@ -136,48 +136,48 @@
                             </div>
                             <h3 class="service-title">Venta de Caballos</h3>
                             <p class="service-description">
-                                Diagnóstico y reparación de fallas en todos los tipos de electrodomésticos con repuestos originales y garantía.
+                                Publicación y promoción de ejemplares verificados con fotos, videos y detalle de pedigrí y estado de salud.
                             </p>
                             <ul class="service-features">
-                                <li><i class="fas fa-check"></i>Diagnóstico gratuito</li>
-                                <li><i class="fas fa-check"></i>Repuestos originales</li>
-                                <li><i class="fas fa-check"></i>Garantía incluida</li>
+                                <li><i class="fas fa-check"></i>Anuncios verificados</li>
+                                <li><i class="fas fa-check"></i>Galería foto/video</li>
+                                <li><i class="fas fa-check"></i>Soporte durante la venta</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Mantenimiento -->
+                    <!-- Servicio 2 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-cogs"></i>
                             </div>
-                            <h3 class="service-title">Mantenimiento Preventivo</h3>
+                            <h3 class="service-title">Cuidado y Bienestar</h3>
                             <p class="service-description">
-                                Servicios de limpieza y mantenimiento programado para prolongar la vida útil de tus electrodomésticos.
+                                Orientación en planes sanitarios, nutrición y herrado con proveedores aliados y profesionales del sector.
                             </p>
                             <ul class="service-features">
-                                <li><i class="fas fa-check"></i>Limpieza profunda</li>
-                                <li><i class="fas fa-check"></i>Revisión completa</li>
-                                <li><i class="fas fa-check"></i>Planes de mantenimiento</li>
+                                <li><i class="fas fa-check"></i>Plan sanitario</li>
+                                <li><i class="fas fa-check"></i>Evaluación veterinaria</li>
+                                <li><i class="fas fa-check"></i>Programas de bienestar</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Instalación -->
+                    <!-- Servicio 3 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-tools"></i>
                             </div>
-                            <h3 class="service-title">Instalación Profesional</h3>
+                            <h3 class="service-title">Entrenamiento y Preparación</h3>
                             <p class="service-description">
-                                Instalación segura y correcta de electrodomésticos nuevos con conexiones eléctricas y de agua certificadas.
+                                Acompañamiento en entrenamiento básico y preparación para disciplinas como salto, doma y enduro.
                             </p>
                             <ul class="service-features">
-                                <li><i class="fas fa-check"></i>Instalación certificada</li>
-                                <li><i class="fas fa-check"></i>Pruebas de funcionamiento</li>
-                                <li><i class="fas fa-check"></i>Capacitación de uso</li>
+                                <li><i class="fas fa-check"></i>Planes por nivel</li>
+                                <li><i class="fas fa-check"></i>Sesiones de evaluación</li>
+                                <li><i class="fas fa-check"></i>Acompañamiento de entrenador</li>
                             </ul>
                         </div>
                     </div>
@@ -186,40 +186,40 @@
         </section>
     @endif
 
-    <!-- Appliances Section -->
+    <!-- Services List Section -->
     @if(isset($sectionsData['services_list']) && $sectionsData['services_list'])
         @php $servicesSection = $sectionsData['services_list']; @endphp
         <section class="appliances-section">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h2 class="section-title">{{ $servicesSection->title ?? 'Electrodomésticos que Reparamos' }}</h2>
+                        <h2 class="section-title">{{ $servicesSection->title ?? 'Servicios Ecuestres' }}</h2>
                         <p class="section-description">
-                            {{ $servicesSection->content ?? 'Trabajamos con todas las marcas y modelos de línea blanca. Nuestros técnicos están capacitados para reparar cualquier electrodoméstico del hogar.' }}
+                            {{ $servicesSection->content ?? 'Soluciones integrales para tu experiencia ecuestre: desde publicación y asesoría hasta documentación y logística.' }}
                         </p>
 
                         <div class="appliances-grid">
                             <div class="appliance-item">
                                 <div class="appliance-icon">{{ $servicesSection->getCustomData('service_1_icon', '🏠') }}</div>
                                 <div class="appliance-info">
-                                    <h4>{{ $servicesSection->getCustomData('service_1_title', 'Línea Blanca') }}</h4>
-                                    <p>{{ $servicesSection->getCustomData('service_1_desc', 'Lavadoras, secadoras, refrigeradoras, cocinas, microondas, calefones, lavavajillas, aspiradoras') }}</p>
+                                    <h4>{{ $servicesSection->getCustomData('service_1_title', 'Haras y Criaderos') }}</h4>
+                                    <p>{{ $servicesSection->getCustomData('service_1_desc', 'Alianzas con granjas de cría para ejemplares certificados y perfiles destacados') }}</p>
                                 </div>
                             </div>
 
                             <div class="appliance-item">
-                                <div class="appliance-icon">{{ $servicesSection->getCustomData('service_2_icon', '⚡') }}</div>
+                                <div class="appliance-icon">{{ $servicesSection->getCustomData('service_2_icon', '🎽') }}</div>
                                 <div class="appliance-info">
                                     <h4>{{ $servicesSection->getCustomData('service_2_title', 'Accesorios y Equipamiento') }}</h4>
-                                    <p>{{ $servicesSection->getCustomData('service_2_desc', 'Licuadoras, freidoras de aire, extractores, sanducheras, procesadores de alimentos') }}</p>
+                                    <p>{{ $servicesSection->getCustomData('service_2_desc', 'Monturas, riendas, protecciones y artículos para el binomio') }}</p>
                                 </div>
                             </div>
 
                             <div class="appliance-item">
-                                <div class="appliance-icon">{{ $servicesSection->getCustomData('service_3_icon', '🔧') }}</div>
+                                <div class="appliance-icon">{{ $servicesSection->getCustomData('service_3_icon', '📄') }}</div>
                                 <div class="appliance-info">
-                                    <h4>{{ $servicesSection->getCustomData('service_3_title', 'Todas las Marcas') }}</h4>
-                                    <p>{{ $servicesSection->getCustomData('service_3_desc', 'LG, Samsung, Whirlpool, Electrolux, Mabe, Indurama, Oster y más') }}</p>
+                                    <h4>{{ $servicesSection->getCustomData('service_3_title', 'Documentación y Traslados') }}</h4>
+                                    <p>{{ $servicesSection->getCustomData('service_3_desc', 'Pedigrí, certificados de salud y coordinación logística de transporte') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -228,9 +228,9 @@
                     <div class="col-lg-6">
                         <div class="appliances-image">
                             @if($servicesSection->getImagesArray())
-                                <img src="{{ Storage::url($servicesSection->getImagesArray()[0]) }}" alt="Reparación de Electrodomésticos" class="img-fluid rounded">
+                                <img src="{{ Storage::url($servicesSection->getImagesArray()[0]) }}" alt="Servicios Ecuestres" class="img-fluid rounded">
                             @else
-                                <img src="{{ asset('images/appliances-repair.jpg') }}" alt="Reparación de Electrodomésticos" class="img-fluid rounded">
+                                <img src="{{ asset('images/appliances-repair.jpg') }}" alt="Servicios Ecuestres" class="img-fluid rounded">
                             @endif
                         </div>
                     </div>
@@ -242,34 +242,33 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h2 class="section-title">Electrodomésticos que Reparamos</h2>
+                        <h2 class="section-title">Servicios Ecuestres</h2>
                         <p class="section-description">
-                            Trabajamos con todas las marcas y modelos de línea blanca. Nuestros técnicos están capacitados 
-                            para reparar cualquier electrodoméstico del hogar.
+                            Soluciones integrales para tu experiencia ecuestre: desde publicación y asesoría hasta documentación y logística.
                         </p>
 
                         <div class="appliances-grid">
                             <div class="appliance-item">
                                 <div class="appliance-icon">🏠</div>
                                 <div class="appliance-info">
-                                    <h4>Línea Blanca</h4>
-                                    <p>Lavadoras, secadoras, refrigeradoras, cocinas, microondas, calefones, lavavajillas, aspiradoras</p>
+                                    <h4>Haras y Criaderos</h4>
+                                    <p>Alianzas con granjas de cría para ejemplares certificados y perfiles destacados</p>
                                 </div>
                             </div>
 
                             <div class="appliance-item">
-                                <div class="appliance-icon">⚡</div>
+                                <div class="appliance-icon">🎽</div>
                                 <div class="appliance-info">
                                     <h4>Accesorios y Equipamiento</h4>
-                                    <p>Licuadoras, freidoras de aire, extractores, sanducheras, procesadores de alimentos</p>
+                                    <p>Monturas, riendas, protecciones y artículos para el binomio</p>
                                 </div>
                             </div>
 
                             <div class="appliance-item">
-                                <div class="appliance-icon">🔧</div>
+                                <div class="appliance-icon">📄</div>
                                 <div class="appliance-info">
-                                    <h4>Todas las Marcas</h4>
-                                    <p>LG, Samsung, Whirlpool, Electrolux, Mabe, Indurama, Oster y más</p>
+                                    <h4>Documentación y Traslados</h4>
+                                    <p>Pedigrí, certificados de salud y coordinación logística de transporte</p>
                                 </div>
                             </div>
                         </div>
@@ -277,7 +276,7 @@
 
                     <div class="col-lg-6">
                         <div class="appliances-image">
-                            <img src="{{ asset('images/appliances-repair.jpg') }}" alt="Reparación de Electrodomésticos" class="img-fluid rounded">
+                            <img src="{{ asset('images/appliances-repair.jpg') }}" alt="Servicios Ecuestres" class="img-fluid rounded">
                         </div>
                     </div>
                 </div>
@@ -294,7 +293,7 @@
                     <div class="col-lg-8 mx-auto">
                         <h2 class="section-title">{{ $processSection->title ?? '¿Cómo Trabajamos?' }}</h2>
                         <p class="section-description">
-                            {{ $processSection->content ?? 'Nuestro proceso es simple, rápido y transparente. Te acompañamos desde el primer contacto hasta que tu electrodoméstico quede funcionando perfectamente.' }}
+                            {{ $processSection->content ?? 'Te acompañamos desde el primer contacto hasta la entrega segura del ejemplar, con asesoría transparente en cada paso.' }}
                         </p>
                     </div>
                 </div>
@@ -308,7 +307,7 @@
                             </div>
                             <h4 class="step-title">{{ $processSection->getCustomData('step_1_title', 'Contacto') }}</h4>
                             <p class="step-description">
-                                {{ $processSection->getCustomData('step_1_desc', 'Llámanos o escríbenos por WhatsApp. Te atendemos inmediatamente y agendamos tu cita.') }}
+                                {{ $processSection->getCustomData('step_1_desc', 'Cuéntanos qué buscas, tu disciplina y presupuesto para iniciar la búsqueda ideal.') }}
                             </p>
                         </div>
                     </div>
@@ -319,9 +318,9 @@
                             <div class="step-icon">
                                 <i class="fas fa-search"></i>
                             </div>
-                            <h4 class="step-title">{{ $processSection->getCustomData('step_2_title', 'Diagnóstico') }}</h4>
+                            <h4 class="step-title">{{ $processSection->getCustomData('step_2_title', 'Selección y Visita') }}</h4>
                             <p class="step-description">
-                                {{ $processSection->getCustomData('step_2_desc', 'Nuestro técnico visita tu hogar, revisa el electrodoméstico y te da un diagnóstico gratuito.') }}
+                                {{ $processSection->getCustomData('step_2_desc', 'Te presentamos opciones y coordinamos visitas o pruebas con el vendedor/haras.') }}
                             </p>
                         </div>
                     </div>
@@ -332,9 +331,9 @@
                             <div class="step-icon">
                                 <i class="fas fa-hammer"></i>
                             </div>
-                            <h4 class="step-title">{{ $processSection->getCustomData('step_3_title', 'Reparación') }}</h4>
+                            <h4 class="step-title">{{ $processSection->getCustomData('step_3_title', 'Negociación') }}</h4>
                             <p class="step-description">
-                                {{ $processSection->getCustomData('step_3_desc', 'Una vez aprobado el presupuesto, realizamos la reparación con repuestos originales.') }}
+                                {{ $processSection->getCustomData('step_3_desc', 'Apoyo en términos, reservas y medios de pago seguros para ambas partes.') }}
                             </p>
                         </div>
                     </div>
@@ -345,9 +344,9 @@
                             <div class="step-icon">
                                 <i class="fas fa-shield-check"></i>
                             </div>
-                            <h4 class="step-title">{{ $processSection->getCustomData('step_4_title', 'Garantía') }}</h4>
+                            <h4 class="step-title">{{ $processSection->getCustomData('step_4_title', 'Entrega y Seguimiento') }}</h4>
                             <p class="step-description">
-                                {{ $processSection->getCustomData('step_4_desc', 'Tu electrodoméstico queda funcionando perfecto y con garantía por nuestro trabajo.') }}
+                                {{ $processSection->getCustomData('step_4_desc', 'Coordinamos documentación, traslado y seguimiento postventa para tu tranquilidad.') }}
                             </p>
                         </div>
                     </div>
@@ -361,8 +360,7 @@
                     <div class="col-lg-8 mx-auto">
                         <h2 class="section-title">¿Cómo Trabajamos?</h2>
                         <p class="section-description">
-                            Nuestro proceso es simple, rápido y transparente. Te acompañamos desde el primer contacto hasta 
-                            que tu electrodoméstico quede funcionando perfectamente.
+                            Te acompañamos desde el primer contacto hasta la entrega segura del ejemplar, con asesoría transparente en cada paso.
                         </p>
                     </div>
                 </div>
@@ -376,7 +374,7 @@
                             </div>
                             <h4 class="step-title">Contacto</h4>
                             <p class="step-description">
-                                Llámanos o escríbenos por WhatsApp. Te atendemos inmediatamente y agendamos tu cita.
+                                Cuéntanos qué buscas, tu disciplina y presupuesto para iniciar la búsqueda ideal.
                             </p>
                         </div>
                     </div>
@@ -387,9 +385,9 @@
                             <div class="step-icon">
                                 <i class="fas fa-search"></i>
                             </div>
-                            <h4 class="step-title">Diagnóstico</h4>
+                            <h4 class="step-title">Selección y Visita</h4>
                             <p class="step-description">
-                                Nuestro técnico visita tu hogar, revisa el electrodoméstico y te da un diagnóstico gratuito.
+                                Te presentamos opciones y coordinamos visitas o pruebas con el vendedor/haras.
                             </p>
                         </div>
                     </div>
@@ -400,9 +398,9 @@
                             <div class="step-icon">
                                 <i class="fas fa-hammer"></i>
                             </div>
-                            <h4 class="step-title">Reparación</h4>
+                            <h4 class="step-title">Negociación</h4>
                             <p class="step-description">
-                                Una vez aprobado el presupuesto, realizamos la reparación con repuestos originales.
+                                Apoyo en términos, reservas y medios de pago seguros para ambas partes.
                             </p>
                         </div>
                     </div>
@@ -413,9 +411,9 @@
                             <div class="step-icon">
                                 <i class="fas fa-shield-check"></i>
                             </div>
-                            <h4 class="step-title">Garantía</h4>
+                            <h4 class="step-title">Entrega y Seguimiento</h4>
                             <p class="step-description">
-                                Tu electrodoméstico queda funcionando perfecto y con garantía por nuestro trabajo.
+                                Coordinamos documentación, traslado y seguimiento postventa para tu tranquilidad.
                             </p>
                         </div>
                     </div>
@@ -424,66 +422,64 @@
         </section>
     @endif
 
-    <!-- Oster Products Section - Mantenemos estático por ahora -->
+    <!-- Section para Haras/Criaderos -->
     <section class="oster-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="oster-image">
-                        <img src="{{ asset('images/oster-products.jpg') }}" alt="Productos Oster" class="img-fluid rounded">
+                        <img src="{{ asset('images/oster-products.jpg') }}" alt="Equipamiento y Servicios Ecuestres" class="img-fluid rounded">
                     </div>
                 </div>
 
                 <div class="col-lg-6">
-                    <h2 class="section-title">Especialistas en Oster</h2>
+                    <h2 class="section-title">Para Haras y Criaderos</h2>
                     <p class="section-description">
-                        Además de nuestro servicio técnico, también vendemos y reparamos la línea completa de 
-                        electrodomésticos Oster. Somos distribuidores autorizados con repuestos originales.
+                        Opciones de membresía y herramientas para perfiles de granjas de cría: gestión de ejemplares, publicaciones destacadas y visibilidad premium en el marketplace.
                     </p>
 
                     <div class="oster-services">
                         <div class="oster-service">
                             <i class="fas fa-shopping-cart"></i>
                             <div>
-                                <h4>Venta de Productos Oster</h4>
-                                <p>Licuadoras, freidoras de aire, extractores, sanducheras y más</p>
+                                <h4>Publicación de Ejemplares</h4>
+                                <p>Crea listados con pedigrí, videos y galería de imágenes</p>
                             </div>
                         </div>
 
                         <div class="oster-service">
                             <i class="fas fa-wrench"></i>
                             <div>
-                                <h4>Venta de Caballos Oster</h4>
-                                <p>Servicio técnico autorizado con repuestos originales</p>
+                                <h4>Acompañamiento en Transacciones</h4>
+                                <p>Soporte en reservas, contratos y validaciones</p>
                             </div>
                         </div>
 
                         <div class="oster-service">
                             <i class="fas fa-medal"></i>
                             <div>
-                                <h4>Garantía Oficial</h4>
-                                <p>Respaldamos nuestros productos y servicios con garantía completa</p>
+                                <h4>Perfil Verificado</h4>
+                                <p>Construye confianza con insignias y reseñas</p>
                             </div>
                         </div>
                     </div>
 
                     <a href="{{ route('shop.index') }}" class="btn btn-primary btn-lg mt-4">
-                        <i class="fas fa-eye me-2"></i>Ver Productos Oster
+                        <i class="fas fa-eye me-2"></i>Ver Caballos
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Coverage Area Section - Mantenemos estático por ahora -->
+    <!-- Coverage Area Section -->
     <section class="coverage-section">
         <div class="container">
             <div class="row text-center mb-5">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="section-title">Zona de Cobertura</h2>
+                    <h2 class="section-title">Cobertura y Logística</h2>
                     <p class="section-description">
-                        Brindamos servicio técnico a domicilio en toda la ciudad de Quito y sus valles. 
-                        No importa dónde estés, llegamos hasta ti.
+                        Coordinamos visitas y entregas en múltiples regiones. Consulta disponibilidad y rutas para traslados seguros.
                     </p>
                 </div>
             </div>
@@ -491,43 +487,43 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="coverage-area">
-                        <h4><i class="fas fa-map-marker-alt me-2"></i>Norte de Quito</h4>
-                        <p>Carcelén, La Delicia, Comité del Pueblo, Carapungo, Calderón</p>
+                        <h4><i class="fas fa-map-marker-alt me-2"></i>Zona Norte</h4>
+                        <p>Ciudades principales y alrededores</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="coverage-area">
-                        <h4><i class="fas fa-map-marker-alt me-2"></i>Centro de Quito</h4>
-                        <p>Centro Histórico, La Mariscal, La Carolina, González Suárez</p>
+                        <h4><i class="fas fa-map-marker-alt me-2"></i>Zona Centro</h4>
+                        <p>Áreas metropolitanas y centros ecuestres</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="coverage-area">
-                        <h4><i class="fas fa-map-marker-alt me-2"></i>Sur de Quito</h4>
-                        <p>Quitumbe, Solanda, La Magdalena, Chillogallo, Guamaní</p>
+                        <h4><i class="fas fa-map-marker-alt me-2"></i>Zona Sur</h4>
+                        <p>Cobertura regional y áreas rurales</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="coverage-area">
-                        <h4><i class="fas fa-map-marker-alt me-2"></i>Valles</h4>
-                        <p>Cumbayá, Tumbaco, Conocoto, San Rafael, Sangolquí</p>
+                        <h4><i class="fas fa-map-marker-alt me-2"></i>Regiones Rurales</h4>
+                        <p>Coordinación bajo solicitud</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="coverage-area">
-                        <h4><i class="fas fa-map-marker-alt me-2"></i>Oeste de Quito</h4>
-                        <p>La Mitad del Mundo, Pomasqui, San Antonio, Nayón</p>
+                        <h4><i class="fas fa-map-marker-alt me-2"></i>Costa y Sierra</h4>
+                        <p>Rutas frecuentes y disponibilidad</p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="coverage-area">
-                        <h4><i class="fas fa-map-marker-alt me-2"></i>Sectores Especiales</h4>
-                        <p>Consulta disponibilidad para otras zonas metropolitanas</p>
+                        <h4><i class="fas fa-map-marker-alt me-2"></i>Zonas Especiales</h4>
+                        <p>Consulta para traslados de larga distancia</p>
                     </div>
                 </div>
             </div>
@@ -541,9 +537,9 @@
             <div class="container">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-8">
-                        <h2 class="cta-title">{{ $ctaSection->title ?? '¿Necesitas Ayuda con tus Electrodomésticos?' }}</h2>
+                        <h2 class="cta-title">{{ $ctaSection->title ?? '¿Listo para encontrar tu próximo caballo?' }}</h2>
                         <p class="cta-description">
-                            {{ $ctaSection->content ?? 'No esperes más. Contacta a nuestros expertos y recibe atención inmediata. Diagnóstico gratuito y presupuesto sin compromiso.' }}
+                            {{ $ctaSection->content ?? 'Habla con nuestro equipo y recibe asesoría gratuita para elegir el ejemplar ideal según tu disciplina.' }}
                         </p>
                         
                         <div class="cta-buttons">
@@ -574,10 +570,9 @@
             <div class="container">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-8">
-                        <h2 class="cta-title">¿Necesitas Ayuda con tus Electrodomésticos?</h2>
+                        <h2 class="cta-title">¿Listo para encontrar tu próximo caballo?</h2>
                         <p class="cta-description">
-                            No esperes más. Contacta a nuestros expertos y recibe atención inmediata. 
-                            Diagnóstico gratuito y presupuesto sin compromiso.
+                            Habla con nuestro equipo y recibe asesoría gratuita para elegir el ejemplar ideal según tu disciplina.
                         </p>
                         
                         <div class="cta-buttons">

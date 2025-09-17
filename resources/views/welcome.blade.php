@@ -449,7 +449,7 @@
                 @foreach($heroSection->getImagesArray() as $index => $image)
                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                     <img src="{{ Storage::url($image) }}" class="d-block w-100 hero-image" 
-                         alt="Hero Image {{ $index + 1 }}">
+                         alt="Imagen Hero {{ $index + 1 }}">
                 </div>
                 @endforeach
             </div>
@@ -474,11 +474,11 @@
     <div class="hero-content container">
         <div class="row">
             <div class="col-lg-8 ps-lg-5">
-                <h1>{{ $heroSection->title ?? 'ELECTRODOMÉSTICOS DE CALIDAD PREMIUM' }}</h1>
+                <h1>{{ $heroSection->title ?? 'CABALLOS Y SERVICIOS ECUESTRES PREMIUM' }}</h1>
                 <p class="lead mb-4">
-                    {{ $heroSection->content ?? 'Descubre la mejor selección de electrodomésticos con garantía oficial.' }}
+                    {{ $heroSection->content ?? 'Descubre ejemplares verificados, pedigrí, entrenamiento y asesoría especializada.' }}
                 </p>
-                <a href="{{ route('shop.index') }}" class="btn btn-primary btn-lg">Ver Productos</a>
+                <a href="{{ route('shop.index') }}" class="btn btn-primary btn-lg">Ver Caballos</a>
             </div>
         </div>
     </div>
@@ -491,9 +491,9 @@
     <div class="hero-content container">
         <div class="row">
             <div class="col-lg-8 ps-lg-5">
-                <h1>ELECTRODOMÉSTICOS DE CALIDAD PREMIUM</h1>
-                <p class="lead mb-4">Descubre la mejor selección de electrodomésticos con garantía oficial.</p>
-                <a href="{{ route('shop.index') }}" class="btn btn-primary btn-lg">Ver Productos</a>
+                <h1>CABALLOS Y SERVICIOS ECUESTRES PREMIUM</h1>
+                <p class="lead mb-4">Descubre ejemplares verificados, pedigrí, entrenamiento y asesoría especializada.</p>
+                <a href="{{ route('shop.index') }}" class="btn btn-primary btn-lg">Ver Caballos</a>
             </div>
         </div>
     </div>
@@ -508,12 +508,12 @@
         <!-- Encabezado dinámico -->
         <div class="row mb-5 text-center text-white">
             <div class="col">
-                <span class="section-badge px-3 py-1 rounded-pill">🔥 Selección del Mes</span>
+                <span class="section-badge px-3 py-1 rounded-pill">🔥 Ejemplares del Mes</span>
                 <h2 class="section-title text-white mt-3">
-                    {{ $featuredSection->title ?? 'Productos Destacados del Mes' }}
+                    {{ $featuredSection->title ?? 'Caballos Destacados del Mes' }}
                 </h2>
                 <p class="section-description text-light">
-                    {{ $featuredSection->content ?? 'Electrodomésticos exclusivos seleccionados especialmente para tu hogar.' }}
+                    {{ $featuredSection->content ?? 'Selección de caballos destacados con información de raza, edad, pedigrí y entrenamiento.' }}
                 </p>
                 <div class="section-divider mx-auto" style="height: 4px; width: 80px;"></div>
             </div>
@@ -541,12 +541,12 @@
                             <div>
                                 @php $totalPrice = ($product->price ?? 0) + ($product->interest ?? 0); @endphp
                                 <span class="h5 text-success fw-bold">${{ number_format($totalPrice, 0, ',', '.') }}</span>
-                                <small class="text-muted">c/u</small>
+                                <small class="text-muted">USD</small>
 
                                 @if($product->stock <= 0)
-                                    <span class="badge bg-danger ms-2">Agotado</span>
+                                    <span class="badge bg-danger ms-2">No disponible</span>
                                 @elseif($product->stock <= 5)
-                                    <span class="badge bg-warning text-dark ms-2">Pocas Unidades</span>
+                                    <span class="badge bg-warning text-dark ms-2">Últimos</span>
                                 @else
                                     <span class="badge bg-success ms-2">Disponible</span>
                                 @endif
@@ -558,10 +558,10 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <div class="d-flex gap-2">
                                 <a href="{{ route('product.show', $product) }}" class="btn btn-outline-dark btn-sm rounded-pill flex-fill">
-                                    <i class="fas fa-eye"></i> Ver
+                                    <i class="fas fa-eye"></i> Ver ficha
                                 </a>
                                 <button type="submit" class="btn btn-buy btn-sm rounded-pill flex-fill" {{ $product->stock <= 0 ? 'disabled' : '' }}>
-                                    <i class="fas fa-shopping-cart"></i> Agregar
+                                    <i class="fas fa-shopping-cart"></i> Contactar
                                 </button>
                             </div>
                         </form>
@@ -580,13 +580,13 @@
 <section class="py-5 text-white text-center cta-section">
     <div class="container">
         <h2 class="mb-4 fw-bold">
-            {{ $ctaSection->title ?? '¿Quieres explorar toda nuestra selección?' }}
+            {{ $ctaSection->title ?? '¿Quieres explorar todos los caballos disponibles?' }}
         </h2>
         <p class="lead text-light">
-            {{ $ctaSection->content ?? 'Descubre todos nuestros electrodomésticos premium y encuentra la opción perfecta para tu hogar.' }}
+            {{ $ctaSection->content ?? 'Encuentra ejemplares para salto, doma, enduro y más. Filtra por raza, edad, ubicación y entrenamiento.' }}
         </p>
         <a href="{{ route('shop.index') }}" class="btn btn-lg btn-light fw-semibold mt-3 shadow-sm">
-            <i class="fas fa-store me-2"></i> Ver Todos los Productos
+            <i class="fas fa-store me-2"></i> Ver Todos los Caballos
         </a>
     </div>
 </section>
@@ -599,12 +599,12 @@
     <div class="container">
         <div class="row text-center mb-5 text-white">
             <div class="col">
-                <span class="section-badge px-3 py-1 rounded-pill">🧾 Categorías</span>
+                <span class="section-badge px-3 py-1 rounded-pill">🧾 Categorías de Caballos</span>
                 <h2 class="section-title text-white mt-3">
                     {{ $categoriesSection->title ?? 'Explorar por Categoría' }}
                 </h2>
                 <p class="section-description text-light">
-                    {{ $categoriesSection->content ?? 'Selecciona el electrodoméstico perfecto según tus necesidades y preferencias.' }}
+                    {{ $categoriesSection->content ?? 'Selecciona el tipo de caballo que buscas según disciplina, raza o finalidad.' }}
                 </p>
                 <div class="section-divider mx-auto" style="height: 4px; width: 80px;"></div>
             </div>

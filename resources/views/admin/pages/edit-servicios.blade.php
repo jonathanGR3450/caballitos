@@ -37,7 +37,7 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h2 class="mb-1"><i class="fas fa-tools"></i> Editar Página "Servicios"</h2>
-                <p class="text-light mb-0">Gestiona toda la información de servicios y reparaciones</p>
+                <p class="text-light mb-0">Gestiona toda la información de servicios y publicaciones ecuestres</p>
             </div>
             <a href="{{ route('admin.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
@@ -68,12 +68,12 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Título Principal</label>
                                     <input type="text" name="title" class="form-control" 
-                                           value="{{ $section->title ?: 'Nuestros Servicios' }}" required>
+                                           value="{{ $section->title ?: 'Servicios Ecuestres' }}" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Subtítulo</label>
                                     <input type="text" name="content" class="form-control" 
-                                           value="{{ $section->content ?: 'Servicios especializados en electrodomésticos' }}" required>
+                                           value="{{ $section->content ?: 'Servicios para compra y venta de caballos, entrenamiento y asesoría' }}" required>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <input type="file" name="images[]" class="form-control" accept="image/*">
-                                    <small class="text-muted">Recomendado: 1920x600px. Imagen relacionada con servicios técnicos.</small>
+                                    <small class="text-muted">Recomendado: 1920x600px. Imagen relacionada con el mundo ecuestre.</small>
                                 </div>
                                 <div class="col-md-4">
                                     @if($section->getImagesArray())
@@ -124,13 +124,13 @@
                         <div class="field-group">
                             <h6><i class="fas fa-heading"></i> Título</h6>
                             <input type="text" name="title" class="form-control mb-3" 
-                                   value="{{ $section->title ?: 'Expertos en Electrodomésticos' }}" required>
+                                   value="{{ $section->title ?: 'Expertos en el Mundo Ecuestre' }}" required>
                         </div>
 
                         <div class="field-group">
                             <h6><i class="fas fa-align-left"></i> Descripción</h6>
                             <textarea name="content" class="form-control" rows="4" 
-                                      placeholder="Descripción introductoria sobre tus servicios, experiencia y compromiso...">{{ $section->content }}</textarea>
+                                      placeholder="Descripción introductoria sobre tus servicios ecuestres, experiencia y compromiso...">{{ $section->content }}</textarea>
                         </div>
 
                         <div class="field-group">
@@ -138,7 +138,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <input type="file" name="images[]" class="form-control" accept="image/*">
-                                    <small class="text-muted">Imagen del equipo o taller de trabajo</small>
+                                    <small class="text-muted">Imagen del equipo o de la caballeriza</small>
                                 </div>
                                 <div class="col-md-4">
                                     @if($section->getImagesArray())
@@ -173,7 +173,7 @@
                             <input type="text" name="title" class="form-control mb-3" 
                                    value="{{ $section->title ?: 'Servicios Disponibles' }}" required>
                             <textarea name="content" class="form-control" rows="2" 
-                                      placeholder="Descripción breve de los servicios">{{ $section->content }}</textarea>
+                                      placeholder="Descripción breve de los servicios ecuestres">{{ $section->content }}</textarea>
                         </div>
 
                         <div class="field-group">
@@ -185,17 +185,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Icono 1</label>
                                         <input type="text" name="service_1_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_1_icon', '🔧') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_1_icon', '🐎') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Servicio 1</label>
                                         <input type="text" name="service_1_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_1_title', 'Reparación de Lavadoras') }}">
+                                               value="{{ $section->getCustomData('service_1_title', 'Venta de Caballos') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 1</label>
                                         <input type="text" name="service_1_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_1_desc', 'Diagnóstico y reparación de todo tipo de lavadoras') }}">
+                                               value="{{ $section->getCustomData('service_1_desc', 'Compra y venta de ejemplares por raza y disciplina') }}">
                                     </div>
                                 </div>
                             </div>
@@ -206,17 +206,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Icono 2</label>
                                         <input type="text" name="service_2_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_2_icon', '❄️') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_2_icon', '📜') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Servicio 2</label>
                                         <input type="text" name="service_2_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_2_title', 'Reparación de Refrigeradoras') }}">
+                                               value="{{ $section->getCustomData('service_2_title', 'Pedigrí y Documentación') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 2</label>
                                         <input type="text" name="service_2_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_2_desc', 'Servicio técnico especializado en refrigeración') }}">
+                                               value="{{ $section->getCustomData('service_2_desc', 'Verificación de registros y certificados sanitarios') }}">
                                     </div>
                                 </div>
                             </div>
@@ -227,17 +227,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Icono 3</label>
                                         <input type="text" name="service_3_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_3_icon', '🍳') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_3_icon', '🎓') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Servicio 3</label>
                                         <input type="text" name="service_3_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_3_title', 'Reparación de Cocinas') }}">
+                                               value="{{ $section->getCustomData('service_3_title', 'Entrenamiento y Doma') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 3</label>
                                         <input type="text" name="service_3_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_3_desc', 'Mantenimiento y reparación de cocinas eléctricas y gas') }}">
+                                               value="{{ $section->getCustomData('service_3_desc', 'Programas para salto, dressage, paso fino y más') }}">
                                     </div>
                                 </div>
                             </div>
@@ -248,17 +248,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Icono 4</label>
                                         <input type="text" name="service_4_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_4_icon', '🌀') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_4_icon', '🩺') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Servicio 4</label>
                                         <input type="text" name="service_4_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_4_title', 'Reparación de Secadoras') }}">
+                                               value="{{ $section->getCustomData('service_4_title', 'Salud y Bienestar') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 4</label>
                                         <input type="text" name="service_4_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_4_desc', 'Servicio completo para secadoras de ropa') }}">
+                                               value="{{ $section->getCustomData('service_4_desc', 'Planes veterinarios y cuidados preventivos') }}">
                                     </div>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Icono 5</label>
                                         <input type="text" name="service_5_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_5_icon', '⚡') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_5_icon', '🧰') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Servicio 5</label>
@@ -279,7 +279,7 @@
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 5</label>
                                         <input type="text" name="service_5_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_5_desc', 'Reparación especializada en productos Oster') }}">
+                                               value="{{ $section->getCustomData('service_5_desc', 'Monturas, cabezadas, protectores y más') }}">
                                     </div>
                                 </div>
                             </div>
@@ -290,17 +290,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Icono 6</label>
                                         <input type="text" name="service_6_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_6_icon', '🏠') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_6_icon', '🚚') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Servicio 6</label>
                                         <input type="text" name="service_6_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_6_title', 'Asesoría Personalizada') }}">
+                                               value="{{ $section->getCustomData('service_6_title', 'Transporte y Logística') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 6</label>
                                         <input type="text" name="service_6_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_6_desc', 'Atendemos en tu hogar u oficina') }}">
+                                               value="{{ $section->getCustomData('service_6_desc', 'Coordinación de traslados nacionales e internacionales') }}">
                                     </div>
                                 </div>
                             </div>
@@ -327,9 +327,9 @@
                         <div class="field-group">
                             <h6><i class="fas fa-heading"></i> Título</h6>
                             <input type="text" name="title" class="form-control mb-3" 
-                                   value="{{ $section->title ?: 'Nuestro Proceso de Trabajo' }}" required>
+                                   value="{{ $section->title ?: 'Nuestro Proceso de Compra/Venta' }}" required>
                             <textarea name="content" class="form-control" rows="2" 
-                                      placeholder="Descripción del proceso">{{ $section->content }}</textarea>
+                                      placeholder="Descripción del proceso ecuestre">{{ $section->content }}</textarea>
                         </div>
 
                         <div class="field-group">
@@ -346,12 +346,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Título Paso 1</label>
                                         <input type="text" name="step_1_title" class="form-control" 
-                                               value="{{ $section->getCustomData('step_1_title', 'Diagnóstico') }}">
+                                               value="{{ $section->getCustomData('step_1_title', 'Contacto') }}">
                                     </div>
                                     <div class="col-md-7">
                                         <label class="form-label">Descripción Paso 1</label>
                                         <input type="text" name="step_1_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('step_1_desc', 'Evaluamos el problema y identificamos la solución') }}">
+                                               value="{{ $section->getCustomData('step_1_desc', 'Hablamos sobre necesidades, disciplina y presupuesto') }}">
                                     </div>
                                 </div>
                             </div>
@@ -367,12 +367,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Título Paso 2</label>
                                         <input type="text" name="step_2_title" class="form-control" 
-                                               value="{{ $section->getCustomData('step_2_title', 'Presupuesto') }}">
+                                               value="{{ $section->getCustomData('step_2_title', 'Selección') }}">
                                     </div>
                                     <div class="col-md-7">
                                         <label class="form-label">Descripción Paso 2</label>
                                         <input type="text" name="step_2_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('step_2_desc', 'Te damos un presupuesto claro y sin sorpresas') }}">
+                                               value="{{ $section->getCustomData('step_2_desc', 'Proponemos ejemplares con ficha, fotos y videos') }}">
                                     </div>
                                 </div>
                             </div>
@@ -388,12 +388,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Título Paso 3</label>
                                         <input type="text" name="step_3_title" class="form-control" 
-                                               value="{{ $section->getCustomData('step_3_title', 'Reparación') }}">
+                                               value="{{ $section->getCustomData('step_3_title', 'Inspección') }}">
                                     </div>
                                     <div class="col-md-7">
                                         <label class="form-label">Descripción Paso 3</label>
                                         <input type="text" name="step_3_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('step_3_desc', 'Realizamos la reparación con repuestos originales') }}">
+                                               value="{{ $section->getCustomData('step_3_desc', 'Visita, prueba montada y revisión veterinaria') }}">
                                     </div>
                                 </div>
                             </div>
@@ -409,12 +409,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Título Paso 4</label>
                                         <input type="text" name="step_4_title" class="form-control" 
-                                               value="{{ $section->getCustomData('step_4_title', 'Garantía') }}">
+                                               value="{{ $section->getCustomData('step_4_title', 'Cierre y Entrega') }}">
                                     </div>
                                     <div class="col-md-7">
                                         <label class="form-label">Descripción Paso 4</label>
                                         <input type="text" name="step_4_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('step_4_desc', 'Tu electrodoméstico queda con garantía de servicio') }}">
+                                               value="{{ $section->getCustomData('step_4_desc', 'Contrato, traslado y acompañamiento postventa') }}">
                                     </div>
                                 </div>
                             </div>
@@ -443,7 +443,7 @@
                             <input type="text" name="title" class="form-control mb-3" 
                                    value="{{ $section->title ?: 'Por Qué Elegir ' . env('APP_NAME', 'CaballosApp') }}" required>
                             <textarea name="content" class="form-control" rows="2" 
-                                      placeholder="Descripción de las ventajas">{{ $section->content }}</textarea>
+                                      placeholder="Descripción de las ventajas del marketplace ecuestre">{{ $section->content }}</textarea>
                         </div>
 
                         <div class="field-group">
@@ -460,12 +460,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Razón 1</label>
                                         <input type="text" name="reason_1_title" class="form-control" 
-                                               value="{{ $section->getCustomData('reason_1_title', 'Experiencia Comprobada') }}">
+                                               value="{{ $section->getCustomData('reason_1_title', 'Experiencia Ecuestre') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 1</label>
                                         <input type="text" name="reason_1_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('reason_1_desc', 'Más de 10 años reparando electrodomésticos') }}">
+                                               value="{{ $section->getCustomData('reason_1_desc', 'Años acompañando compras y cría responsable') }}">
                                     </div>
                                 </div>
                             </div>
@@ -481,12 +481,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Razón 2</label>
                                         <input type="text" name="reason_2_title" class="form-control" 
-                                               value="{{ $section->getCustomData('reason_2_title', 'Garantía Completa') }}">
+                                               value="{{ $section->getCustomData('reason_2_title', 'Transparencia Total') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 2</label>
                                         <input type="text" name="reason_2_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('reason_2_desc', 'Todos nuestros trabajos incluyen garantía') }}">
+                                               value="{{ $section->getCustomData('reason_2_desc', 'Información verificada y contratos claros') }}">
                                     </div>
                                 </div>
                             </div>
@@ -502,12 +502,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Razón 3</label>
                                         <input type="text" name="reason_3_title" class="form-control" 
-                                               value="{{ $section->getCustomData('reason_3_title', 'Servicio Rápido') }}">
+                                               value="{{ $section->getCustomData('reason_3_title', 'Respuesta Rápida') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 3</label>
                                         <input type="text" name="reason_3_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('reason_3_desc', 'Atención inmediata y respuesta en 24h') }}">
+                                               value="{{ $section->getCustomData('reason_3_desc', 'Consultas respondidas en 24h') }}">
                                     </div>
                                 </div>
                             </div>
@@ -518,17 +518,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Icono 4</label>
                                         <input type="text" name="reason_4_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('reason_4_icon', '💰') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('reason_4_icon', '✅') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Razón 4</label>
                                         <input type="text" name="reason_4_title" class="form-control" 
-                                               value="{{ $section->getCustomData('reason_4_title', 'Precios Justos') }}">
+                                               value="{{ $section->getCustomData('reason_4_title', 'Vendedores Validados') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción 4</label>
                                         <input type="text" name="reason_4_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('reason_4_desc', 'Presupuestos transparentes sin costos ocultos') }}">
+                                               value="{{ $section->getCustomData('reason_4_desc', 'Perfiles revisados y reputación visible') }}">
                                     </div>
                                 </div>
                             </div>
@@ -557,12 +557,12 @@
                             <div class="mb-3">
                                 <label class="form-label">Título de CTA</label>
                                 <input type="text" name="title" class="form-control" 
-                                       value="{{ $section->title ?: 'Solicita tu Servicio Hoy' }}" required>
+                                       value="{{ $section->title ?: 'Explora Servicios Ecuestres Hoy' }}" required>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Descripción</label>
                                 <textarea name="content" class="form-control" rows="3" 
-                                          placeholder="Texto motivacional para que contacten...">{{ $section->content }}</textarea>
+                                          placeholder="Texto motivacional para que contacten y exploren servicios">{{ $section->content }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Texto del Botón Principal</label>

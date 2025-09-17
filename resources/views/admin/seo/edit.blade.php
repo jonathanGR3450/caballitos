@@ -33,7 +33,7 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h2 class="mb-1"><i class="fas fa-search"></i> SEO: {{ ucfirst(str_replace('-', ' ', $page->slug)) }}</h2>
-                <p class="text-light mb-0">Configura meta tags, Open Graph y Schema.org para mejorar el posicionamiento</p>
+                <p class="text-light mb-0">Configura meta tags, Open Graph y Schema.org para impulsar tu marketplace ecuestre</p>
             </div>
             <a href="{{ route('admin.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
@@ -44,7 +44,7 @@
             <div class="alert alert-success">
                 <i class="fas fa-check-circle"></i> {{ session('success') }}
             </div>
-        @endif
+        @endif>
 
         <form action="{{ route('admin.seo.update', $page->id) }}" method="POST">
             @csrf @method('PUT')
@@ -59,14 +59,14 @@
                         <h6><i class="fas fa-heading"></i> Título SEO</h6>
                         <input type="text" name="meta_title" class="form-control" 
                                value="{{ old('meta_title', $seo->meta_title) }}" 
-                               maxlength="150" placeholder="Título optimizado para SEO (50-60 caracteres)">
+                               maxlength="150" placeholder="Título optimizado (ej.: Venta de caballos | {{ env('APP_NAME', 'CaballosApp') }})">
                         <div class="form-text">Aparece como título principal en Google. <span class="char-counter" id="title-counter">0/150</span></div>
                     </div>
 
                     <div class="field-group">
                         <h6><i class="fas fa-align-left"></i> Meta Descripción</h6>
                         <textarea name="meta_description" class="form-control" rows="3" 
-                                  maxlength="500" placeholder="Descripción que aparece en Google (120-155 caracteres)">{{ old('meta_description', $seo->meta_description) }}</textarea>
+                                  maxlength="500" placeholder="Compra y venta de caballos por raza, edad y ubicación. Encuentra haras y criadores verificados.">{{ old('meta_description', $seo->meta_description) }}</textarea>
                         <div class="form-text">Resumen atractivo para resultados de búsqueda. <span class="char-counter" id="desc-counter">0/500</span></div>
                     </div>
 
@@ -75,7 +75,7 @@
                             <h6><i class="fas fa-key"></i> Palabras Clave</h6>
                             <input type="text" name="meta_keywords" class="form-control" 
                                    value="{{ old('meta_keywords', $seo->meta_keywords) }}" 
-                                   placeholder="palabra1, palabra2, palabra3">
+                                   placeholder="venta de caballos, haras, caballos de salto, caballos en {{ now()->format('Y') }}">
                             <div class="form-text">Separadas por comas</div>
                         </div>
                         
@@ -83,7 +83,7 @@
                             <h6><i class="fas fa-link"></i> URL Canónica</h6>
                             <input type="url" name="canonical_url" class="form-control" 
                                    value="{{ old('canonical_url', $seo->canonical_url) }}" 
-                                   placeholder="https://electrahome.com/servicios">
+                                   placeholder="https://caballosapp.com/listados">
                             <div class="form-text">URL principal de esta página</div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             <h6><i class="fas fa-heading"></i> Título OG</h6>
                             <input type="text" name="og_title" class="form-control" 
                                    value="{{ old('og_title', $seo->og_title) }}" 
-                                   maxlength="150" placeholder="Título para redes sociales">
+                                   maxlength="150" placeholder="Encuentra tu próximo caballo en {{ env('APP_NAME', 'CaballosApp') }}">
                             <div class="form-text">Si está vacío, usa el meta title</div>
                         </div>
                         
@@ -120,7 +120,7 @@
                             <h6><i class="fas fa-image"></i> Imagen OG</h6>
                             <input type="url" name="og_image" class="form-control" 
                                    value="{{ old('og_image', $seo->og_image) }}" 
-                                   placeholder="https://electrahome.com/images/og-image.jpg">
+                                   placeholder="https://caballosapp.com/images/og-image.jpg">
                             <div class="form-text">1200x630px recomendado</div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                     <div class="field-group">
                         <h6><i class="fas fa-align-left"></i> Descripción OG</h6>
                         <textarea name="og_description" class="form-control" rows="2" 
-                                  placeholder="Descripción para redes sociales">{{ old('og_description', $seo->og_description) }}</textarea>
+                                  placeholder="Marketplace de caballos: razas, edades, pedigrí y entrenamientos. Haras y vendedores verificados.">{{ old('og_description', $seo->og_description) }}</textarea>
                         <div class="form-text">Si está vacía, usa la meta descripción</div>
                     </div>
 
@@ -182,7 +182,7 @@
                             <h6><i class="fas fa-at"></i> Twitter Site</h6>
                             <input type="text" name="twitter_site" class="form-control" 
                                    value="{{ old('twitter_site', $seo->twitter_site) }}" 
-                                   placeholder="@electrahome">
+                                   placeholder="@CaballosApp">
                             <div class="form-text">Usuario Twitter del sitio</div>
                         </div>
                         
@@ -190,7 +190,7 @@
                             <h6><i class="fas fa-user"></i> Twitter Creator</h6>
                             <input type="text" name="twitter_creator" class="form-control" 
                                    value="{{ old('twitter_creator', $seo->twitter_creator) }}" 
-                                   placeholder="@creador">
+                                   placeholder="@equimarket_manager">
                             <div class="form-text">Usuario Twitter del autor</div>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                             <h6><i class="fas fa-heading"></i> Título Twitter</h6>
                             <input type="text" name="twitter_title" class="form-control" 
                                    value="{{ old('twitter_title', $seo->twitter_title) }}" 
-                                   placeholder="Título para Twitter">
+                                   placeholder="Compra y venta de caballos">
                             <div class="form-text">Si está vacío, usa el OG title</div>
                         </div>
                         
@@ -215,7 +215,7 @@
                     <div class="field-group">
                         <h6><i class="fas fa-align-left"></i> Descripción Twitter</h6>
                         <textarea name="twitter_description" class="form-control" rows="2" 
-                                  placeholder="Descripción para Twitter">{{ old('twitter_description', $seo->twitter_description) }}</textarea>
+                                  placeholder="Razas, edades, ubicaciones y entrenamientos. Descubre haras y vendedores verificados.">{{ old('twitter_description', $seo->twitter_description) }}</textarea>
                         <div class="form-text">Si está vacía, usa la OG description</div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                             <h6><i class="fas fa-bullseye"></i> Palabra Clave Principal</h6>
                             <input type="text" name="focus_keyword" class="form-control" 
                                    value="{{ old('focus_keyword', $seo->focus_keyword) }}" 
-                                   placeholder="reparación electrodomésticos quito">
+                                   placeholder="venta de caballos {{ date('Y') }}">
                             <div class="form-text">Palabra clave por la que quieres posicionar</div>
                         </div>
                         
@@ -240,7 +240,7 @@
                             <h6><i class="fas fa-map-signs"></i> Título Breadcrumb</h6>
                             <input type="text" name="breadcrumb_title" class="form-control" 
                                    value="{{ old('breadcrumb_title', $seo->breadcrumb_title) }}" 
-                                   placeholder="Título personalizado para navegación">
+                                   placeholder="Título personalizado para navegación (ej.: Caballos en venta)">
                             <div class="form-text">Si está vacío, usa el título de la página</div>
                         </div>
                     </div>

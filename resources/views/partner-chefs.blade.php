@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Contacto - {{ env('APP_NAME', 'CaballosApp') }} | Servicio Técnico Especializado")
+@section('title', "Contacto - {{ env('APP_NAME', 'CaballosApp') }} | Marketplace Ecuestre")
 
 @section('content')
 <div class="contact-page">
@@ -12,9 +12,9 @@
             <div class="hero-background">
                 {{-- Imagen de fondo dinámica o logo por defecto --}}
                 @if($heroSection->getImagesArray())
-                    <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+                    <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 @else
-                    <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+                    <img src="{{ asset('images/logo.png') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 @endif
                 <div class="hero-overlay"></div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-10">
                         <h1 class="hero-title">{{ $heroSection->title ?? 'Contáctanos' }}</h1>
-                        <p class="hero-subtitle">{{ $heroSection->content ?? 'Servicio técnico especializado en línea blanca y electrodomésticos' }}</p>
+                        <p class="hero-subtitle">{{ $heroSection->content ?? 'Compra y venta de caballos con asesoría, bienestar y seguridad' }}</p>
                     </div>
                 </div>
             </div>
@@ -31,14 +31,14 @@
         {{-- Fallback si no hay sección hero --}}
         <section class="contact-hero">
             <div class="hero-background">
-                <img src="{{ asset('images/logo.png') }}" alt="Servicio Técnico {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+                <img src="{{ asset('images/logo.png') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 <div class="hero-overlay"></div>
             </div>
             <div class="container">
                 <div class="row justify-content-center text-center">
                     <div class="col-lg-10">
                         <h1 class="hero-title">Contáctanos</h1>
-                        <p class="hero-subtitle">Servicio técnico especializado en línea blanca y electrodomésticos</p>
+                        <p class="hero-subtitle">Compra y venta de caballos con asesoría, bienestar y seguridad</p>
                     </div>
                 </div>
             </div>
@@ -58,13 +58,13 @@
                             @php $infoSection = $sectionsData['info']; @endphp
                             <h2 class="section-title">{{ $infoSection->title ?? '¿Buscas el caballo ideal para ti?' }}</h2>
                             <p class="section-description">
-                                {{ $infoSection->content ?? 'En EquiMarket somos especialistas en la venta, cría y cuidado de caballos de distintas razas.' }}
+                                {{ $infoSection->content ?? 'En EquiMarket conectamos compradores, vendedores y haras para encontrar el ejemplar perfecto según tu disciplina y objetivos.' }}
                             </p>
                         @else
                             <h2 class="section-title">¿Buscas el caballo ideal para ti?</h2>
                             <p class="section-description">
                                 En EquiMarket somos especialistas en la venta, cría y cuidado de caballos de distintas razas.
-                                También vendemos y reparamos electrodomésticos Oster. Contáctanos y recibe atención personalizada con técnicos certificados.
+                                Te acompañamos con información clara sobre pedigrí, salud y entrenamiento.
                             </p>
                         @endif
                         
@@ -75,28 +75,28 @@
                                 
                                 {{-- Servicio 1 --}}
                                 <div class="service-item">
-                                    <div class="service-icon">{{ $servicesSection->getCustomData('service_1_icon', '🔧') }}</div>
+                                    <div class="service-icon">{{ $servicesSection->getCustomData('service_1_icon', '🐎') }}</div>
                                     <div class="service-text">
                                         <h4>{{ $servicesSection->getCustomData('service_1_title', 'Venta de Caballos') }}</h4>
-                                        <p>{{ $servicesSection->getCustomData('service_1_desc', 'Caballos de salto, paso fino, pura sangre y más') }}</p>
+                                        <p>{{ $servicesSection->getCustomData('service_1_desc', 'Caballos de salto, doma, enduro, paso fino y más') }}</p>
                                     </div>
                                 </div>
                                 
                                 {{-- Servicio 2 --}}
                                 <div class="service-item">
-                                    <div class="service-icon">{{ $servicesSection->getCustomData('service_2_icon', '🏠') }}</div>
+                                    <div class="service-icon">{{ $servicesSection->getCustomData('service_2_icon', '🤝') }}</div>
                                     <div class="service-text">
                                         <h4>{{ $servicesSection->getCustomData('service_2_title', 'Asesoría Personalizada') }}</h4>
-                                        <p>{{ $servicesSection->getCustomData('service_2_desc', 'Atendemos en toda la ciudad con horarios flexibles') }}</p>
+                                        <p>{{ $servicesSection->getCustomData('service_2_desc', 'Te orientamos según experiencia, disciplina y presupuesto') }}</p>
                                     </div>
                                 </div>
                                 
                                 {{-- Servicio 3 --}}
                                 <div class="service-item">
-                                    <div class="service-icon">{{ $servicesSection->getCustomData('service_3_icon', '⚡') }}</div>
+                                    <div class="service-icon">{{ $servicesSection->getCustomData('service_3_icon', '🎽') }}</div>
                                     <div class="service-text">
                                         <h4>{{ $servicesSection->getCustomData('service_3_title', 'Accesorios y Equipamiento') }}</h4>
-                                        <p>{{ $servicesSection->getCustomData('service_3_desc', 'Venta y reparación de licuadoras, freidoras de aire') }}</p>
+                                        <p>{{ $servicesSection->getCustomData('service_3_desc', 'Monturas, riendas, protecciones y más para tu caballo') }}</p>
                                     </div>
                                 </div>
                                 
@@ -105,13 +105,13 @@
                                     <div class="service-icon">{{ $servicesSection->getCustomData('service_4_icon', '✅') }}</div>
                                     <div class="service-text">
                                         <h4>{{ $servicesSection->getCustomData('service_4_title', 'Cuidado y Bienestar') }}</h4>
-                                        <p>{{ $servicesSection->getCustomData('service_4_desc', 'Ofrecemos planes de salud y bienestar para tus caballos') }}</p>
+                                        <p>{{ $servicesSection->getCustomData('service_4_desc', 'Planes de salud, chequeos veterinarios y seguimiento') }}</p>
                                     </div>
                                 </div>
                             @else
                                 {{-- Fallback - servicios por defecto --}}
                                 <div class="service-item">
-                                    <div class="service-icon">🔧</div>
+                                    <div class="service-icon">🐎</div>
                                     <div class="service-text">
                                         <h4>Venta de Caballos</h4>
                                         <p>Caballos de salto, paso fino, pura sangre y más</p>
@@ -119,7 +119,7 @@
                                 </div>
                                 
                                 <div class="service-item">
-                                    <div class="service-icon">🏠</div>
+                                    <div class="service-icon">🤝</div>
                                     <div class="service-text">
                                         <h4>Asesoría Personalizada</h4>
                                         <p>Te ayudamos a elegir el caballo ideal según tus necesidades</p>
@@ -127,10 +127,10 @@
                                 </div>
                                 
                                 <div class="service-item">
-                                    <div class="service-icon">⚡</div>
+                                    <div class="service-icon">🎽</div>
                                     <div class="service-text">
                                         <h4>Accesorios y Equipamiento</h4>
-                                        <p>Venta de monturas, riendas, botas y todo lo que necesites para tu caballo</p>
+                                        <p>Monturas, riendas, botas y todo lo que necesites para tu caballo</p>
                                     </div>
                                 </div>
                                 
@@ -182,8 +182,8 @@
                                     </div>
                                     <div class="info-details">
                                         <h5>Email</h5>
-                                        <a href="{{ $contactInfoSection->getCustomData('email_link', 'mailto:info@electrahome.com') }}">
-                                            {{ $contactInfoSection->getCustomData('email', 'info@electrahome.com') }}
+                                        <a href="{{ $contactInfoSection->getCustomData('email_link', 'mailto:info@caballosapp.com') }}">
+                                            {{ $contactInfoSection->getCustomData('email', 'info@caballosapp.com') }}
                                         </a>
                                     </div>
                                 </div>
@@ -229,7 +229,7 @@
                                     </div>
                                     <div class="info-details">
                                         <h5>Email</h5>
-                                        <a href="mailto:info@electrahome.com">info@electrahome.com</a>
+                                        <a href="mailto:info@caballosapp.com">info@caballosapp.com</a>
                                     </div>
                                 </div>
 
@@ -388,7 +388,7 @@
                                     id="address" 
                                     name="address" 
                                     value="{{ old('address') }}" 
-                                    placeholder="Ej: Finca Los Potrillos, Madrid, España" 
+                                    placeholder="Ej: Haras Los Potrillos, Madrid, España" 
                                     required>
                                 @error('address')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -401,7 +401,7 @@
                                         id="message" 
                                         name="message" 
                                         rows="4" 
-                                        placeholder="Escribe aquí si deseas más información sobre un caballo, precios, pedigrees o entrenamientos disponibles..." 
+                                        placeholder="Escribe si deseas más información sobre un caballo, precios, pedigrí o entrenamientos disponibles..." 
                                         required>{{ old('message') }}</textarea>
                                 @error('message')
                                     <div class="invalid-feedback">{{ $message }}</div>
