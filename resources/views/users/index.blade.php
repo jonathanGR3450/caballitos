@@ -56,7 +56,7 @@
                                 @endif
                             </td>
                             <td>
-                                @if($user->tipoListado->count() > 0)
+                                @if($user->tipoListado?->count() > 0)
                                     <span class="badge bg-primary">{{ $user->tipoListado->nombre }}</span>
                                 @else
                                     <span class="text-muted small">No Listado</span>

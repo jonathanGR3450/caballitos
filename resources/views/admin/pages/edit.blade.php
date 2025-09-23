@@ -82,7 +82,7 @@ Una URL por línea...">{{ old('video_urls', implode("\n", $page->getVideosArray(
         {{-- Botones --}}
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-success">💾 Guardar</button>
-            <a href="{{ route('admin.index') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
 </div>

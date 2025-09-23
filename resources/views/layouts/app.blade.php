@@ -23,7 +23,7 @@
 <style>
 /* Navigation Responsive Styles - VERSIÓN PROFESIONAL */
 nav {
-    background: linear-gradient(135deg, #CD853F 50%, #8B4513 100%);
+    background: linear-gradient(135deg,rgb(39, 38, 37) 50%, #8B4513 100%);
     padding: 12px 20px;
     border-bottom: 3px solid #DEB887;
     position: relative;
@@ -790,7 +790,7 @@ footer::before {
                 </div>
                 <h4 class="fw-bold mb-3">{{ env('APP_NAME', 'CaballosApp') }}</h4>
                 <p class="text-white small mb-3">
-                    Tu tienda especializada en caballos de alta calidad. Ofrecemos las mejores razas con garantía, asesoría en cuidado y atención personalizada.
+                    Marketplace para comprar y vender caballos. Conecta con criadores y vendedores verificados, publica tu ejemplar con pedigrí, fotos y ubicación, y recibe asesoría para una transacción segura.
                 </p>
                 <div class="social-links">
                     <a href="#" class="social-link me-3" title="Facebook">
@@ -813,10 +813,10 @@ footer::before {
                 <h5 class="text-uppercase fw-semibold mb-3">Navegación</h5>
                 <ul class="list-unstyled footer-links">
                     <li><a href="{{ route('home') }}" class="footer-link">Inicio</a></li>
-                    <li><a href="{{ route('shop.index') }}" class="footer-link">Productos</a></li>
+                    <li><a href="{{ route('shop.index') }}" class="footer-link">Caballos</a></li>
                     <li><a href="{{ route('about') }}" class="footer-link">Quiénes Somos</a></li>
                     <li><a href="{{ route('contact.index') }}" class="footer-link">Contacto</a></li>
-                    <li><a href="{{ route('recipes') }}" class="footer-link">Servicios</a></li>
+                    <li><a href="{{ route('recipes') }}" class="footer-link">Publica tu Caballo</a></li>
                 </ul>
             </div>
 
@@ -824,17 +824,21 @@ footer::before {
                 $categories = App\Models\Category::all();
             @endphp
 
-            <!-- Categorías de Productos -->
+            <!-- Categorías -->
             <div class="col-lg-2 col-md-6 mb-4">
                 <h5 class="text-uppercase fw-semibold mb-3">Categorías</h5>
                 <ul class="list-unstyled footer-links">
                     @foreach ($categories as $item)
-                        <li><a href="{{ route('shop.index', ['category' => $item->id]) }}" class="footer-link">{{$item->name}}</a></li>
+                        <li>
+                            <a href="{{ route('shop.index', ['category' => $item->id]) }}" class="footer-link">
+                                {{ $item->name }}
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
 
-            <!-- Contact Info -->
+            <!-- Contacto -->
             <div class="col-lg-4 col-md-6 mb-4">
                 <h5 class="text-uppercase fw-semibold mb-3">Información de Contacto</h5>
                 
@@ -845,15 +849,15 @@ footer::before {
                     </p>
                     <p class="text-white small mb-2">
                         <i class="fas fa-phone me-2 text-info"></i>
-                        <a href="tel:+584121234567" class="footer-link">+58 (412) 123-4567</a>
+                        <a href="tel:+573000000000" class="footer-link">+57 300 000 0000</a>
                     </p>
                     <p class="text-white small mb-3">
                         <i class="fas fa-map-marker-alt me-2 text-info"></i>
-                        <span class="text-white"></span>
+                        <span class="text-white">Bogotá, Colombia (Atención LATAM)</span>
                     </p>
                 </div>
 
-                <!-- Horarios de Atención -->
+                <!-- Horarios -->
                 <div class="business-hours">
                     <h6 class="text-white mb-2">
                         <i class="fas fa-clock me-2 text-warning"></i>
@@ -879,16 +883,16 @@ footer::before {
             <div class="col-md-6">
                 <div class="footer-certifications text-md-end">
                     <span class="certification-badge me-2">
-                        <i class="fas fa-shield-check me-1"></i>
-                        <small>Garantía Oficial</small>
+                        <i class="fas fa-user-check me-1"></i>
+                        <small>Vendedores verificados</small>
                     </span>
                     <span class="certification-badge me-2">
-                        <i class="fas fa-tools me-1"></i>
-                        <small>Servicio Técnico</small>
+                        <i class="fas fa-truck me-1"></i>
+                        <small>Transporte y bienestar</small>
                     </span>
                     <span class="certification-badge">
-                        <i class="fas fa-star me-1"></i>
-                        <small>Calidad Certificada</small>
+                        <i class="fas fa-shield-alt me-1"></i>
+                        <small>Compra protegida</small>
                     </span>
                 </div>
             </div>

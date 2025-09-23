@@ -28,7 +28,7 @@
                 <h2 class="mb-1">📝 Gestionar Secciones</h2>
                 <p class="text-light mb-0">Página: <strong>{{ ucfirst(str_replace('-', ' ', $page->slug)) }}</strong></p>
             </div>
-            <a href="{{ route('admin.index') }}" class="btn btn-secondary">
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver a Páginas
             </a>
         </div>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="section-body">
-                <form action="{{ route('admin.sections.update', [$page, $section]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.pages.sections.update', [$page, $section]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

@@ -22,7 +22,7 @@
     <style>
         /* Navigation Responsive Styles - VERSIÓN PROFESIONAL */
         nav {
-            background: linear-gradient(135deg, #CD853F 50%, #8B4513 100%);
+            background: linear-gradient(135deg,rgb(39, 38, 37) 50%, #8B4513 100%);
             padding: 12px 20px;
             border-bottom: 3px solid #DEB887;
             position: relative;

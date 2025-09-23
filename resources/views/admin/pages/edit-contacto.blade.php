@@ -29,10 +29,10 @@
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h2 class="mb-1"><i class="fas fa-phone"></i> Editar Página "Contacto"</h2>
-                <p class="text-light mb-0">Gestiona toda la información de contacto y servicios</p>
+                <h2 class="mb-1"><i class="fas fa-horse"></i> Editar Página "Contacto"</h2>
+                <p class="text-light mb-0">Gestiona la información de contacto y servicios del marketplace</p>
             </div>
-            <a href="{{ route('admin.index') }}" class="btn btn-secondary">
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
             </a>
         </div>
@@ -52,7 +52,7 @@
                     <h4><i class="fas fa-flag me-2"></i> Banner Principal <span class="badge badge-hero ms-2">Hero</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
                         
                         <div class="field-group">
@@ -66,7 +66,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Subtítulo</label>
                                     <input type="text" name="content" class="form-control" 
-                                           value="{{ $section->content ?: 'Servicio técnico especializado' }}" required>
+                                           value="{{ $section->content ?: 'Marketplace para comprar y vender caballos' }}" required>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <input type="file" name="images[]" class="form-control" accept="image/*">
-                                    <small class="text-muted">Recomendado: 1920x600px. Imagen de fondo del banner.</small>
+                                    <small class="text-muted">Recomendado: 1920x600px. Ej.: pista de salto, criadero, establos.</small>
                                 </div>
                                 <div class="col-md-4">
                                     @if($section->getImagesArray())
@@ -111,7 +111,7 @@
                     <h4><i class="fas fa-info-circle me-2"></i> Información Principal <span class="badge badge-info ms-2">Info</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -121,10 +121,10 @@
                         </div>
 
                         <div class="field-group">
-                            <h6><i class="fas fa-align-left"></i> Descripción de la Empresa</h6>
+                            <h6><i class="fas fa-align-left"></i> Descripción del Marketplace</h6>
                             <textarea name="content" class="form-control" rows="4" 
-                                      placeholder="Descripción de los servicios que ofrece la empresa...">{{ $section->content }}</textarea>
-                            <small class="text-muted">Esta descripción aparece debajo del título principal</small>
+                                      placeholder="Conectamos compradores y vendedores de caballos. Encuentra caballos de salto, paso fino, criollos y más; publica tus ejemplares con fotos, pedigrí y ubicación.">{{ $section->content }}</textarea>
+                            <small class="text-muted">Este texto aparece debajo del título principal.</small>
                         </div>
 
                         <input type="hidden" name="is_active" value="1">
@@ -139,15 +139,15 @@
             @elseif($section->name === 'services')
             <div class="section-card">
                 <div class="section-header">
-                    <h4><i class="fas fa-cogs me-2"></i> Servicios Ofrecidos <span class="badge badge-services ms-2">Services</span></h4>
+                    <h4><i class="fas fa-horse me-2"></i> Servicios del Marketplace <span class="badge badge-services ms-2">Services</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
                             <h6><i class="fas fa-list-ul"></i> 4 Servicios Principales</h6>
-                            <p class="text-muted mb-4">Configura los servicios que aparecen en la página de contacto</p>
+                            <p class="text-muted mb-4">Configura los servicios que muestras a tus usuarios.</p>
                             
                             <!-- Servicio 1 -->
                             <div class="service-preview">
@@ -155,7 +155,7 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Emoji/Icono 1</label>
                                         <input type="text" name="service_1_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_1_icon', '🔧') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_1_icon', '🐎') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Título Servicio 1</label>
@@ -165,7 +165,7 @@
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 1</label>
                                         <input type="text" name="service_1_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_1_desc', 'Caballos de salto, paso fino, pura sangre y más') }}">
+                                               value="{{ $section->getCustomData('service_1_desc', 'Caballos de salto, paso fino, criollos, pura sangre y más') }}">
                                     </div>
                                 </div>
                             </div>
@@ -176,17 +176,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Emoji/Icono 2</label>
                                         <input type="text" name="service_2_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_2_icon', '🏠') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_2_icon', '📣') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Título Servicio 2</label>
                                         <input type="text" name="service_2_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_2_title', 'Asesoría Personalizada') }}">
+                                               value="{{ $section->getCustomData('service_2_title', 'Publica tu Caballo') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 2</label>
                                         <input type="text" name="service_2_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_2_desc', 'Atendemos en toda la ciudad con horarios flexibles') }}">
+                                               value="{{ $section->getCustomData('service_2_desc', 'Crea anuncios con fotos, pedigrí, videos y ubicación') }}">
                                     </div>
                                 </div>
                             </div>
@@ -197,17 +197,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Emoji/Icono 3</label>
                                         <input type="text" name="service_3_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_3_icon', '⚡') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_3_icon', '🤝') }}" style="font-size: 1.5rem;">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 ">
                                         <label class="form-label">Título Servicio 3</label>
                                         <input type="text" name="service_3_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_3_title', 'Accesorios y Equipamiento') }}">
+                                               value="{{ $section->getCustomData('service_3_title', 'Asesoría de Compra/Venta') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 3</label>
                                         <input type="text" name="service_3_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_3_desc', 'Venta caballos') }}">
+                                               value="{{ $section->getCustomData('service_3_desc', 'Te acompañamos en la búsqueda, negociación y cierre') }}">
                                     </div>
                                 </div>
                             </div>
@@ -218,17 +218,17 @@
                                     <div class="col-md-2">
                                         <label class="form-label">Emoji/Icono 4</label>
                                         <input type="text" name="service_4_icon" class="form-control text-center" 
-                                               value="{{ $section->getCustomData('service_4_icon', '✅') }}" style="font-size: 1.5rem;">
+                                               value="{{ $section->getCustomData('service_4_icon', '🚚') }}" style="font-size: 1.5rem;">
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Título Servicio 4</label>
                                         <input type="text" name="service_4_title" class="form-control" 
-                                               value="{{ $section->getCustomData('service_4_title', 'Cuidado y Bienestar') }}">
+                                               value="{{ $section->getCustomData('service_4_title', 'Transporte y Bienestar') }}">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Descripción Servicio 4</label>
                                         <input type="text" name="service_4_desc" class="form-control" 
-                                               value="{{ $section->getCustomData('service_4_desc', 'Ofrecemos planes de salud y bienestar para tus caballos') }}">
+                                               value="{{ $section->getCustomData('service_4_desc', 'Opcional: transporte, veterinaria y cuidado del ejemplar') }}">
                                     </div>
                                 </div>
                             </div>
@@ -249,7 +249,7 @@
                     <h4><i class="fas fa-address-book me-2"></i> Información de Contacto <span class="badge badge-contact ms-2">Contact</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -264,12 +264,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Número</label>
                                         <input type="text" name="whatsapp_number" class="form-control" 
-                                               value="{{ $section->getCustomData('whatsapp_number', '+593 98 765 4321') }}">
+                                               value="{{ $section->getCustomData('whatsapp_number', '+57 300 000 0000') }}">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="form-label">Enlace WhatsApp</label>
                                         <input type="text" name="whatsapp_link" class="form-control" 
-                                               value="{{ $section->getCustomData('whatsapp_link', 'https://wa.me/593987654321') }}">
+                                               value="{{ $section->getCustomData('whatsapp_link', 'https://wa.me/573000000000') }}">
                                     </div>
                                 </div>
                             </div>
@@ -283,12 +283,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Número</label>
                                         <input type="text" name="phone_number" class="form-control" 
-                                               value="{{ $section->getCustomData('phone_number', '+593 2 234 5678') }}">
+                                               value="{{ $section->getCustomData('phone_number', '+57 1 000 0000') }}">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="form-label">Enlace Tel (tel:)</label>
                                         <input type="text" name="phone_link" class="form-control" 
-                                               value="{{ $section->getCustomData('phone_link', 'tel:+59322345678') }}">
+                                               value="{{ $section->getCustomData('phone_link', 'tel:+5710000000') }}">
                                     </div>
                                 </div>
                             </div>
@@ -302,12 +302,12 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Correo</label>
                                         <input type="email" name="email" class="form-control" 
-                                               value="{{ $section->getCustomData('email', 'info@freepegasus.com') }}">
+                                               value="{{ $section->getCustomData('email', 'contacto@freepegasus.com') }}">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="form-label">Enlace Mailto</label>
                                         <input type="text" name="email_link" class="form-control" 
-                                               value="{{ $section->getCustomData('email_link', 'mailto:info@freepegasus.com') }}">
+                                               value="{{ $section->getCustomData('email_link', 'mailto:contacto@freepegasus.com') }}">
                                     </div>
                                 </div>
                             </div>
@@ -347,20 +347,20 @@
                     <h4><i class="fas fa-edit me-2"></i> Encabezado del Formulario <span class="badge badge-form ms-2">Form</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
                             <h6><i class="fas fa-heading"></i> Título del Formulario</h6>
                             <input type="text" name="title" class="form-control mb-3" 
-                                   value="{{ $section->title ?: 'Solicita tu Servicio' }}" required>
+                                   value="{{ $section->title ?: 'Solicita información o publica tu caballo' }}" required>
                         </div>
 
                         <div class="field-group">
                             <h6><i class="fas fa-align-left"></i> Descripción del Formulario</h6>
                             <textarea name="content" class="form-control" rows="3" 
-                                      placeholder="Descripción que aparece debajo del título del formulario...">{{ $section->content }}</textarea>
-                            <small class="text-muted">Esta descripción explica a los usuarios qué pueden esperar al completar el formulario</small>
+                                      placeholder="Cuéntanos qué caballo buscas, o déjanos los datos para publicar tu ejemplar en el marketplace.">{{ $section->content }}</textarea>
+                            <small class="text-muted">Explica brevemente qué puede esperar el usuario al completar el formulario.</small>
                         </div>
 
                         <input type="hidden" name="is_active" value="1">
@@ -384,6 +384,7 @@
 
     </div>
 </div>
+
 
 <script>
 // Función para eliminar imagen

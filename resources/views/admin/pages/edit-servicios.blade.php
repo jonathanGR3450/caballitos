@@ -39,7 +39,7 @@
                 <h2 class="mb-1"><i class="fas fa-tools"></i> Editar Página "Servicios"</h2>
                 <p class="text-light mb-0">Gestiona toda la información de servicios y publicaciones ecuestres</p>
             </div>
-            <a href="{{ route('admin.index') }}" class="btn btn-secondary">
+            <a href="{{ route('dashboard') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
             </a>
         </div>
@@ -59,7 +59,7 @@
                     <h4><i class="fas fa-flag me-2"></i> Banner Principal <span class="badge badge-hero ms-2">Hero</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
                         
                         <div class="field-group">
@@ -118,7 +118,7 @@
                     <h4><i class="fas fa-info-circle me-2"></i> Introducción <span class="badge badge-intro ms-2">Intro</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -165,7 +165,7 @@
                     <h4><i class="fas fa-list me-2"></i> Lista de Servicios <span class="badge badge-services ms-2">Services</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -321,7 +321,7 @@
                     <h4><i class="fas fa-tasks me-2"></i> Proceso de Trabajo <span class="badge badge-process ms-2">Process</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -435,7 +435,7 @@
                     <h4><i class="fas fa-star me-2"></i> Por Qué Elegirnos <span class="badge badge-why ms-2">Why</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">
@@ -549,7 +549,7 @@
                     <h4><i class="fas fa-rocket me-2"></i> Llamada a la Acción <span class="badge badge-cta ms-2">CTA</span></h4>
                 </div>
                 <div class="section-body">
-                    <form action="{{ route('admin.sections.update', [$page->id, $section->id]) }}" method="POST">
+                    <form action="{{ route('admin.pages.sections.update', [$page->id, $section->id]) }}" method="POST">
                         @csrf @method('PUT')
 
                         <div class="field-group">

@@ -73,7 +73,6 @@ class ProductController extends Controller
     /*──────────────────────── STORE ───────────────────────*/
     public function store(Request $request)
     {
-        $this->authorize('create', \App\Models\Product::class);
         try {
             $this->saveProduct($request);
             return redirect()->route('admin.products.index')

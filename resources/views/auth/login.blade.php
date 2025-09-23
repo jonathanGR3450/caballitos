@@ -13,22 +13,22 @@
                         <div class="col-lg-6 login-image-section">
                             <div class="login-brand">
                                 <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" class="brand-logo">
-                                <h2 class="brand-title">Bienvenido de Nuevo</h2>
+                                <h2 class="brand-title">Bienvenido de nuevo</h2>
                                 <p class="brand-subtitle">
-                                    Electrodomésticos de calidad premium Oster. Descubre equipos duraderos, eficientes y diseñados para hacer tu vida más fácil en la cocina.
+                                    Marketplace para comprar y vender caballos. Encuentra ejemplares de salto, paso fino, criollos y más; publica tu caballo con pedigrí, fotos y ubicación.
                                 </p>
                                 <div class="brand-features">
                                     <div class="feature-item">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Garantía Oficial</span>
+                                        <i class="fas fa-user-check"></i>
+                                        <span>Vendedores verificados</span>
                                     </div>
                                     <div class="feature-item">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Servicio Técnico</span>
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Compra protegida</span>
                                     </div>
                                     <div class="feature-item">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Calidad Certificada</span>
+                                        <i class="fas fa-truck"></i>
+                                        <span>Transporte y bienestar</span>
                                     </div>
                                 </div>
                             </div>
@@ -38,8 +38,8 @@
                         <div class="col-lg-6 login-form-section">
                             <div class="login-form-container">
                                 <div class="form-header">
-                                    <h3>Iniciar Sesión</h3>
-                                    <p>Accede a tu cuenta para gestionar pedidos y preferencias</p>
+                                    <h3>Iniciar sesión</h3>
+                                    <p>Accede para gestionar tus publicaciones, favoritos y mensajes</p>
                                 </div>
 
                                 <!-- Session Status -->
@@ -62,7 +62,7 @@
                                     <!-- Email Address -->
                                     <div class="form-group">
                                         <label for="email" class="form-label">
-                                            <i class="fas fa-envelope me-2"></i>Correo Electrónico
+                                            <i class="fas fa-envelope me-2"></i>Correo electrónico
                                         </label>
                                         <input id="email" 
                                                type="email" 
@@ -117,7 +117,7 @@
 
                                     <!-- Submit Button -->
                                     <button type="submit" class="login-btn">
-                                        <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+                                        <i class="fas fa-sign-in-alt me-2"></i>Iniciar sesión
                                     </button>
 
                                     <!-- Register Link -->
