@@ -100,7 +100,7 @@
         <div class="admin-options">
             
             <!-- Gestionar Páginas -->
-            <a href="{{ route('dashboard') }}" class="admin-card">
+            <a href="{{ route('admin.pages.index') }}" class="admin-card">
                 <span class="icon">📄</span>
                 <h4>Gestionar Páginas</h4>
                 <p>Edita el contenido de Inicio, Quiénes Somos, Servicios y Contacto. Agrega texto, imágenes y videos.</p>
