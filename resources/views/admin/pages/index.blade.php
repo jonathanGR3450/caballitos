@@ -76,6 +76,11 @@
                                         <i class="fas fa-edit"></i> Editar Contacto
                                     </a>
                                     @break
+                                @case('footer')
+                                    <a href="{{ route('admin.pages.edit-footer') }}" class="btn btn-sm btn-warning me-1">
+                                        <i class="fas fa-edit"></i> Editar Footer
+                                    </a>
+                                    @break
                                 
                                 @default
                                     <span class="text-muted">No disponible</span>

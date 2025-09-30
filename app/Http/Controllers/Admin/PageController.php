@@ -271,6 +271,51 @@ public function updateSection(Request $request, $pageId, $sectionId)
             // Estas secciones solo usan title y content, no necesitan custom_data
             \Log::info($section->name . ' section - using only title and content');
             break;
+        
+        case 'social':
+            $customData = [
+                'facebook' => $request->input('facebook'),
+                'instagram' => $request->input('instagram'),
+                'whatsapp' => $request->input('whatsapp'),
+                'email' => $request->input('email'),
+            ];
+            break;
+
+        case 'nav':
+            // Espera links[label,route] (array)
+            $customData = [
+                'links' => $request->input('links', []),
+            ];
+            break;
+
+        case 'contact':
+            $customData = [
+                'email' => $request->input('email'),
+                'phone' => $request->input('phone'),
+                'phone_link' => $request->input('phone_link'),
+                'location' => $request->input('location'),
+            ];
+            break;
+
+        case 'hours':
+            $customData = [
+                'weekdays' => $request->input('weekdays'),
+                'saturday' => $request->input('saturday'),
+                'sunday' => $request->input('sunday'),
+            ];
+            break;
+
+        case 'badges':
+            $customData = [
+                'items' => $request->input('items', []), // items[][icon,text]
+            ];
+            break;
+
+        case 'bottom':
+            $customData = [
+                'copyright' => $request->input('copyright'),
+            ];
+            break;
 
         // === SECCIONES FUTURAS ===
         default:
@@ -351,8 +396,17 @@ public function updateSection(Request $request, $pageId, $sectionId)
                         \Storage::disk('public')->delete($oldImage);
                     }
                 }
-                $imagePath = $request->file('images')[0]->store('sections/images', 'public');
-                $section->setImagesArray([$imagePath]);
+                $imagePaths = [];
+                // Iterar sobre todas las imágenes
+                if ($request->hasFile('images')) {
+                    foreach ($request->file('images') as $image) {
+                        $imagePath = $image->store('sections/images', 'public');
+                        $imagePaths[] = $imagePath;
+                    }
+                }
+                $section->setImagesArray($imagePaths);
+                // $imagePath = $request->file('images')[0]->store('sections/images', 'public');
+                // $section->setImagesArray([$imagePath]);
                 \Log::info('Hero image saved: ' . $imagePath);
             }
             
@@ -415,6 +469,7 @@ private function getPageEditRoute($pageSlug)
         'servicios' => 'admin.pages.edit-servicios',
         'productos' => 'admin.pages.edit-productos',
         'blog' => 'admin.pages.edit-blog',
+        'footer' => 'admin.pages.edit-footer', 
         // Fácil agregar más páginas aquí...
     ];
 
@@ -487,6 +542,80 @@ if ($section->page_id != $page->id) {
         }
 
         return response()->json(['success' => false], 404);
+    }
+
+    public function editFooter()
+    {
+        $page = Page::where('slug', 'footer')
+            ->with(['sections' => fn($q) => $q->orderBy('order')])
+            ->first();
+
+        if (!$page) {
+            $page = Page::create([
+                'slug' => 'footer',
+                'title' => 'Footer',
+                'content' => 'Configuración del pie de página',
+            ]);
+
+            // Secciones del footer (todas editables)
+            $defs = [
+                ['name'=>'about','title'=>env('APP_NAME','CaballosApp'),
+                    'content'=>'Marketplace para comprar y vender caballos...',
+                    'custom_data'=>null,'order'=>1],
+                ['name'=>'social','title'=>'Redes','content'=>'', 'custom_data'=>[
+                    'facebook'=>'https://facebook.com/',
+                    'instagram'=>'https://instagram.com/',
+                    'whatsapp'=>'https://wa.me/573000000000',
+                    'email'=>'info@freepegasus.com',
+                ],'order'=>2],
+                ['name'=>'nav','title'=>'Navegación','content'=>'', 'custom_data'=>[
+                    'links'=>[
+                        ['label'=>'Inicio','route'=>'home'],
+                        ['label'=>'Caballos','route'=>'shop.index'],
+                        ['label'=>'Quiénes Somos','route'=>'about'],
+                        ['label'=>'Contacto','route'=>'contact.index'],
+                        ['label'=>'Publica tu Caballo','route'=>'recipes'],
+                    ],
+                ],'order'=>3],
+                ['name'=>'contact','title'=>'Contacto','content'=>'', 'custom_data'=>[
+                    'email'=>'info@freepegasus.com',
+                    'phone'=>'+57 300 000 0000',
+                    'phone_link'=>'tel:+573000000000',
+                    'location'=>'Bogotá, Colombia (Atención LATAM)',
+                ],'order'=>4],
+                ['name'=>'hours','title'=>'Horarios','content'=>'', 'custom_data'=>[
+                    'weekdays'=>'Lunes a Viernes: 8:00 AM - 6:00 PM',
+                    'saturday'=>'Sábados: 8:00 AM - 4:00 PM',
+                    'sunday'=>'Domingos: Cerrado',
+                ],'order'=>5],
+                ['name'=>'badges','title'=>'Sellos','content'=>'', 'custom_data'=>[
+                    'items'=>[
+                        ['icon'=>'fas fa-user-check','text'=>'Vendedores verificados'],
+                        ['icon'=>'fas fa-truck','text'=>'Transporte y bienestar'],
+                        ['icon'=>'fas fa-shield-alt','text'=>'Compra protegida'],
+                    ],
+                ],'order'=>6],
+                ['name'=>'bottom','title'=>'Legal','content'=>'', 'custom_data'=>[
+                    'copyright'=>'© '.date('Y').' '.env('APP_NAME','CaballosApp').'. Todos los derechos reservados.',
+                ],'order'=>7],
+            ];
+
+            foreach ($defs as $d) {
+                $page->sections()->create([
+                    'name'=>$d['name'],'title'=>$d['title'],'content'=>$d['content'],
+                    'custom_data'=>$d['custom_data'],'order'=>$d['order'],'is_active'=>true,
+                ]);
+            }
+            $page->load('sections');
+        }
+
+        return view('admin.pages.edit-footer', compact('page'));
+    }
+
+    public function updateFooter(Request $request)
+    {
+        $page = Page::where('slug', 'footer')->firstOrFail();
+        return $this->updatePage($request, $page, 'admin.pages.edit-footer');
     }
 
 

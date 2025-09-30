@@ -238,6 +238,11 @@ Route::prefix('admin/pages')->name('admin.pages.')->group(function () {
     Route::get('/{page}/sections', [App\Http\Controllers\Admin\PageController::class, 'manageSections'])->name('sections');
     // Route::put('/{page}/sections/{section}', [App\Http\Controllers\Admin\PageController::class, 'updateSection'])->name('sections.update');
     Route::delete('/{page}/sections/{section}/images', [App\Http\Controllers\Admin\PageController::class, 'deleteSectionImage'])->name('sections.delete-image');
+
+    Route::get('/admin/pages/footer/edit', [\App\Http\Controllers\Admin\PageController::class, 'editFooter'])
+        ->name('edit-footer');
+    Route::put('/admin/pages/footer', [\App\Http\Controllers\Admin\PageController::class, 'updateFooter'])
+        ->name('update-footer');
 });
 
 

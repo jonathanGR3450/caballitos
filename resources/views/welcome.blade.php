@@ -27,7 +27,8 @@
         
         /* Overlay muy suave sobre el video */
         .hero-overlay {
-            position: absolute;
+            pointer-events: none;
+            /* position: absolute;
             top: 0;
             left: 0;
             right: 0;
@@ -36,7 +37,7 @@
             background: linear-gradient(135deg, 
                 rgba(16, 24, 32, 0.3) 0%, 
                 rgba(16, 24, 32, 0.2) 50%, 
-                rgba(16, 24, 32, 0.4) 100%);
+                rgba(16, 24, 32, 0.4) 100%); */
         }
         
         /* Contenido sobre el video */

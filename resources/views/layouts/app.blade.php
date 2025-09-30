@@ -780,7 +780,123 @@ footer::before {
     <!-- Footer -->
    <!-- Footer -->
 <!-- Footer -->
+@php
+    $footerPage = \App\Models\Page::with(['sections'=>fn($q)=>$q->where('is_active',true)->orderBy('order')])
+                    ->where('slug','footer')->first();
+
+    $S = function($name) use ($footerPage) {
+        return optional($footerPage?->sections?->firstWhere('name',$name));
+    };
+@endphp
+
 <footer class="text-white pt-5 pb-4">
+  <div class="container">
+    <div class="row">
+      {{-- About --}}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="footer-logo mb-3">
+          @if($S('about') && $S('about')->getImagesArray())
+            <img src="{{ Storage::url($S('about')->getImagesArray()[0]) }}" alt="{{ $S('about')->title }}" style="height:50px;">
+          @else
+            <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME','CaballosApp') }} Logo" style="height:50px;">
+          @endif
+        </div>
+        <h4 class="fw-bold mb-3">{{ $S('about')?->title ?? env('APP_NAME','CaballosApp') }}</h4>
+        <p class="text-white small mb-3">{{ $S('about')?->content }}</p>
+
+        @php $social = $S('social'); @endphp
+        <div class="social-links">
+          @if($social?->getCustomData('facebook')) <a href="{{ $social->getCustomData('facebook') }}" class="social-link me-3" title="Facebook"><i class="fab fa-facebook fa-lg"></i></a>@endif
+          @if($social?->getCustomData('instagram')) <a href="{{ $social->getCustomData('instagram') }}" class="social-link me-3" title="Instagram"><i class="fab fa-instagram fa-lg"></i></a>@endif
+          @if($social?->getCustomData('whatsapp')) <a href="{{ $social->getCustomData('whatsapp') }}" class="social-link me-3" title="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>@endif
+          @if($social?->getCustomData('email')) <a href="mailto:{{ $social->getCustomData('email') }}" class="social-link" title="Email"><i class="fas fa-envelope fa-lg"></i></a>@endif
+        </div>
+      </div>
+
+      {{-- Navegación --}}
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5 class="text-uppercase fw-semibold mb-3">Navegación</h5>
+        @php $links = $S('nav')?->getCustomData('links',[]) ?? []; @endphp
+        <ul class="list-unstyled footer-links">
+          @foreach($links as $l)
+            @if(!empty($l['route']))
+              <li><a href="{{ route($l['route']) }}" class="footer-link">{{ $l['label'] ?? $l['route'] }}</a></li>
+            @endif
+          @endforeach
+        </ul>
+      </div>
+
+      {{-- Categorías (tu lógica actual) --}}
+      @php $categories = App\Models\Category::all(); @endphp
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5 class="text-uppercase fw-semibold mb-3">Categorías</h5>
+        <ul class="list-unstyled footer-links">
+          @foreach ($categories as $item)
+            <li><a href="{{ route('shop.index', ['category' => $item->id]) }}" class="footer-link">{{ $item->name }}</a></li>
+          @endforeach
+        </ul>
+      </div>
+
+      {{-- Contacto + Horarios --}}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5 class="text-uppercase fw-semibold mb-3">Información de Contacto</h5>
+        @php $contact = $S('contact'); $hours = $S('hours'); @endphp
+
+        <div class="contact-info">
+          @if($contact?->getCustomData('email'))
+            <p class="text-white small mb-2"><i class="fas fa-envelope me-2 text-info"></i>
+              <a href="mailto:{{ $contact->getCustomData('email') }}" class="footer-link">{{ $contact->getCustomData('email') }}</a>
+            </p>
+          @endif
+          @if($contact?->getCustomData('phone'))
+            <p class="text-white small mb-2"><i class="fas fa-phone me-2 text-info"></i>
+              <a href="{{ $contact->getCustomData('phone_link') ?? '#' }}" class="footer-link">{{ $contact->getCustomData('phone') }}</a>
+            </p>
+          @endif
+          @if($contact?->getCustomData('location'))
+            <p class="text-white small mb-3"><i class="fas fa-map-marker-alt me-2 text-info"></i>
+              <span class="text-white">{{ $contact->getCustomData('location') }}</span>
+            </p>
+          @endif
+        </div>
+
+        <div class="business-hours">
+          <h6 class="text-white mb-2"><i class="fas fa-clock me-2 text-warning"></i> Horarios de Atención</h6>
+          @if($hours)
+            <p class="text-white small mb-1">{{ $hours->getCustomData('weekdays') }}</p>
+            <p class="text-white small mb-1">{{ $hours->getCustomData('saturday') }}</p>
+            <p class="text-white small">{{ $hours->getCustomData('sunday') }}</p>
+          @endif
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-light my-4 opacity-25">
+
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        @php $bottom = $S('bottom'); @endphp
+        <div class="text-white small">
+          {{ $bottom?->getCustomData('copyright') ?? ('© '.date('Y').' '.env('APP_NAME','CaballosApp').'. Todos los derechos reservados.') }}
+        </div>
+      </div>
+      <div class="col-md-6">
+        @php $badges = $S('badges')?->getCustomData('items',[]) ?? []; @endphp
+        <div class="footer-certifications text-md-end">
+          @foreach($badges as $b)
+            <span class="certification-badge me-2">
+              @if(!empty($b['icon']))<i class="{{ $b['icon'] }} me-1"></i>@endif
+              <small>{{ $b['text'] ?? '' }}</small>
+            </span>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+{{-- <footer class="text-white pt-5 pb-4">
     <div class="container">
         <div class="row">
             <!-- Logo & descripción -->
@@ -898,7 +1014,7 @@ footer::before {
             </div>
         </div>
     </div>
-</footer>
+</footer> --}}
 
 @php
   $cmpIds = session('compare.products', []);

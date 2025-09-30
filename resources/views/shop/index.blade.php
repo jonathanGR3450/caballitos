@@ -4,6 +4,16 @@
 
 <link rel="stylesheet" href="{{ asset('css/productos.css') }}">
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="" crossorigin="anonymous"></script>
+
+
+{{-- <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle con Popper (NECESARIO para el carrusel) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
+
+
 <div class="electrahome-carousel-section">
     <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">

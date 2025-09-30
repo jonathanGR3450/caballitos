@@ -429,6 +429,12 @@ body {
     height: 22px;
 }
 
+#categoryCarousel .carousel-control-prev,
+#categoryCarousel .carousel-control-next,
+#categoryCarousel .carousel-indicators {
+  z-index: 50;
+}
+
 /* Indicadores */
 .carousel-indicators {
     bottom: 30px;
