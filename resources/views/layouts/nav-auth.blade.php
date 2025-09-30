@@ -3,7 +3,7 @@
             <!-- Logo -->
             <div class="footer-logo mb-3">
                 <a href="{{ route('home') }}" class="d-inline-block" aria-label="Ir al inicio">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" style="height: 60px;">
+                    <img src="{{ asset('images/logo.gif') }}" alt="Logo" style="height: 60px;">
                 </a>
             </div>
 

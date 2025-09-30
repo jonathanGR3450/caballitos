@@ -23,7 +23,7 @@
 <style>
 /* Navigation Responsive Styles - VERSIÓN PROFESIONAL */
 nav {
-    background: linear-gradient(135deg,rgb(39, 38, 37) 50%, #8B4513 100%);
+    background: linear-gradient(135deg,#f7f7f7 50%, #8B4513 100%);
     padding: 12px 20px;
     border-bottom: 3px solid #DEB887;
     position: relative;
@@ -36,6 +36,13 @@ nav {
     justify-content: space-between;
     width: 100%;
     position: relative;
+}
+
+.navbar-container .footer-logo img{
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  background: transparent !important;
 }
 
 .logo {
@@ -566,7 +573,7 @@ footer::before {
 }
 
 .nav-item > a {
-    color: #FAF9F6;
+    /* color: #FAF9F6; */
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
@@ -902,7 +909,7 @@ footer::before {
             <!-- Logo & descripción -->
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="footer-logo mb-3">
-                    <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" style="height: 50px;">
+                    <img src="{{ asset('images/logo.gif') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" style="height: 50px;">
                 </div>
                 <h4 class="fw-bold mb-3">{{ env('APP_NAME', 'CaballosApp') }}</h4>
                 <p class="text-white small mb-3">

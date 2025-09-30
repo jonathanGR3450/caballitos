@@ -14,7 +14,7 @@
             @if($heroSection->getImagesArray())
                 <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             @else
-                <img src="{{ asset('images/logo.png') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+                <img src="{{ asset('images/logo.gif') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             @endif
             <div class="hero-overlay"></div>
         </div>
@@ -31,7 +31,7 @@
     {{-- Fallback si no hay sección hero --}}
     <section class="about-hero">
         <div class="hero-background">
-            <img src="{{ asset('images/logo.png') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+            <img src="{{ asset('images/logo.gif') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
             <div class="hero-overlay"></div>
         </div>
         <div class="container">
@@ -97,7 +97,7 @@
                             @if($legacySection->getImagesArray())
                                 <img src="{{ Storage::url($legacySection->getImagesArray()[0]) }}" alt="{{ $legacySection->title }}" class="section-img">
                             @else
-                                <img src="{{ asset('images/logo.png') }}" alt="Caballos verificados y bienestar animal" class="section-img logo-placeholder">
+                                <img src="{{ asset('images/logo.gif') }}" alt="Caballos verificados y bienestar animal" class="section-img logo-placeholder">
                             @endif
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                             @if($qualitySection->getImagesArray())
                                 <img src="{{ Storage::url($qualitySection->getImagesArray()[0]) }}" alt="{{ $qualitySection->title }}" class="section-img">
                             @else
-                                <img src="{{ asset('images/logo.png') }}" alt="Verificación y documentación equina" class="section-img logo-placeholder">
+                                <img src="{{ asset('images/logo.gif') }}" alt="Verificación y documentación equina" class="section-img logo-placeholder">
                             @endif
                         </div>
                     </div>
@@ -201,7 +201,7 @@
                             @if($passionSection->getImagesArray())
                                 <img src="{{ Storage::url($passionSection->getImagesArray()[0]) }}" alt="{{ $passionSection->title }}" class="section-img">
                             @else
-                                <img src="{{ asset('images/logo.png') }}" alt="Equipo {{ env('APP_NAME', 'CaballosApp') }}" class="section-img logo-placeholder">
+                                <img src="{{ asset('images/logo.gif') }}" alt="Equipo {{ env('APP_NAME', 'CaballosApp') }}" class="section-img logo-placeholder">
                             @endif
                         </div>
                     </div>

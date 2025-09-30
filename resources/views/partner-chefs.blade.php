@@ -14,7 +14,7 @@
                 @if($heroSection->getImagesArray())
                     <img src="{{ Storage::url($heroSection->getImagesArray()[0]) }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 @else
-                    <img src="{{ asset('images/logo.png') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+                    <img src="{{ asset('images/logo.gif') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 @endif
                 <div class="hero-overlay"></div>
             </div>
@@ -31,7 +31,7 @@
         {{-- Fallback si no hay sección hero --}}
         <section class="contact-hero">
             <div class="hero-background">
-                <img src="{{ asset('images/logo.png') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
+                <img src="{{ asset('images/logo.gif') }}" alt="Marketplace Ecuestre {{ env('APP_NAME', 'CaballosApp') }}" class="hero-bg-image">
                 <div class="hero-overlay"></div>
             </div>
             <div class="container">

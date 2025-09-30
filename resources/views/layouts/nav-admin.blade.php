@@ -2,7 +2,7 @@
     <div class="navbar-container">
         <div class="logo">
                 <a href="{{ route('home') }}" class="d-inline-block" aria-label="Ir al inicio">
-                    <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" style="height: 70px;">
+                    <img src="{{ asset('images/logo.gif') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" style="height: 70px;">
                 </a>
         </div>
 

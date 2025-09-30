@@ -321,7 +321,7 @@
         <!-- Sección de Imagen/Marca -->
         <div class="register-image-section">
             <div class="register-brand">
-                {{-- <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-logo"> --}}
+                {{-- <img src="{{ asset('images/logo.gif') }}" alt="Logo" class="brand-logo"> --}}
                 <h1 class="brand-title">¡Únete a Nosotros!</h1>
                 <p class="brand-subtitle">
                     Crea tu cuenta y accede a todas las funcionalidades de nuestra plataforma. 

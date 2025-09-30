@@ -12,7 +12,7 @@
                         <!-- Left Column - Image/Branding -->
                         <div class="col-lg-6 login-image-section">
                             <div class="login-brand">
-                                <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" class="brand-logo">
+                                <img src="{{ asset('images/logo.gif') }}" alt="{{ env('APP_NAME', 'CaballosApp') }} Logo" class="brand-logo">
                                 <h2 class="brand-title">Bienvenido de nuevo</h2>
                                 <p class="brand-subtitle">
                                     Marketplace para comprar y vender caballos. Encuentra ejemplares de salto, paso fino, criollos y más; publica tu caballo con pedigrí, fotos y ubicación.
@@ -171,7 +171,7 @@
     right: -50%;
     width: 200%;
     height: 200%;
-    background: url('{{ asset("images/logo.png") }}') center/cover;
+    background: url('{{ asset("images/logo.gif") }}') center/cover;
     opacity: 0.1;
     transform: rotate(-15deg);
 }
